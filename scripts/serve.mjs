@@ -1,10 +1,10 @@
 import http from "node:http";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import { resolve, extname } from "node:path";
 const root = resolve("public");
 http
   .createServer(async (req, res) => {
-    const path = resolve(
+    let path = resolve(
       root,
       "." +
         decodeURIComponent(
@@ -18,6 +18,7 @@ http
       return;
     }
     try {
+      if ((await stat(path)).isDirectory()) path = resolve(path, "index.html");
       const data = await readFile(path);
       res.setHeader(
         "Content-Type",

@@ -8,6 +8,7 @@ import {
 } from "../public/catalog-source.js";
 import { nationalIds, regionalIds, expectedIds } from "./region-fixtures.mjs";
 import { createSavedStore } from "../public/storage.js";
+import { designs, normalizeDesign, initialDesign } from "../public/designs.js";
 import { validate } from "../scripts/validate.mjs";
 const data = JSON.parse(
   await readFile(
@@ -16,6 +17,38 @@ const data = JSON.parse(
   ),
 );
 test("каталог соответствует схеме и не содержит дублей", () => validate(data));
+test("оформление: основной 03, URL приоритетнее сохраненного, неизвестный дает 03", () => {
+  assert.equal(designs.length, 10);
+  assert.equal(initialDesign("", undefined), "03");
+  assert.equal(initialDesign("", "06"), "06");
+  assert.equal(initialDesign("?design=02&q=стакан", "06"), "02");
+  assert.equal(initialDesign("?design=unknown", "06"), "03");
+  assert.equal(normalizeDesign("3"), "03");
+});
+test("старое сохранение получает 03 без потери ID и заметок", () => {
+  const saved = {
+    saved: ["7-verst"],
+    notes: { "7-verst": "Запросить прайс" },
+    compare: ["7-verst"],
+  };
+  const store = createSavedStore(() => ({
+    getItem: () => JSON.stringify(saved),
+    setItem() {},
+    removeItem() {},
+  }));
+  assert.equal(store.state.design, "03");
+  assert.deepEqual(store.state.saved, saved.saved);
+  assert.deepEqual(store.state.notes, saved.notes);
+});
+test("сохраненное оформление читается из того же состояния", () => {
+  const store = createSavedStore(() => ({
+    getItem: () =>
+      JSON.stringify({ saved: [], notes: {}, compare: [], design: "06" }),
+    setItem() {},
+    removeItem() {},
+  }));
+  assert.equal(store.state.design, "06");
+});
 test("поиск нормализует регистр и ё, находит синонимы", () => {
   assert.equal(normalize(" ВЁРСТ "), "верст");
   assert(

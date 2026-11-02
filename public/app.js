@@ -4,11 +4,14 @@ import {
   deliveryMatch,
 } from "./catalog-source.js";
 import { createSavedStore } from "./storage.js";
+import { designs, normalizeDesign, initialDesign } from "./designs.js";
+import { mountLayout, supplierView, appendSupplierViews } from "./layouts.js";
 const $ = (id) => document.getElementById(id),
   source = new JsonCatalogSource(),
   store = createSavedStore();
 let items = [],
   filters = readFilters(),
+  design = initialDesign(location.search, store.state.design),
   activeDetail = null,
   toastTimer;
 const el = (tag, className, text) => {
@@ -90,6 +93,7 @@ function readFilters() {
 function saveFilters() {
   const url = new URL(location.href);
   url.search = "";
+  url.searchParams.set("design", design);
   if (filters.query) url.searchParams.set("q", filters.query);
   if (filters.category) url.searchParams.set("category", filters.category);
   if (filters.region) url.searchParams.set("region", filters.region);
@@ -108,67 +112,23 @@ function supplierWord(n) {
         : "поставщиков";
 }
 function supplierRow(s, index) {
-  const card = el("article", "card"),
-    main = el("div", "supplier-main");
-  card.dataset.supplierId = s.id;
-  const match = deliveryMatch(s, filters.region);
-  card.dataset.scope = match.scope;
-  const heading = el("div", "supplier-heading");
-  heading.append(el("h3", "", s.name));
-  main.append(
-    heading,
-    el("p", "supplier-type", categories[s.category]),
-    el("p", "location", `Компания: ${s.city}`),
-    el("p", "products", s.products.join(", ")),
-  );
-  const sources = el("div", "row-source");
-  sources.append(
-    link("Официальный источник", s.sources[0].url),
-    el("span", "", s.verifiedAt.split("-").reverse().join(".")),
-  );
-  if (store.state.notes[s.id])
-    sources.append(el("span", "note-indicator", "Есть заметка"));
-  main.append(sources);
-  const delivery = el("div", "delivery-column");
-  const entries = match.entries;
-  const labels = entries.map((d) => d.region);
-  let label =
+  const match = deliveryMatch(s, filters.region),
+    labels = match.entries.map((d) => d.region);
+  let deliveryLabel =
     labels.length > 2
       ? `${labels.slice(0, 2).join(", ")} и еще ${labels.length - 2}`
       : labels.join(", ");
   if (filters.region && match.scope === "regional")
-    label = `Доставка: ${filters.region}`;
+    deliveryLabel = `Доставка: ${filters.region}`;
   if (
     match.scope === "national" ||
     (!filters.region && labels.includes("Россия"))
   )
-    label = "По всей России";
-  delivery.append(
-    el(
-      "p",
-      `delivery ${!s.delivery.length ? "unknown" : ""}`,
-      label || "География не найдена",
-    ),
-  );
-  if (entries.length) {
-    const evidence = !filters.region
-      ? entries.find((d) => d.region === "Россия") || entries[0]
-      : entries[0];
-    delivery.append(
-      el("p", "delivery-evidence", evidence.evidence),
-      link("Условия доставки", evidence.sourceUrl),
-    );
-  } else
-    delivery.append(
-      el(
-        "p",
-        "delivery-evidence",
-        "Возможность доставки нужно запросить у компании.",
-      ),
-    );
-  if (s.minimumOrder)
-    delivery.append(el("p", "minimum-preview", s.minimumOrder.value));
-  const actions = el("div", "card-actions");
+    deliveryLabel = "По всей России";
+  const evidence = !filters.region
+    ? match.entries.find((d) => d.region === "Россия") || match.entries[0]
+    : match.entries[0];
+  const actions = el("div", "actions card-actions");
   const compare = button(
     store.state.compare.includes(s.id) ? "В сравнении" : "+ Сравнить",
     "compare-button",
@@ -194,24 +154,35 @@ function supplierRow(s, index) {
   );
   const contact =
     s.contacts.find((c) => c.url.startsWith("tel:")) || s.contacts[0];
-  const contactLabel = contact.url.startsWith("tel:")
-    ? contact.url.slice(4)
-    : contact.url.startsWith("mailto:")
-      ? "Написать поставщику"
-      : "Связаться";
   actions.append(
-    button("Карточка и контакты", "details-button", () => detail(s.id)),
+    link(
+      contact.url.startsWith("tel:")
+        ? contact.url.slice(4)
+        : "Написать поставщику",
+      contact.url,
+      "contact",
+    ),
+    button("Карточка и заметка", "details-button", () => detail(s.id)),
     compare,
-    link(contactLabel, contact.url, "quick-contact"),
     save,
   );
-  card.append(
-    el("span", "row-number", String(index + 1).padStart(2, "0")),
-    main,
-    delivery,
-    actions,
+  if (design !== "03")
+    actions.append(link("Сайт компании", s.website, "source"));
+  return supplierView(
+    s,
+    index,
+    {
+      design,
+      match,
+      deliveryLabel: deliveryLabel || "География не найдена",
+      evidence,
+      note: store.state.notes[s.id],
+    },
+    { el, link, actions },
   );
-  return card;
+}
+function appendSuppliers(container, list, start = 0) {
+  appendSupplierViews(container, list, start, design, supplierRow, el);
 }
 function resultGroup(title, list, scope, description) {
   const group = el("section", `result-group ${scope}`),
@@ -269,14 +240,6 @@ function render() {
       saved: store.state.saved,
     }).length;
   });
-  document
-    .querySelectorAll("[data-region]")
-    .forEach((b) =>
-      b.setAttribute(
-        "aria-pressed",
-        String(b.dataset.region === filters.region),
-      ),
-    );
   $("cards").replaceChildren();
   if (!found.length) {
     const empty = el("div", "empty");
@@ -296,8 +259,7 @@ function render() {
       button("Сбросить условия поиска", "button quiet", reset),
     );
     $("cards").append(empty);
-  } else if (!filters.region)
-    found.forEach((s, i) => $("cards").append(supplierRow(s, i)));
+  } else if (!filters.region) appendSuppliers($("cards"), found);
   else {
     if (filters.region !== "Россия") {
       const group = resultGroup(
@@ -317,7 +279,7 @@ function render() {
         );
         group.append(empty);
       }
-      regional.forEach((s, i) => group.append(supplierRow(s, i)));
+      appendSuppliers(group, regional);
       $("cards").append(group);
     }
     if (national.length) {
@@ -329,9 +291,7 @@ function render() {
         "national",
         "Общероссийское покрытие по официальному источнику. Оно не гарантирует доставку любого товара по любому адресу: уточни маршрут, температурный режим и стоимость.",
       );
-      national.forEach((s, i) =>
-        group.append(supplierRow(s, regional.length + i)),
-      );
+      appendSuppliers(group, national, regional.length);
       $("cards").append(group);
     }
   }
@@ -342,6 +302,19 @@ function render() {
     .map((id) => items.find((s) => s.id === id)?.name)
     .join(" / ");
   $("compare-open").disabled = store.state.compare.length < 2;
+  document
+    .querySelectorAll("[data-compare-count]")
+    .forEach((n) => (n.textContent = store.state.compare.length));
+  const selection = document.querySelector("[data-selection]");
+  if (selection) {
+    selection.replaceChildren();
+    store.state.compare.forEach((id) =>
+      selection.append(
+        el("div", "selection-item", items.find((s) => s.id === id)?.name),
+      ),
+    );
+  }
+  document.body.dataset.ready = "true";
   if (focusTarget)
     document
       .querySelector(`[data-supplier-id="${focusedId}"] .${focusTarget}`)
@@ -539,38 +512,126 @@ function reset() {
   $("region").value = "";
   render();
 }
-$("search-form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  filters.query = $("query").value;
-  render();
-});
-$("query").addEventListener("input", () => {
-  filters.query = $("query").value;
-  render();
-});
-$("categories").addEventListener("click", (e) => {
-  const b = e.target.closest("[data-category]");
-  if (b) {
-    filters.category = b.dataset.category;
+function populateRegions() {
+  const regions = [
+    ...new Set(
+      [
+        ...items.flatMap((s) => s.delivery.map((d) => d.region)),
+        "Москва",
+        "Московская область",
+        "Санкт-Петербург",
+        "Ленинградская область",
+        "Екатеринбург",
+        "Свердловская область",
+        "Новосибирск",
+        "Новосибирская область",
+        "Краснодарский край",
+        "Республика Татарстан",
+        "Россия",
+        filters.region,
+      ].filter(Boolean),
+    ),
+  ].sort((a, b) => a.localeCompare(b, "ru"));
+  $("region").replaceChildren();
+  const all = el("option", "", "Без ограничения");
+  all.value = "";
+  $("region").append(all);
+  for (const r of regions) {
+    const option = el(
+      "option",
+      "",
+      r === "Россия" ? "Доставка по всей России" : r,
+    );
+    option.value = r;
+    $("region").append(option);
+  }
+  $("query").value = filters.query;
+  $("region").value = filters.region;
+}
+function bindLayout() {
+  populateRegions();
+  $("search-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    filters.query = $("query").value;
     render();
+  });
+  $("query").addEventListener("input", () => {
+    filters.query = $("query").value;
+    render();
+  });
+  $("categories").addEventListener("click", (event) => {
+    const b = event.target.closest("[data-category]");
+    if (b) {
+      filters.category = b.dataset.category;
+      render();
+    }
+  });
+  $("region").addEventListener("change", () => {
+    filters.region = $("region").value;
+    render();
+  });
+  document.querySelectorAll("[data-open-compare]").forEach((b) =>
+    b.addEventListener("click", () => {
+      if (store.state.compare.length < 2) {
+        toast("Для сравнения добавь от 2 до 4 компаний.");
+        return;
+      }
+      renderComparison();
+      $("compare-dialog").showModal();
+    }),
+  );
+}
+function chooseDesign(value) {
+  design = normalizeDesign(value);
+  store.state.design = design;
+  mountLayout($("workspace"), design);
+  bindLayout();
+  persist();
+  render();
+  updateDesignPicker();
+  $("design-picker").open = false;
+  $("design-picker").querySelector("summary").focus({ preventScroll: true });
+}
+function updateDesignPicker() {
+  document
+    .querySelectorAll("[data-design-choice]")
+    .forEach((b) =>
+      b.setAttribute("aria-pressed", String(b.dataset.designChoice === design)),
+    );
+}
+for (const [id, name] of designs) {
+  const b = button(
+    `${id}. ${name}${id === "03" ? " (основной)" : ""}`,
+    "design-option",
+    () => chooseDesign(id),
+  );
+  b.dataset.designChoice = id;
+  $("design-options").append(b);
+}
+$("main-design").addEventListener("click", () => chooseDesign("03"));
+document.addEventListener("keydown", (event) => {
+  if (
+    event.key === "Escape" &&
+    $("design-picker").open &&
+    !document.querySelector("dialog[open]")
+  ) {
+    $("design-picker").open = false;
+    $("design-picker").querySelector("summary").focus();
   }
 });
-$("region").addEventListener("change", () => {
-  filters.region = $("region").value;
-  render();
+document.addEventListener("click", (event) => {
+  if ($("design-picker").open && !$("design-picker").contains(event.target))
+    $("design-picker").open = false;
 });
 $("reset").addEventListener("click", reset);
 $("catalog-nav").addEventListener("click", () => {
   filters.savedOnly = false;
   render();
 });
-document.querySelectorAll("[data-region]").forEach((b) =>
-  b.addEventListener("click", () => {
-    filters.region = b.dataset.region;
-    $("region").value = filters.region;
-    render();
-  }),
-);
+store.state.design = design;
+mountLayout($("workspace"), design);
+bindLayout();
+updateDesignPicker();
 $("saved-nav").addEventListener("click", () => {
   filters.savedOnly = !filters.savedOnly;
   render();
@@ -592,7 +653,7 @@ $("clear-saved").addEventListener("click", () => {
     )
   )
     return;
-  store.save({ saved: [], notes: {}, compare: [] });
+  store.save({ saved: [], notes: {}, compare: [], design });
   activeDetail = null;
   persist();
   render();
@@ -614,38 +675,7 @@ try {
   );
   persist();
   $("total-count").textContent = items.length;
-  const regions = [
-    ...new Set(items.flatMap((s) => s.delivery.map((d) => d.region))),
-  ].sort((a, b) => a.localeCompare(b, "ru"));
-  // Обычные регионы доступны и при федеральной доставке.
-  if (regions.includes("Россия"))
-    for (const r of [
-      "Москва",
-      "Московская область",
-      "Санкт-Петербург",
-      "Ленинградская область",
-      "Екатеринбург",
-      "Свердловская область",
-      "Новосибирск",
-      "Краснодарский край",
-      "Республика Татарстан",
-    ])
-      if (!regions.includes(r)) regions.push(r);
-  if (filters.region && !regions.includes(filters.region))
-    regions.push(filters.region);
-  regions
-    .sort((a, b) => a.localeCompare(b, "ru"))
-    .forEach((r) => {
-      const option = el(
-        "option",
-        "",
-        r === "Россия" ? "Доставка по всей России" : r,
-      );
-      option.value = r;
-      $("region").append(option);
-    });
-  $("query").value = filters.query;
-  $("region").value = filters.region;
+  populateRegions();
   render();
 } catch {
   $("result-count").textContent = "Не удалось загрузить каталог";
