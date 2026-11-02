@@ -1177,3 +1177,12 @@ textarea {
   outline: 3px solid #b9671c;
   outline-offset: 4px;
 }
+
+.search-reason {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--muted);
+}

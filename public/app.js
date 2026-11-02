@@ -2,6 +2,7 @@ import {
   JsonCatalogSource,
   categories,
   deliveryMatch,
+  productMatch,
 } from "./catalog-source.js";
 import { createSavedStore } from "./storage.js";
 import { createTour } from "./tour.js";
@@ -180,6 +181,7 @@ function supplierRow(s, index) {
     index,
     {
       design: designLayout(design),
+      searchMatch: productMatch(s, filters.query),
       match,
       deliveryLabel: deliveryLabel || "География не найдена",
       evidence,

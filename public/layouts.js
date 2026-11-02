@@ -79,6 +79,19 @@ export function supplierView(s, index, view, kit) {
   name.append(heading, el("span", "category-label", categories[s.category]));
   const city = el("p", "city", `Компания: ${s.city}`),
     products = el("p", "products", s.products.join(", "));
+  if (view.searchMatch?.related) {
+    const match = view.searchMatch.related;
+    products.append(
+      el(
+        "span",
+        "search-reason",
+        match.kind === "group"
+          ? `Совпадение по группе: ${match.product}. Наличие конкретного товара уточни у компании.`
+          : `Связанный товар: ${match.product}.`,
+      ),
+    );
+    card.dataset.searchMatch = match.kind;
+  }
   const shipping = el("div", "shipping");
   shipping.append(
     el(

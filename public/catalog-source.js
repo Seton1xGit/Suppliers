@@ -1,3 +1,4 @@
+import { relatedProductMatch } from "./product-search.js";
 export const categories = {
   ingredients: "Ингредиенты",
   finished: "Готовая продукция",
@@ -35,6 +36,36 @@ export function deliveryMatch(supplier, region = "") {
   );
   return { scope: national.length ? "national" : "none", entries: national };
 }
+export function productMatch(supplier, query = "") {
+  const q = normalize(query),
+    tokens = q.split(/\s+/).filter(Boolean);
+  const products = supplier.products.map(normalize);
+  const haystack = normalize(
+    [
+      supplier.name,
+      ...supplier.products,
+      ...supplier.synonyms,
+      supplier.city,
+    ].join(" "),
+  );
+  if (tokens.every((t) => haystack.includes(t)))
+    return {
+      matches: true,
+      score: !q
+        ? 0
+        : products.includes(q)
+          ? 100
+          : products.some((p) => p.includes(q))
+            ? 80
+            : normalize(supplier.name).includes(q)
+              ? 60
+              : 20,
+    };
+  const related = relatedProductMatch(supplier, q);
+  return related
+    ? { matches: true, score: related.kind === "alias" ? 70 : 10, related }
+    : { matches: false, score: 0 };
+}
 export function searchCatalog(
   items,
   {
@@ -45,8 +76,6 @@ export function searchCatalog(
     saved = [],
   } = {},
 ) {
-  const q = normalize(query),
-    tokens = q.split(/\s+/).filter(Boolean);
   return items
     .filter(
       (s) =>
@@ -55,26 +84,13 @@ export function searchCatalog(
         (!savedOnly || saved.includes(s.id)),
     )
     .map((s) => {
-      const products = s.products.map(normalize),
-        name = normalize(s.name);
-      const haystack = normalize(
-        [s.name, ...s.products, ...s.synonyms, s.city].join(" "),
-      );
-      const score = !q
-        ? 0
-        : products.includes(q)
-          ? 100
-          : products.some((p) => p.includes(q))
-            ? 80
-            : name.includes(q)
-              ? 60
-              : 20;
+      const result = productMatch(s, query);
       const match = deliveryMatch(s, region);
       return {
         s,
-        score,
+        score: result.score,
         rank: region && match.scope === "national" ? 1 : 0,
-        matches: tokens.every((t) => haystack.includes(t)),
+        matches: result.matches,
       };
     })
     .filter((r) => r.matches)
