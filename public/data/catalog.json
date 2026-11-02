@@ -1,0 +1,1413 @@
+[
+  {
+    "id": "grandresurs",
+    "name": "ГрандРесурс",
+    "category": "ingredients",
+    "products": [
+      "Крахмал",
+      "Изомальт",
+      "Глюкоза",
+      "Эритритол",
+      "Лецитин",
+      "Лимонная кислота",
+      "Желатин"
+    ],
+    "synonyms": [
+      "пищевые добавки",
+      "сахарозаменители",
+      "декстроза"
+    ],
+    "city": "Новосибирск",
+    "website": "https://foodresurs.ru/",
+    "contacts": [
+      {
+        "label": "sale_resurs@bk.ru",
+        "url": "mailto:sale_resurs@bk.ru"
+      },
+      {
+        "label": "+79963820808",
+        "url": "tel:+79963820808"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://foodresurs.ru/",
+        "label": "Каталог и доставка"
+      },
+      {
+        "url": "https://foodresurs.ru/contacts/",
+        "label": "Контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://foodresurs.ru/",
+        "evidence": "На сайте прямо заявлена доставка по всей России. Условия и маршрут необходимо согласовать."
+      }
+    ]
+  },
+  {
+    "id": "a-gross",
+    "name": "А-ГРОСС",
+    "category": "ingredients",
+    "products": [
+      "Глюкозный сироп",
+      "Патока карамельная",
+      "Сироп топинамбура",
+      "Пектин",
+      "Желатин",
+      "Изомальт",
+      "Крахмал",
+      "Какао порошок"
+    ],
+    "synonyms": [
+      "сиропы",
+      "гфс",
+      "загустители",
+      "патоки"
+    ],
+    "city": "Краснодар",
+    "website": "https://a-gross.shop/",
+    "contacts": [
+      {
+        "label": "manager@a-gross.ru",
+        "url": "mailto:manager@a-gross.ru"
+      },
+      {
+        "label": "+79184131405",
+        "url": "tel:+79184131405"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://a-gross.shop/",
+        "label": "Ассортимент и деловые контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://a-gross.shop/",
+        "evidence": "На сайте прямо указана доставка по всей РФ. Тариф и срок нужно запросить у отдела продаж."
+      }
+    ]
+  },
+  {
+    "id": "flytexspb",
+    "name": "FlytexSPb",
+    "category": "ingredients",
+    "products": [
+      "Соевый текстурат",
+      "Пшеничная клетчатка",
+      "Соевый изолят",
+      "Картофельные хлопья",
+      "Каррагинан",
+      "Картофельный крахмал"
+    ],
+    "synonyms": [
+      "флайтекс",
+      "соевый белок",
+      "пищевые волокна",
+      "смеси для мясопереработки"
+    ],
+    "city": "Санкт-Петербург",
+    "website": "https://flytexspb.ru/",
+    "contacts": [
+      {
+        "label": "zakaz@flytexspb.ru",
+        "url": "mailto:zakaz@flytexspb.ru"
+      },
+      {
+        "label": "+78129825555",
+        "url": "tel:+78129825555"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://flytexspb.ru/",
+        "label": "Ассортимент и деловые контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [],
+    "minimumOrder": {
+      "value": "Смеси: от 200 кг; моноингредиенты: от 500 кг; текстурат и клетчатка: от 1000 кг.",
+      "sourceUrl": "https://flytexspb.ru/",
+      "evidence": "Минимальные партии перечислены в разделе вопросов и ответов и зависят от группы товара."
+    }
+  },
+  {
+    "id": "bmc-food",
+    "name": "БиэМСи-Фуд ингредиентс",
+    "category": "ingredients",
+    "products": [
+      "Молочная кислота",
+      "Лимонная кислота инкапсулированная",
+      "Яблочная кислота инкапсулированная",
+      "Лактат калия",
+      "Лактат кальция",
+      "Лактат натрия"
+    ],
+    "synonyms": [
+      "bmc",
+      "би эм си",
+      "регуляторы кислотности",
+      "пищевые кислоты"
+    ],
+    "city": "Москва",
+    "website": "https://bmc-food.ru/",
+    "contacts": [
+      {
+        "label": "info@bmc-food.ru",
+        "url": "mailto:info@bmc-food.ru"
+      },
+      {
+        "label": "+74957480362",
+        "url": "tel:+74957480362"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://bmc-food.ru/",
+        "label": "Ассортимент и деловые контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "tk-adastra",
+    "name": "ТК Адастра",
+    "category": "ingredients",
+    "products": [
+      "Крахмал",
+      "Мальтодекстрин",
+      "Сыворотка",
+      "Молоко",
+      "Глютен",
+      "Мука",
+      "Какао порошок",
+      "Концентрат молочного белка"
+    ],
+    "synonyms": [
+      "адастра",
+      "сухие ингредиенты",
+      "кмб",
+      "ксб"
+    ],
+    "city": "Воронеж",
+    "website": "https://tk-adastra.ru/",
+    "contacts": [
+      {
+        "label": "sales1@tk-adastra.ru",
+        "url": "mailto:sales1@tk-adastra.ru"
+      },
+      {
+        "label": "+79585681946",
+        "url": "tel:+79585681946"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://tk-adastra.ru/",
+        "label": "Ассортимент и деловые контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "soyuzopttorg",
+    "name": "Союзоптторг",
+    "category": "ingredients",
+    "products": [
+      "Ароматизаторы",
+      "Пищевые красители",
+      "Агар",
+      "Желатин",
+      "Каррагинан",
+      "Пектин",
+      "Крахмал",
+      "Яичный белок",
+      "Концентрат сывороточного белка"
+    ],
+    "synonyms": [
+      "гелеобразователи",
+      "загустители",
+      "эмульгаторы",
+      "сахарозаменители"
+    ],
+    "city": "Санкт-Петербург",
+    "website": "https://soyuzopttorg.com/",
+    "contacts": [
+      {
+        "label": "office@soyuzopttorg.com",
+        "url": "mailto:office@soyuzopttorg.com"
+      },
+      {
+        "label": "+78003330089",
+        "url": "tel:+78003330089"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://soyuzopttorg.com/catalog/",
+        "label": "Каталог ингредиентов"
+      },
+      {
+        "url": "https://soyuzopttorg.com/",
+        "label": "О компании и контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "tehnopoliz",
+    "name": "Технополиз",
+    "category": "ingredients",
+    "products": [
+      "Лецитин",
+      "Эмульгаторы",
+      "Пищевые красители",
+      "Подсластители и сахарозаменители",
+      "Глицерин"
+    ],
+    "synonyms": [
+      "пищевые добавки",
+      "подсластитель",
+      "сахарозаменитель"
+    ],
+    "city": "Екатеринбург",
+    "website": "https://tehnopoliz.ru/",
+    "contacts": [
+      {
+        "label": "vallis1@yandex.ru",
+        "url": "mailto:vallis1@yandex.ru"
+      },
+      {
+        "label": "+73432685645",
+        "url": "tel:+73432685645"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://tehnopoliz.ru/",
+        "label": "Ассортимент и деловые контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "aroma-lux",
+    "name": "Арома-Люкс",
+    "category": "ingredients",
+    "products": [
+      "Хлебные смеси",
+      "Дрожжи и закваски",
+      "Шоколад и глазурь",
+      "Кондитерские начинки",
+      "Кондитерский крем",
+      "Красители и ароматизаторы",
+      "Смеси для мороженого"
+    ],
+    "synonyms": [
+      "арома люкс",
+      "для кондитера",
+      "для пекаря",
+      "смесь для выпечки"
+    ],
+    "city": "Екатеринбург",
+    "website": "https://www.aroma-lux.ru/",
+    "contacts": [
+      {
+        "label": "info@aroma-lux.ru",
+        "url": "mailto:info@aroma-lux.ru"
+      },
+      {
+        "label": "+73432882878",
+        "url": "tel:+73432882878"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.aroma-lux.ru/",
+        "label": "Ассортимент и деловые контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "superlife",
+    "name": "Суперлайф",
+    "category": "ingredients",
+    "products": [
+      "Каркаде порошок",
+      "Красная матча",
+      "Маття Сенча",
+      "Мята порошок",
+      "Стевия лист порошок",
+      "Синий чай маття"
+    ],
+    "synonyms": [
+      "superlife",
+      "матча",
+      "растительные ингредиенты",
+      "чайные порошки"
+    ],
+    "city": "Санкт-Петербург",
+    "website": "https://superlife.ru/",
+    "contacts": [
+      {
+        "label": "opt@superlife.ru",
+        "url": "mailto:opt@superlife.ru"
+      },
+      {
+        "label": "+78127151274",
+        "url": "tel:+78127151274"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://superlife.ru/category/bazovyy-assortiment/",
+        "label": "Базовый ассортимент"
+      },
+      {
+        "url": "https://superlife.ru/contacts/",
+        "label": "Контакты"
+      },
+      {
+        "url": "https://superlife.ru/dostavka-i-oplata/",
+        "label": "Доставка и оплата"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Санкт-Петербург",
+        "sourceUrl": "https://superlife.ru/dostavka-i-oplata/",
+        "evidence": "Курьерская доставка по Санкт-Петербургу бесплатна при заказе от 10 000 рублей."
+      },
+      {
+        "region": "Россия",
+        "sourceUrl": "https://superlife.ru/dostavka-i-oplata/",
+        "evidence": "Раздел доставки по России: СДЭК, Почта России, Деловые Линии или Байкал Сервис по выбору клиента. Условия маршрута уточняются."
+      }
+    ],
+    "minimumOrder": {
+      "value": "От 10 000 руб.",
+      "sourceUrl": "https://superlife.ru/dostavka-i-oplata/",
+      "evidence": "На странице доставки и оплаты указан минимальный заказ 10 000 руб."
+    }
+  },
+  {
+    "id": "puratos",
+    "name": "Пуратос",
+    "category": "ingredients",
+    "products": [
+      "Хлебопекарные смеси",
+      "Закваски",
+      "Хлебопекарные улучшители",
+      "Кондитерские смеси",
+      "Начинки",
+      "Глазури",
+      "Шоколад Белколад",
+      "Маргарины и жиры для слоения"
+    ],
+    "synonyms": [
+      "puratos",
+      "бельколад",
+      "белколад",
+      "ингредиенты для выпечки"
+    ],
+    "city": "Подольск",
+    "website": "https://www.puratos.ru/ru",
+    "contacts": [
+      {
+        "label": "+74959262224",
+        "url": "tel:+74959262224"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.puratos.ru/ru",
+        "label": "Ассортимент"
+      },
+      {
+        "url": "https://www.puratos.ru/ru/contact-us",
+        "label": "Контакты и адрес офиса"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "food-fiction",
+    "name": "Food Fiction",
+    "category": "finished",
+    "products": [
+      "готовые обеды",
+      "салаты",
+      "супы",
+      "сэндвичи",
+      "блинчики",
+      "десерты"
+    ],
+    "synonyms": [
+      "готовая еда",
+      "кулинария",
+      "завтраки",
+      "СТМ"
+    ],
+    "city": "Березовский, Свердловская область",
+    "website": "https://foodfiction.ru/",
+    "contacts": [
+      {
+        "label": "Отдел продаж: +7 (950) 564-03-27",
+        "url": "tel:+79505640327"
+      },
+      {
+        "label": "info@foodfiction.ru",
+        "url": "mailto:info@foodfiction.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://foodfiction.ru/",
+        "label": "Ассортимент, отдел продаж и логистика"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Свердловская область",
+        "sourceUrl": "https://foodfiction.ru/",
+        "evidence": "В разделе логистики перечислена ежедневная доставка по Свердловской области."
+      },
+      {
+        "region": "Тюменская область",
+        "sourceUrl": "https://foodfiction.ru/",
+        "evidence": "В разделе логистики перечислена ежедневная доставка по Тюменской области."
+      },
+      {
+        "region": "Челябинская область",
+        "sourceUrl": "https://foodfiction.ru/",
+        "evidence": "В разделе логистики перечислена ежедневная доставка по Челябинской области."
+      },
+      {
+        "region": "Пермский край",
+        "sourceUrl": "https://foodfiction.ru/",
+        "evidence": "В разделе логистики перечислена ежедневная доставка в Пермский край."
+      },
+      {
+        "region": "Республика Башкортостан",
+        "sourceUrl": "https://foodfiction.ru/",
+        "evidence": "В разделе логистики перечислена ежедневная доставка в Башкортостан."
+      },
+      {
+        "region": "Республика Татарстан",
+        "sourceUrl": "https://foodfiction.ru/",
+        "evidence": "В разделе логистики перечислена ежедневная доставка в Татарстан."
+      }
+    ],
+    "minimumOrder": {
+      "value": "От 3000 руб.",
+      "sourceUrl": "https://foodfiction.ru/",
+      "evidence": "Минимальная сумма заявки указана в ответе об условиях сотрудничества."
+    }
+  },
+  {
+    "id": "sibkolbasy",
+    "name": "Сибирские колбасы",
+    "category": "finished",
+    "products": [
+      "колбасы",
+      "холодец",
+      "тушеная говядина",
+      "пельмени",
+      "вареники",
+      "блинчики"
+    ],
+    "synonyms": [
+      "Сибколбасы",
+      "мясная продукция",
+      "консервы",
+      "полуфабрикаты"
+    ],
+    "city": "Омск",
+    "website": "https://sibkolbasy.ru/",
+    "contacts": [
+      {
+        "label": "info@sibkolbasy.ru",
+        "url": "mailto:info@sibkolbasy.ru"
+      },
+      {
+        "label": "Новосибирский филиал: s.sale.nsk@sibkolbasy.ru",
+        "url": "mailto:s.sale.nsk@sibkolbasy.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://sibkolbasy.ru/",
+        "label": "Каталог и контакты офиса и филиалов"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "sady-pridonya",
+    "name": "Сады Придонья",
+    "category": "finished",
+    "products": [
+      "фруктовые соки",
+      "овощные соки",
+      "морсы",
+      "напитки"
+    ],
+    "synonyms": [
+      "сок",
+      "яблочный сок",
+      "безалкогольные напитки"
+    ],
+    "city": "Волгоград",
+    "website": "https://pridonie.ru/",
+    "contacts": [
+      {
+        "label": "Приемная: +7 (8442) 26-05-00",
+        "url": "tel:+78442260500"
+      },
+      {
+        "label": "referent-spr@pridonie.ru",
+        "url": "mailto:referent-spr@pridonie.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://pridonie.ru/contacts/",
+        "label": "Контакты компании"
+      },
+      {
+        "url": "https://sadypridonia.ru/",
+        "label": "Ассортимент соков и напитков"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "karaway-angarsk",
+    "name": "Каравай (Ангарск)",
+    "category": "finished",
+    "products": [
+      "хлеб",
+      "кондитерские изделия",
+      "конфеты",
+      "замороженные полуфабрикаты",
+      "злаковые батончики"
+    ],
+    "synonyms": [
+      "выпечка",
+      "хлебобулочные изделия",
+      "сладости"
+    ],
+    "city": "Ангарск, Иркутская область",
+    "website": "https://karaway.ru/",
+    "contacts": [
+      {
+        "label": "info@karaway.ru",
+        "url": "mailto:info@karaway.ru"
+      },
+      {
+        "label": "+7 (3955) 54-18-86, коммерция: доб. 113",
+        "url": "tel:+73955541886"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://karaway.ru/",
+        "label": "Ассортимент"
+      },
+      {
+        "url": "https://karaway.ru/contacts",
+        "label": "Адрес и отдел коммерции"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "zernov-nsk",
+    "name": "Зернов",
+    "category": "finished",
+    "products": [
+      "готовые обеды",
+      "салаты",
+      "супы",
+      "хлеб",
+      "выпечка"
+    ],
+    "synonyms": [
+      "готовая еда",
+      "корпоративное питание",
+      "кулинария",
+      "завтраки"
+    ],
+    "city": "Новосибирск",
+    "website": "https://zernovnsk.ru/",
+    "contacts": [
+      {
+        "label": "+7 (923) 223-05-44",
+        "url": "tel:+79232230544"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://zernovnsk.ru/",
+        "label": "Ассортимент, контакты и доставка"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Новосибирск",
+        "sourceUrl": "https://zernovnsk.ru/",
+        "evidence": "Компания указывает доставку готовых блюд, супов, выпечки и хлеба по всему Новосибирску."
+      }
+    ]
+  },
+  {
+    "id": "7-verst",
+    "name": "7 Вёрст",
+    "category": "finished",
+    "products": [
+      "готовые блюда в реторт-пакетах",
+      "супы",
+      "готовые каши",
+      "тушеное мясо",
+      "вяленое мясо"
+    ],
+    "synonyms": [
+      "7верст",
+      "7 верст",
+      "готовая еда",
+      "реторт",
+      "еда в поход"
+    ],
+    "city": "Краснодар",
+    "website": "https://7vt.ru/",
+    "contacts": [
+      {
+        "label": "+7 (939) 262-44-52",
+        "url": "tel:+79392624452"
+      },
+      {
+        "label": "info7vt@list.ru",
+        "url": "mailto:info7vt@list.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://7vt.ru/business/",
+        "label": "Оптовое сотрудничество, ассортимент и доставка"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://7vt.ru/business/",
+        "evidence": "В условиях для бизнеса явно указана доставка по всей России через ПЭК, СДЭК и DPD."
+      }
+    ]
+  },
+  {
+    "id": "eattery",
+    "name": "Eattery",
+    "category": "finished",
+    "products": [
+      "готовые обеды",
+      "супы",
+      "салаты",
+      "сэндвичи",
+      "пасты",
+      "завтраки"
+    ],
+    "synonyms": [
+      "готовая еда",
+      "кулинария",
+      "гарниры",
+      "закуски"
+    ],
+    "city": "Краснодар",
+    "website": "https://eattery.ru/",
+    "contacts": [
+      {
+        "label": "Оптовый прайс: info@eattery.ru",
+        "url": "mailto:info@eattery.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://eattery.ru/cooperation/partnership",
+        "label": "Сотрудничество и города поставок"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Краснодар",
+        "sourceUrl": "https://eattery.ru/cooperation/partnership",
+        "evidence": "Краснодар указан в списке городов поставок."
+      },
+      {
+        "region": "Волгоград",
+        "sourceUrl": "https://eattery.ru/cooperation/partnership",
+        "evidence": "Волгоград указан в списке городов поставок."
+      },
+      {
+        "region": "Астрахань",
+        "sourceUrl": "https://eattery.ru/cooperation/partnership",
+        "evidence": "Астрахань указана в списке городов поставок."
+      },
+      {
+        "region": "Воронеж",
+        "sourceUrl": "https://eattery.ru/cooperation/partnership",
+        "evidence": "Воронеж указан в списке городов поставок."
+      },
+      {
+        "region": "Самара",
+        "sourceUrl": "https://eattery.ru/cooperation/partnership",
+        "evidence": "Самара указана в списке городов поставок."
+      },
+      {
+        "region": "Уфа",
+        "sourceUrl": "https://eattery.ru/cooperation/partnership",
+        "evidence": "Уфа указана в списке городов поставок."
+      },
+      {
+        "region": "Нижний Новгород",
+        "sourceUrl": "https://eattery.ru/cooperation/partnership",
+        "evidence": "Нижний Новгород указан в списке городов поставок."
+      }
+    ]
+  },
+  {
+    "id": "food-factory-spb",
+    "name": "Фабрика (Food Factory)",
+    "category": "finished",
+    "products": [
+      "готовые первые блюда",
+      "готовые вторые блюда",
+      "выпечка",
+      "кондитерские изделия",
+      "мясные полуфабрикаты"
+    ],
+    "synonyms": [
+      "готовая еда",
+      "кулинария",
+      "супы",
+      "готовые обеды"
+    ],
+    "city": "Санкт-Петербург",
+    "website": "https://ff-spb.ru/",
+    "contacts": [
+      {
+        "label": "+7 (911) 908-54-40",
+        "url": "tel:+79119085440"
+      },
+      {
+        "label": "sales@fabrica-rf.ru",
+        "url": "mailto:sales@fabrica-rf.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://ff-spb.ru/",
+        "label": "Каталог, условия сотрудничества и география доставки"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Санкт-Петербург",
+        "sourceUrl": "https://ff-spb.ru/",
+        "evidence": "В FAQ указана ежедневная доставка в Санкт-Петербурге; на странице опубликованы зоны и графики."
+      },
+      {
+        "region": "Ленинградская область",
+        "sourceUrl": "https://ff-spb.ru/",
+        "evidence": "В FAQ указана доставка по области; отдельно перечислены Всеволожск, Гатчина, Кингисепп, Выборг и Сосновый Бор. Адрес и график следует согласовать."
+      }
+    ],
+    "minimumOrder": {
+      "value": "От 3000 руб. по Санкт-Петербургу и Ленинградской области",
+      "sourceUrl": "https://ff-spb.ru/",
+      "evidence": "В FAQ минимальный заказ 3000 руб.; бесплатная доставка от 5000 руб. Для иных регионов расчет индивидуальный."
+    }
+  },
+  {
+    "id": "fabrika-kachestva",
+    "name": "Фабрика Качества",
+    "category": "finished",
+    "products": [
+      "колбасы",
+      "ветчина",
+      "сосиски",
+      "мясные деликатесы",
+      "пельмени",
+      "торты"
+    ],
+    "synonyms": [
+      "мясная продукция",
+      "полуфабрикаты",
+      "кондитерские изделия"
+    ],
+    "city": "Тольятти, Самарская область",
+    "website": "https://fk100.ru/",
+    "contacts": [
+      {
+        "label": "Отдел продаж в Самаре: +7 (846) 202-11-32",
+        "url": "tel:+78462021132"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://fk100.ru/",
+        "label": "Ассортимент"
+      },
+      {
+        "url": "https://fk100.ru/contacts/",
+        "label": "Адрес производства"
+      },
+      {
+        "url": "https://fk100.ru/partneram/",
+        "label": "Контакты отдела продаж для партнеров"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "karavay-spb",
+    "name": "Каравай (Санкт-Петербург)",
+    "category": "finished",
+    "products": [
+      "хлеб",
+      "батоны",
+      "сдоба",
+      "замороженные хлебобулочные изделия"
+    ],
+    "synonyms": [
+      "выпечка",
+      "хлебобулочные изделия",
+      "заморозка"
+    ],
+    "city": "Санкт-Петербург",
+    "website": "https://www.karavay.spb.ru/",
+    "contacts": [
+      {
+        "label": "Стол заказов: +7 (812) 660-55-11",
+        "url": "tel:+78126605511"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.karavay.spb.ru/",
+        "label": "Ассортимент, стол заказов и адрес"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "flexaprint",
+    "name": "Флексапринт",
+    "category": "packaging",
+    "products": [
+      "Бумажные пакеты",
+      "Крафт-пакеты",
+      "Фольгированные пакеты",
+      "Бумажные стаканы",
+      "Пергамент",
+      "Парафинированная бумага"
+    ],
+    "synonyms": [
+      "упаковка для фастфуда",
+      "стаканчики",
+      "бумага для выпечки"
+    ],
+    "city": "Новосибирск",
+    "website": "https://flexaprint.ru/",
+    "contacts": [
+      {
+        "label": "+7 (383) 310-03-78",
+        "url": "tel:+73833100378"
+      },
+      {
+        "label": "vashupak@mail.ru",
+        "url": "mailto:vashupak@mail.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://flexaprint.ru/",
+        "label": "Ассортимент, контакты и условия поставки"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://flexaprint.ru/",
+        "evidence": "Доставка во все регионы РФ транспортными компаниями; сроки согласуются при заказе."
+      }
+    ]
+  },
+  {
+    "id": "potex",
+    "name": "ТПК Политехника",
+    "category": "packaging",
+    "products": [
+      "БОПП пакеты",
+      "БОПП пленка",
+      "Пакеты для хлеба",
+      "Пакеты для сладостей",
+      "CPP пленка"
+    ],
+    "synonyms": [
+      "полипропиленовая упаковка",
+      "пищевая пленка",
+      "упаковка для выпечки"
+    ],
+    "city": "Санкт-Петербург",
+    "website": "https://potex.ru/",
+    "contacts": [
+      {
+        "label": "+7 (812) 701-09-32",
+        "url": "tel:+78127010932"
+      },
+      {
+        "label": "manager4@potex.ru",
+        "url": "mailto:manager4@potex.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://potex.ru/",
+        "label": "Ассортимент и контакты"
+      },
+      {
+        "url": "https://potex.ru/help/delivery/",
+        "label": "Условия доставки"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Санкт-Петербург",
+        "sourceUrl": "https://potex.ru/help/delivery/",
+        "evidence": "Доставка по адресу в Санкт-Петербурге; транспортная компания согласуется с заказчиком."
+      },
+      {
+        "region": "Ленинградская область",
+        "sourceUrl": "https://potex.ru/help/delivery/",
+        "evidence": "Доставка по адресу в Ленинградской области; стоимость зависит от веса и объема."
+      },
+      {
+        "region": "Москва",
+        "sourceUrl": "https://potex.ru/help/delivery/",
+        "evidence": "Москва указана в списке городов доставки; отправка через выбранную заказчиком транспортную компанию."
+      }
+    ],
+    "minimumOrder": {
+      "value": "Пакеты индивидуального размера: от 5000 шт. или 100 кг. Пакеты с логотипом: от 10000 шт.",
+      "sourceUrl": "https://potex.ru/",
+      "evidence": "Условия относятся к изготовлению пакетов под заказ."
+    }
+  },
+  {
+    "id": "osq-group",
+    "name": "OSQ Group",
+    "category": "packaging",
+    "products": [
+      "Крафт-контейнеры",
+      "Ланч-боксы",
+      "Упаковка для суши",
+      "Упаковка для сэндвичей",
+      "Кондитерская упаковка",
+      "Упаковка для супов"
+    ],
+    "synonyms": [
+      "картонная упаковка",
+      "упаковка для еды",
+      "упаковка для доставки"
+    ],
+    "city": "Москва",
+    "website": "https://osqgroup.ru/",
+    "contacts": [
+      {
+        "label": "+7 (495) 773-87-18",
+        "url": "tel:+74957738718"
+      },
+      {
+        "label": "clients@osqgroup.ru",
+        "url": "mailto:clients@osqgroup.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://osqgroup.ru/",
+        "label": "Ассортимент и контакты производителя"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "propak66",
+    "name": "ПроПак66",
+    "category": "packaging",
+    "products": [
+      "Вакуумные пакеты",
+      "Пленки для запайки лотков",
+      "Вакуумный рукав",
+      "Колбасные оболочки"
+    ],
+    "synonyms": [
+      "пищевая пленка",
+      "вакуумная упаковка",
+      "упаковка для мяса"
+    ],
+    "city": "Екатеринбург",
+    "website": "https://www.propak66.ru/",
+    "contacts": [
+      {
+        "label": "+7 (908) 637-22-04",
+        "url": "tel:+79086372204"
+      },
+      {
+        "label": "propak66@mail.ru",
+        "url": "mailto:propak66@mail.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.propak66.ru/",
+        "label": "Ассортимент, контакты и доставка"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://www.propak66.ru/",
+        "evidence": "На сайте прямо заявлена доставка в любую точку России и ЕАЭС. Срок и адрес нужно согласовать."
+      }
+    ]
+  },
+  {
+    "id": "komus-opt",
+    "name": "Комус ОПТ",
+    "category": "packaging",
+    "products": [
+      "Пищевая упаковка",
+      "Одноразовая посуда",
+      "Вакуумные пакеты",
+      "Бумажные пакеты",
+      "Фасовочные пакеты"
+    ],
+    "synonyms": [
+      "контейнеры",
+      "упаковочные материалы",
+      "одноразовая упаковка"
+    ],
+    "city": "Москва",
+    "website": "https://komus-opt.ru/",
+    "contacts": [
+      {
+        "label": "Контакты и выбор отдела продаж",
+        "url": "https://komus-opt.ru/contacts/"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://komus-opt.ru/about/delivery.php",
+        "label": "Категории товаров, адрес и доставка"
+      },
+      {
+        "url": "https://komus-opt.ru/contacts/",
+        "label": "Контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Москва",
+        "sourceUrl": "https://komus-opt.ru/about/delivery.php",
+        "evidence": "Москва указана в зоне доставки собственной службой. Условия определяются договором."
+      },
+      {
+        "region": "Московская область",
+        "sourceUrl": "https://komus-opt.ru/about/delivery.php",
+        "evidence": "Московская область указана в зоне доставки собственной службой."
+      },
+      {
+        "region": "Санкт-Петербург",
+        "sourceUrl": "https://komus-opt.ru/about/delivery.php",
+        "evidence": "Санкт-Петербург указан в зоне доставки собственной службой."
+      },
+      {
+        "region": "Ленинградская область",
+        "sourceUrl": "https://komus-opt.ru/about/delivery.php",
+        "evidence": "Ленинградская область указана в зоне доставки собственной службой."
+      }
+    ]
+  },
+  {
+    "id": "opticom",
+    "name": "ОПТИКОМ",
+    "category": "packaging",
+    "products": [
+      "Контейнеры для суши",
+      "Ланч-боксы",
+      "Бумажные стаканы",
+      "Пищевая пленка",
+      "Упаковка для пирожных"
+    ],
+    "synonyms": [
+      "одноразовая посуда",
+      "упаковка для еды",
+      "контейнеры под запайку"
+    ],
+    "city": "Москва",
+    "website": "https://www.opti-com.ru/",
+    "contacts": [
+      {
+        "label": "+7 (495) 980-06-48",
+        "url": "tel:+74959800648"
+      },
+      {
+        "label": "info@opti-com.ru",
+        "url": "mailto:info@opti-com.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.opti-com.ru/",
+        "label": "Ассортимент и адрес"
+      },
+      {
+        "url": "https://www.opti-com.ru/shipping",
+        "label": "Доставка и оформление заказа"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Москва",
+        "sourceUrl": "https://www.opti-com.ru/shipping",
+        "evidence": "Доставка для юридических лиц по Москве в пределах МКАД, 2-3 рабочих дня."
+      },
+      {
+        "region": "Московская область",
+        "sourceUrl": "https://www.opti-com.ru/shipping",
+        "evidence": "Доставка по области: до 21 км от МКАД опубликован тариф; дальше стоимость по согласованию."
+      }
+    ]
+  },
+  {
+    "id": "sp-tara",
+    "name": "СП-Тара",
+    "category": "packaging",
+    "products": [
+      "Пластиковые банки",
+      "Бутылки ПЭТ",
+      "Полимерные крышки",
+      "Флаконы ПНД"
+    ],
+    "synonyms": [
+      "Сибполимертара",
+      "пищевая тара",
+      "пластиковая упаковка"
+    ],
+    "city": "Новосибирск",
+    "website": "https://sp-tara.ru/",
+    "contacts": [
+      {
+        "label": "+7 (383) 263-61-99",
+        "url": "tel:+73832636199"
+      },
+      {
+        "label": "sp-tara.nsk@yandex.ru",
+        "url": "mailto:sp-tara.nsk@yandex.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://sp-tara.ru/",
+        "label": "Ассортимент и применение для пищевых продуктов"
+      },
+      {
+        "url": "https://sp-tara.ru/kontakty/",
+        "label": "Контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "technoproekt",
+    "name": "Технопроект",
+    "category": "packaging",
+    "products": [
+      "Лотки под запайку",
+      "Контейнеры",
+      "Упаковка для мороженого",
+      "Конфетные коррексы",
+      "Лотки под зелень",
+      "Пленка ПЭТ"
+    ],
+    "synonyms": [
+      "пластиковая упаковка",
+      "пищевая тара",
+      "коррексы"
+    ],
+    "city": "Новосибирск",
+    "website": "https://alliance-upak.ru/",
+    "contacts": [
+      {
+        "label": "+7 (383) 280-43-35",
+        "url": "tel:+73832804335"
+      },
+      {
+        "label": "sales@alliance-upak.ru",
+        "url": "mailto:sales@alliance-upak.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://alliance-upak.ru/",
+        "label": "Каталог продукции и контакты производителя"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "clever54",
+    "name": "Клевер",
+    "category": "packaging",
+    "products": [
+      "Пищевые лотки",
+      "Пленка",
+      "Картонная упаковка",
+      "Крафт-бумага",
+      "Пакеты",
+      "Бумажные стаканы"
+    ],
+    "synonyms": [
+      "упаковка для мяса",
+      "упаковка для готовой еды",
+      "одноразовая упаковка"
+    ],
+    "city": "Новосибирск",
+    "website": "https://clever54.ru/",
+    "contacts": [
+      {
+        "label": "+7 (383) 233-21-25",
+        "url": "tel:+73832332125"
+      },
+      {
+        "label": "clever.nsk@yandex.ru",
+        "url": "mailto:clever.nsk@yandex.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://clever54.ru/",
+        "label": "Ассортимент и контакты"
+      },
+      {
+        "url": "https://clever54.ru/dostavka-i-oplata/",
+        "label": "Самовывоз и условия доставки без списка регионов"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "geovita",
+    "name": "GEOVITA",
+    "category": "packaging",
+    "products": [
+      "Картонные супницы",
+      "Бумажные стаканы",
+      "Ланч-боксы",
+      "Картонные лотки",
+      "Упаковка для WOK",
+      "Бумажные пакеты"
+    ],
+    "synonyms": [
+      "Геовита",
+      "упаковка для фастфуда",
+      "упаковка для еды",
+      "картонная упаковка"
+    ],
+    "city": "Санкт-Петербург",
+    "website": "https://eco-geovita.ru/",
+    "contacts": [
+      {
+        "label": "8 (800) 505-59-13",
+        "url": "tel:+78005055913"
+      },
+      {
+        "label": "promo@geo-vita.com",
+        "url": "mailto:promo@geo-vita.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://eco-geovita.ru/",
+        "label": "Ассортимент и контакты"
+      },
+      {
+        "url": "https://eco-geovita.ru/dostavka",
+        "label": "Доставка и минимальный заказ"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Санкт-Петербург",
+        "sourceUrl": "https://eco-geovita.ru/dostavka",
+        "evidence": "Опубликованы условия доставки по Санкт-Петербургу; бесплатная доставка ограничена КАД."
+      },
+      {
+        "region": "Ленинградская область",
+        "sourceUrl": "https://eco-geovita.ru/dostavka",
+        "evidence": "Доставка по Ленинградской области; стоимость рассчитывается с учетом расстояния от КАД."
+      },
+      {
+        "region": "Москва",
+        "sourceUrl": "https://eco-geovita.ru/dostavka",
+        "evidence": "Опубликованы условия доставки по Москве, 2-3 рабочих дня."
+      },
+      {
+        "region": "Московская область",
+        "sourceUrl": "https://eco-geovita.ru/dostavka",
+        "evidence": "Опубликована доставка по Московской области, за пределами 20 км от МКАД стоимость индивидуальна."
+      }
+    ],
+    "minimumOrder": {
+      "value": "Для Москвы, Московской области, Санкт-Петербурга и Ленинградской области: от 2000 руб. Самовывоз: от 2000 руб., партия от 1 коробки.",
+      "sourceUrl": "https://eco-geovita.ru/dostavka",
+      "evidence": "Условия минимального заказа опубликованы отдельно по способам получения."
+    }
+  }
+]
