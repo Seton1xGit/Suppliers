@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import assert from "node:assert/strict";
-export function validate(items) {
+export function validate(items, offers = []) {
   assert(items.length >= 100, "Нужно минимум 100 поставщиков");
   const ids = new Set(),
     sites = new Set(),
@@ -89,7 +89,76 @@ export function validate(items) {
   }
   for (const c of ["ingredients", "finished", "packaging"])
     assert(items.filter((s) => s.category === c).length >= 10);
-  return `${items.length} записей, IDs, контакты, ссылки и доказательства условий проверены`;
+  const offerIds = new Set();
+  for (const offer of offers) {
+    assert(
+      /^[a-z0-9-]+$/.test(offer.id) && !offerIds.has(offer.id),
+      "Дубль или неверный ID предложения",
+    );
+    offerIds.add(offer.id);
+    const supplier = items.find((s) => s.id === offer.supplierId);
+    assert(supplier, `${offer.id}: компания не найдена`);
+    for (const key of [
+      "name",
+      "family",
+      "form",
+      "group",
+      "sourceUrl",
+      "verifiedAt",
+    ])
+      assert(offer[key], `${offer.id}: ${key}`);
+    assert(
+      supplier.sources.some((source) => source.url === offer.sourceUrl),
+      `${offer.id}: источник отсутствует у поставщика`,
+    );
+    assert(/^\d{4}-\d{2}-\d{2}$/.test(offer.verifiedAt));
+    assert(
+      offer.pack.label && offer.minimum.text && Array.isArray(offer.notes),
+    );
+    assert(["b2b", "retail", "unknown"].includes(offer.market));
+    assert(
+      ["included", "excluded", "unknown"].includes(offer.vat.status) &&
+        offer.vat.text,
+    );
+    assert(
+      ["in_stock", "unknown", "out_of_stock"].includes(offer.availability),
+    );
+    const price = offer.price;
+    assert(
+      price.currency === "RUB" &&
+        ["exact", "from", "range", "conflict", "unknown"].includes(price.type),
+    );
+    assert(["kg", "pack", "piece", "unknown"].includes(price.unit));
+    for (const key of ["min", "max"])
+      assert(
+        price[key] === null || (Number.isFinite(price[key]) && price[key] >= 0),
+      );
+    if (["exact", "from", "range"].includes(price.type))
+      assert(Number.isFinite(price.min));
+    if (price.type === "range")
+      assert(Number.isFinite(price.max) && price.max >= price.min);
+    if (["conflict", "unknown"].includes(price.type))
+      assert(price.min === null && price.max === null);
+    if (price.weightPerUnitKg !== null)
+      assert(
+        price.weightPerUnitKg > 0 &&
+          price.weightEvidence &&
+          price.unit !== "unknown",
+      );
+    const fulfillment = offer.fulfillment;
+    assert(
+      Array.isArray(fulfillment.deliveryRegions) &&
+        Array.isArray(fulfillment.pickupRegions) &&
+        fulfillment.text,
+    );
+    assert(supplier.sources.some((s) => s.url === fulfillment.sourceUrl));
+    for (const region of fulfillment.deliveryRegions)
+      assert(
+        supplier.delivery.some((d) => d.region === region),
+        `${offer.id}: цена вне подтвержденной доставки`,
+      );
+  }
+  return `${items.length} компаний, ${offers.length} товарных предложений, контакты, источники и условия проверены`;
 }
 if (process.argv[1]?.endsWith("validate.mjs"))
   console.log(
@@ -97,6 +166,12 @@ if (process.argv[1]?.endsWith("validate.mjs"))
       JSON.parse(
         await readFile(
           new URL("../public/data/catalog.json", import.meta.url),
+          "utf8",
+        ),
+      ),
+      JSON.parse(
+        await readFile(
+          new URL("../public/data/offers.json", import.meta.url),
           "utf8",
         ),
       ),

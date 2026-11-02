@@ -18,7 +18,7 @@ try {
     await page.goto(base);
     await page.waitForSelector(".card");
     await dismissTour(page);
-    assert.equal(await page.locator(".card").count(), 100);
+    assert.equal(await page.locator(".card").count(), 105);
     for (const region of ["Россия", ...Object.keys(regionalIds)]) {
       await page.locator("#region").selectOption(region);
       const ids = await page
@@ -70,7 +70,7 @@ try {
     await page.waitForSelector(".empty");
     assert.equal(await page.locator(".card").count(), 0);
     await page.locator("#reset").click();
-    assert.equal(await page.locator(".card").count(), 100);
+    assert.equal(await page.locator(".card").count(), 105);
     await page.locator("#query").fill("7 ВЕРСТ");
     assert.equal(await page.locator(".card").count(), 1);
     await page.locator("#reset").click();

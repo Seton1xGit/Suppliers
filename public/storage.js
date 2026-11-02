@@ -23,6 +23,26 @@ export function createSavedStore(storageProvider = () => localStorage) {
       Array.isArray(raw.compare)
     ) {
       state = {
+        priceFilters:
+          raw.priceFilters && typeof raw.priceFilters === "object"
+            ? {
+                offerGroup:
+                  typeof raw.priceFilters.offerGroup === "string"
+                    ? raw.priceFilters.offerGroup
+                    : "auto",
+                priceSort: ["asc", "desc", "priced"].includes(
+                  raw.priceFilters.priceSort,
+                )
+                  ? raw.priceFilters.priceSort
+                  : "asc",
+                priceOnly: raw.priceFilters.priceOnly === true,
+                offerIds: Array.isArray(raw.priceFilters.offerIds)
+                  ? raw.priceFilters.offerIds
+                      .filter((x) => typeof x === "string")
+                      .slice(0, 32)
+                  : [],
+              }
+            : undefined,
         tourSeen: raw.tourSeen === true,
         design: normalizeDesign(raw.design),
         saved: raw.saved.filter((x) => typeof x === "string"),

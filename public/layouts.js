@@ -116,9 +116,15 @@ export function supplierView(s, index, view, kit) {
       ),
     );
   const sources = el("div", "sources");
-  s.sources.forEach((source) =>
-    sources.append(link(source.label, source.url, "source")),
-  );
+  s.sources
+    .slice(0, 2)
+    .forEach((source) =>
+      sources.append(link(source.label, source.url, "source")),
+    );
+  if (s.sources.length > 2)
+    sources.append(
+      el("span", "", `Еще ${s.sources.length - 2} источника в карточке`),
+    );
   sources.append(
     el("span", "verified-date", s.verifiedAt.split("-").reverse().join(".")),
   );
@@ -126,6 +132,7 @@ export function supplierView(s, index, view, kit) {
   if (table) {
     for (const content of [
       name,
+      view.offerBlock,
       products,
       el("span", "", s.city),
       shipping,
@@ -148,7 +155,7 @@ export function supplierView(s, index, view, kit) {
     );
   name.append(city);
   const main = el("div", "supplier-main");
-  main.append(name, products);
+  main.append(name, view.offerBlock, products);
   if (s.minimumOrder && ["01", "05", "09"].includes(view.design))
     main.append(el("p", "minimum", s.minimumOrder.value));
   if (view.note) main.append(el("span", "note-indicator", "Есть заметка"));
@@ -169,6 +176,7 @@ export function appendSupplierViews(container, list, start, design, build, el) {
       row = el("tr");
     for (const label of [
       "Компания",
+      "Цена товара",
       "Ассортимент",
       "Город компании",
       "Подтвержденная доставка",

@@ -43,12 +43,12 @@ const other = [
   "td-yarmarka",
 ];
 test("морская подборка и остальные новые направления сохранены", () => {
-  assert.equal(data.length, 100);
+  assert.equal(data.length, 105);
   assert.deepEqual(
     new Set(data.slice(45, 75).map((s) => s.id)),
     new Set([...marine, ...other]),
   );
-  assert.equal(data.filter((s) => s.category === "ingredients").length, 49);
+  assert.equal(data.filter((s) => s.category === "ingredients").length, 54);
   assert.equal(data.filter((s) => s.category === "finished").length, 32);
   assert.equal(data.filter((s) => s.category === "packaging").length, 19);
 });

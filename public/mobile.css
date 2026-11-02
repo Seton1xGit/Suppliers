@@ -327,13 +327,13 @@
     border: 0;
     background: transparent;
   }
-  body[data-design] .procurement-table td:nth-child(3) {
+  body[data-design] .procurement-table td:nth-child(4) {
     order: -1;
     color: var(--muted);
     font-size: 13px;
     margin-bottom: 8px;
   }
-  body[data-design] .procurement-table td:nth-child(5) {
+  body[data-design] .procurement-table td:nth-child(6) {
     display: none;
   }
   body[data-design] .compare-bar {

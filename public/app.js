@@ -1,3 +1,17 @@
+import { createOfferBlock, detailOffer } from "./offer-ui.js";
+import {
+  queryProduct,
+  activeGroup,
+  selectedOffer,
+  matchingOffers,
+  hasPublishedPrice,
+  normalizedPrice,
+  comparisonKey,
+  priceText,
+  offerGroupLabel,
+  tomatoGroups,
+  marketLabels,
+} from "./offers.js";
 import {
   money,
   deliveryRates,
@@ -24,6 +38,8 @@ const $ = (id) => document.getElementById(id),
   source = new JsonCatalogSource(),
   store = createSavedStore();
 let items = [],
+  offers = [],
+  offerLoadFailed = false,
   filters = readFilters(),
   design = initialDesign(location.search, store.state.design),
   activeDetail = null,
@@ -97,7 +113,33 @@ function toggleCompare(id) {
 }
 function readFilters() {
   const params = new URLSearchParams(location.search);
+  const saved = params.has("q") ? {} : store.state.priceFilters || {};
+  const group = params.get("product") || saved.offerGroup || "auto";
   return {
+    offerGroup: [
+      "auto",
+      "all",
+      ...Object.keys(tomatoGroups),
+      "puff-dough",
+      "wasabi",
+    ].includes(group)
+      ? group
+      : "auto",
+    priceSort: ["asc", "desc", "priced"].includes(
+      params.get("sort") || saved.priceSort,
+    )
+      ? params.get("sort") || saved.priceSort
+      : "asc",
+    priceOnly: params.has("priced")
+      ? params.get("priced") === "1"
+      : saved.priceOnly === true,
+    offerIds: params.has("offers")
+      ? params
+          .get("offers")
+          .split(",")
+          .filter((x) => /^[a-z0-9-]+$/.test(x))
+          .slice(0, 32)
+      : saved.offerIds || [],
     query: params.get("q") || "",
     category: categories[params.get("category")] ? params.get("category") : "",
     region: params.get("region") || "",
@@ -112,7 +154,99 @@ function saveFilters() {
   if (filters.category) url.searchParams.set("category", filters.category);
   if (filters.region) url.searchParams.set("region", filters.region);
   if (filters.savedOnly) url.searchParams.set("view", "saved");
+  if (filters.offerGroup !== "auto")
+    url.searchParams.set("product", filters.offerGroup);
+  if (filters.priceSort !== "asc")
+    url.searchParams.set("sort", filters.priceSort);
+  if (filters.priceOnly) url.searchParams.set("priced", "1");
+  if (filters.offerIds.length)
+    url.searchParams.set("offers", filters.offerIds.join(","));
+  store.state.priceFilters = {
+    offerGroup: filters.offerGroup,
+    priceSort: filters.priceSort,
+    priceOnly: filters.priceOnly,
+    offerIds: filters.offerIds,
+  };
+  persist();
   history.replaceState(null, "", url);
+}
+function offerBlock(supplier, detailView = false) {
+  return createOfferBlock(supplier, offers, filters, {
+    el,
+    link,
+    detail: detailView,
+    onSelect: (supplierId, offerId) => {
+      const ownIds = new Set(
+        offers.filter((o) => o.supplierId === supplierId).map((o) => o.id),
+      );
+      filters.offerIds = filters.offerIds.filter((id) => !ownIds.has(id));
+      filters.offerIds.push(offerId);
+      render();
+      if ($("compare-dialog").open) renderComparison();
+      if (activeDetail === supplierId) detail(supplierId, false);
+      document
+        .querySelector(`[data-offer-choice="${supplierId}"]`)
+        ?.focus({ preventScroll: true });
+    },
+  });
+}
+function mountPriceControls() {
+  const controls = el("section", "price-controls");
+  controls.setAttribute("aria-label", "Товар и цена");
+  controls.innerHTML =
+    '<label id="offer-group-label">Вид товара<select id="offer-group"></select></label><label>Порядок цен<select id="price-sort"><option value="asc">Цена по возрастанию в группе</option><option value="desc">Цена по убыванию в группе</option><option value="priced">Сначала с опубликованной ценой</option></select></label><label class="price-only-label"><input id="price-only" type="checkbox"> Только с опубликованной ценой</label><p id="price-help"></p><button id="tomato-example" class="button quiet" type="button">Помидоры с ценами</button>';
+  $("region-summary").before(controls);
+  $("tomato-example").addEventListener("click", () => {
+    filters.query = "помидоры";
+    $("query").value = filters.query;
+    filters.offerGroup = "regular";
+    filters.priceOnly = true;
+    render();
+  });
+  $("offer-group").addEventListener("change", () => {
+    filters.offerGroup = $("offer-group").value;
+    render();
+  });
+  $("price-sort").addEventListener("change", () => {
+    filters.priceSort = $("price-sort").value;
+    render();
+  });
+  $("price-only").addEventListener("change", () => {
+    filters.priceOnly = $("price-only").checked;
+    render();
+  });
+}
+function updatePriceControls() {
+  const product = queryProduct(filters.query),
+    select = $("offer-group");
+  $("tomato-example").hidden = !!filters.query;
+  select.replaceChildren();
+  const variants =
+    product?.family === "fresh-tomato"
+      ? [
+          ["auto", "По запросу / все виды отдельно"],
+          ["all", "Все виды отдельными группами"],
+          ...Object.entries(tomatoGroups),
+        ]
+      : [["auto", product ? "Товар из запроса" : "Укажи товар в поиске"]];
+  for (const [value, label] of variants) {
+    const option = el("option", "", label);
+    option.value = value;
+    select.append(option);
+  }
+  select.value = filters.offerGroup;
+  if (!select.value) {
+    filters.offerGroup = "auto";
+    select.value = "auto";
+  }
+  select.disabled = !product || product.family !== "fresh-tomato";
+  $("price-sort").value = filters.priceSort;
+  $("price-only").checked = filters.priceOnly;
+  $("price-help").textContent = offerLoadFailed
+    ? "Не удалось загрузить предложения с ценами. Каталог компаний доступен, попробуй обновить страницу."
+    : product
+      ? "Сравниваются цены одного вида, типа продажи, НДС и ценовой ступени. Разные группы разделены. Цена без доставки, наличие и стоимость подтвердит поставщик."
+      : "Введи конкретный товар. Сейчас проверенные предложения есть для свежих томатов, слоеного теста и васаби; цены других товаров запрашиваются у поставщика.";
 }
 function supplierWord(n) {
   const last = n % 10,
@@ -187,12 +321,15 @@ function supplierRow(s, index) {
     index,
     {
       design: designLayout(design),
-      searchMatch: productMatch(s, filters.query),
+      searchMatch: selectedOffer(s.id, offers, filters)
+        ? { matches: true, score: 100 }
+        : productMatch(s, filters.query),
       deliveryCost: deliverySummary(s, filters.region),
       match,
       deliveryLabel: deliveryLabel || "География не найдена",
       evidence,
       note: store.state.notes[s.id],
+      offerBlock: offerBlock(s),
     },
     { el, link, actions, openDetail: () => detail(s.id) },
   );
@@ -232,8 +369,26 @@ function render() {
       focused.classList.contains(c),
     );
   const focusedId = focusedRow?.dataset.supplierId;
+  updatePriceControls();
   saveFilters();
-  const found = source.search(items, { ...filters, saved: store.state.saved });
+  const found = source.search(items, {
+    ...filters,
+    offers,
+    saved: store.state.saved,
+  });
+  if (queryProduct(filters.query) && !offerLoadFailed) {
+    const candidates = source.search(items, {
+      ...filters,
+      offers,
+      priceOnly: false,
+      saved: store.state.saved,
+    });
+    const priced = candidates.filter((s) =>
+      hasPublishedPrice(selectedOffer(s.id, offers, filters)),
+    ).length;
+    $("price-help").textContent =
+      `Публичная цена: у ${priced} из ${candidates.length} найденных компаний. Цена без доставки. Виды и условия разделены; наличие и цену подтверди перед заказом.`;
+  }
   const regional = found.filter(
     (s) => deliveryMatch(s, filters.region).scope === "regional",
   );
@@ -264,6 +419,7 @@ function render() {
     b.setAttribute("aria-pressed", String(active));
     b.querySelector("[data-count]").textContent = source.search(items, {
       ...filters,
+      offers,
       category: b.dataset.category,
       saved: store.state.saved,
     }).length;
@@ -287,6 +443,26 @@ function render() {
       button("Сбросить условия поиска", "button quiet", reset),
     );
     $("cards").append(empty);
+  } else if (queryProduct(filters.query) && offers.length) {
+    const groups = new Map();
+    for (const supplier of found) {
+      const offer = selectedOffer(supplier.id, offers, filters);
+      const key = hasPublishedPrice(offer) ? comparisonKey(offer) : "no-price";
+      if (!groups.has(key)) groups.set(key, { offer, list: [] });
+      groups.get(key).list.push(supplier);
+    }
+    for (const { offer, list } of groups.values()) {
+      const group = resultGroup(
+        hasPublishedPrice(offer) ? offerGroupLabel(offer) : "Цена по запросу",
+        list,
+        "price-group",
+        hasPublishedPrice(offer)
+          ? "Цена товара без доставки. Сорта, минимальная партия и условия могут отличаться; проверь карточку предложения."
+          : "Публичной цены выбранного вида для этого региона нет. Запроси стоимость и наличие у поставщика.",
+      );
+      appendSuppliers(group, list);
+      $("cards").append(group);
+    }
   } else if (!filters.region) appendSuppliers($("cards"), found);
   else {
     if (filters.region !== "Россия") {
@@ -413,7 +589,10 @@ function appendDeliveryCost(node, supplier, bound) {
   }
 }
 function appendNuances(node, supplier) {
-  const notes = supplierNuances(supplier, filters.region);
+  const notes = supplierNuances(
+    { ...supplier, price: undefined },
+    filters.region,
+  );
   if (!notes.length)
     node.append(
       el(
@@ -448,6 +627,9 @@ function detail(id, show = true) {
   const products = section("Что поставляет");
   products.append(el("p", "", s.products.join(", ")));
   body.append(products);
+  const productPrice = section("Цена искомого товара");
+  productPrice.append(offerBlock(s, true));
+  body.append(productPrice);
   const delivery = section("Подтвержденная доставка");
   if (!s.delivery.length)
     delivery.append(
@@ -474,7 +656,6 @@ function detail(id, show = true) {
     facts = el("div", "facts");
   [
     ["Минимальный заказ", "minimumOrder"],
-    ["Цена конкретного товара", "price"],
     ["Документы и сертификаты", "documents"],
   ].forEach(([label, key]) => {
     const f = fact(label, optional(s, key));
@@ -483,17 +664,24 @@ function detail(id, show = true) {
   });
   const priceBounds = el("div", "price-bounds");
   priceBounds.append(
-    fact("Минимальная цена товара", money(s.price?.min)),
-    fact("Максимальная цена товара", money(s.price?.max)),
+    fact(
+      "Минимальная цена товара",
+      money(normalizedPrice(detailOffer(s, offers, filters))?.min),
+    ),
+    fact(
+      "Максимальная цена товара",
+      money(normalizedPrice(detailOffer(s, offers, filters))?.max),
+    ),
   );
-  if (s.price)
+  const detailPrice = detailOffer(s, offers, filters);
+  if (detailPrice)
     priceBounds.append(
       el(
         "p",
         "",
-        `${s.price.product}. Единица: ${s.price.unit}. ${s.price.conditions}`,
+        `${detailPrice.name}. Цена за 1 кг, если пересчет подтвержден. ${detailPrice.pack.label}`,
       ),
-      link("Источник цены", s.price.sourceUrl),
+      link("Источник цены", detailPrice.sourceUrl),
     );
   facts.append(priceBounds);
   terms.append(
@@ -610,6 +798,19 @@ function renderComparison() {
       button("Удалить", "text-button", () => toggleCompare(s.id)),
     );
   });
+  addRow("Цена искомого товара", (cell, s) => cell.append(offerBlock(s)));
+  const selectedKeys = new Set(
+    selected
+      .map((s) => selectedOffer(s.id, offers, filters))
+      .filter(hasPublishedPrice)
+      .map(comparisonKey),
+  );
+  $("compare-context").textContent =
+    selectedKeys.size > 1
+      ? "Выбраны предложения разных видов или условий. Эти цены не образуют общий рейтинг. Сопоставь единицы, тип продажи, НДС и минимальную партию."
+      : queryProduct(filters.query)
+        ? "Показана цена товара из текущего запроса. Доставка и минимальный заказ считаются отдельно; сорта и условия проверь у поставщиков."
+        : "Для сравнения цен введи конкретный товар в поиске. Цены других товаров компании сюда не подставляются.";
   addRow("Город компании", (cell, s) => cell.append(el("span", "", s.city)));
   addRow(
     "Минимальный заказ",
@@ -652,38 +853,37 @@ function renderComparison() {
   addRow("Максимальная цена доставки", (cell, s) =>
     appendDeliveryCost(cell, s, "max"),
   );
-  for (const [label, key] of [
-    ["Цена конкретного товара", "price"],
-    ["Документы", "documents"],
-  ])
+  for (const [label, key] of [["Документы", "documents"]])
     addRow(label, (cell, s) => {
       cell.append(el("p", "", optional(s, key)));
       if (s[key]?.sourceUrl) cell.append(link("Источник", s[key].sourceUrl));
     });
-  addRow("Минимальная цена товара", (cell, s) =>
+  addRow("Минимальная цена товара", (cell, s) => {
+    const offer = selectedOffer(s.id, offers, filters);
     cell.append(
-      el("p", "", money(s.price?.min)),
+      el("p", "", money(normalizedPrice(offer)?.min)),
       el(
         "p",
         "",
-        s.price
-          ? `${s.price.product}, ${s.price.unit}`
-          : "Товар и единица не указаны",
+        offer
+          ? `${offer.name}. За 1 кг, если единица подтверждена.`
+          : "Цена по запросу",
       ),
-    ),
-  );
-  addRow("Максимальная цена товара", (cell, s) =>
+    );
+  });
+  addRow("Максимальная цена товара", (cell, s) => {
+    const offer = selectedOffer(s.id, offers, filters);
     cell.append(
-      el("p", "", money(s.price?.max)),
+      el("p", "", money(normalizedPrice(offer)?.max)),
       el(
         "p",
         "",
-        s.price
-          ? `${s.price.product}, ${s.price.unit}`
-          : "Товар и единица не указаны",
+        offer
+          ? `${offer.name}. За 1 кг, если единица подтверждена.`
+          : "Цена по запросу",
       ),
-    ),
-  );
+    );
+  });
   addRow(
     "Особенности поставщика",
     (cell, s) => appendNuances(cell, s),
@@ -741,7 +941,16 @@ function renderComparison() {
     grid.querySelector(".company-cell button")?.focus({ preventScroll: true });
 }
 function reset() {
-  filters = { query: "", category: "", region: "", savedOnly: false };
+  filters = {
+    query: "",
+    category: "",
+    region: "",
+    savedOnly: false,
+    offerGroup: "auto",
+    priceSort: "asc",
+    priceOnly: false,
+    offerIds: [],
+  };
   $("query").value = "";
   $("region").value = "";
   render();
@@ -784,12 +993,17 @@ function populateRegions() {
 }
 function bindLayout() {
   populateRegions();
+  mountPriceControls();
   $("search-form").addEventListener("submit", (event) => {
     event.preventDefault();
+    if (filters.query !== $("query").value) filters.offerGroup = "auto";
     filters.query = $("query").value;
     render();
+    if (matchMedia("(max-width: 900px)").matches)
+      $("cards").scrollIntoView({ block: "start", behavior: "smooth" });
   });
   $("query").addEventListener("input", () => {
+    if (filters.query !== $("query").value) filters.offerGroup = "auto";
     filters.query = $("query").value;
     render();
   });
@@ -958,7 +1172,18 @@ document
 $("detail-dialog").addEventListener("close", () => (activeDetail = null));
 const tour = createTour({ store, persist });
 try {
-  items = await source.load();
+  [items, offers] = await Promise.all([
+    source.load(),
+    fetch("./data/offers.json")
+      .then((r) => {
+        if (!r.ok) throw new Error("offers");
+        return r.json();
+      })
+      .catch(() => {
+        offerLoadFailed = true;
+        return [];
+      }),
+  ]);
   const valid = new Set(items.map((s) => s.id));
   store.state.saved = store.state.saved.filter((id) => valid.has(id));
   store.state.compare = store.state.compare.filter((id) => valid.has(id));

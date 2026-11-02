@@ -9,7 +9,7 @@ const data = JSON.parse(
   ),
 );
 test("добавлено пять компаний по тесту, выпечке и ингредиентам", () => {
-  assert.equal(data.length, 100);
+  assert.equal(data.length, 105);
   assert.deepEqual(
     data.slice(75, 80).map((s) => s.id),
     ["likhachevsky", "jambo", "frostmo", "cake-me", "lesaffre"],

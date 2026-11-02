@@ -1,0 +1,97 @@
+{
+  "family": "fresh-tomato",
+  "verifiedAt": "2026-11-02",
+  "suppliers": [
+    {
+      "supplierId": "agropark-spb",
+      "status": "by_request",
+      "sourceUrl": "https://agroparkspb.ru/",
+      "note": "В карточках свежих томатов цена по запросу.",
+      "verifiedAt": "2026-11-02"
+    },
+    {
+      "supplierId": "ovb4",
+      "status": "by_request",
+      "sourceUrl": "https://ovb4.ru/",
+      "note": "Каталог подтверждает томаты. Для цены указан контакт отдела продаж.",
+      "verifiedAt": "2026-11-02"
+    },
+    {
+      "supplierId": "equator-ekb",
+      "status": "by_request",
+      "sourceUrl": "https://www.ovosfrukt.ru/",
+      "note": "Свежие помидоры есть в ассортименте, заказ и подбор через менеджера.",
+      "verifiedAt": "2026-11-02"
+    },
+    {
+      "supplierId": "innda",
+      "status": "by_request",
+      "sourceUrl": "https://innda.ru/",
+      "note": "Томаты есть в каталоге. Публичная числовая цена на проверенных страницах не найдена.",
+      "verifiedAt": "2026-11-02"
+    },
+    {
+      "supplierId": "ligales",
+      "status": "fresh_not_confirmed",
+      "sourceUrl": "https://ligales.ru/",
+      "note": "Найдены сушеные томаты и общий ассортимент овощей. Свежие томаты и их цена не подтверждены.",
+      "verifiedAt": "2026-11-02"
+    },
+    {
+      "supplierId": "dikiy-sbor",
+      "status": "fresh_not_confirmed",
+      "sourceUrl": "https://www.sibdar.net/",
+      "note": "В исходном каталоге замороженные овощи. Свежие томаты не подтверждены; сайт при повторной проверке не ответил.",
+      "verifiedAt": "2026-11-02"
+    },
+    {
+      "supplierId": "fruktline",
+      "status": "published_retail",
+      "sourceUrl": "https://fruktlain.ru/",
+      "note": "191 руб./кг красные Махито, 224 на ветке, 236 розовые. Страницы прямо помечают цены как розничные.",
+      "verifiedAt": "2026-11-02"
+    },
+    {
+      "supplierId": "food-star",
+      "status": "published_b2b",
+      "sourceUrl": "https://www.food-star.ru/",
+      "note": "Товарные страницы и условия зафиксированы в offers.json. Цена является снимком источника.",
+      "verifiedAt": "2026-11-02"
+    },
+    {
+      "supplierId": "food-fresh",
+      "status": "published_b2b",
+      "sourceUrl": "https://food-fresh.ru/",
+      "note": "Товарные страницы и условия зафиксированы в offers.json. Цена является снимком источника.",
+      "verifiedAt": "2026-11-02"
+    },
+    {
+      "supplierId": "sofiiskaya-baza",
+      "status": "published_b2b",
+      "sourceUrl": "https://sofiiskayabaza.ru/",
+      "note": "Товарные страницы и условия зафиксированы в offers.json. Цена является снимком источника.",
+      "verifiedAt": "2026-11-02"
+    },
+    {
+      "supplierId": "kalinbaza",
+      "status": "published_b2b",
+      "sourceUrl": "https://kalinbaza.ru/",
+      "note": "Товарные страницы и условия зафиксированы в offers.json. Цена является снимком источника.",
+      "verifiedAt": "2026-11-02"
+    },
+    {
+      "supplierId": "fermermart-ekb",
+      "status": "published_retail",
+      "sourceUrl": "https://ekb.fermermart.ru/",
+      "note": "Товарные страницы и условия зафиксированы в offers.json. Цена является снимком источника.",
+      "verifiedAt": "2026-11-02"
+    }
+  ],
+  "excluded": [
+    {
+      "name": "Сити Лавка",
+      "sourceUrl": "https://citylavka.ru/products/tomat-mahito",
+      "reason": "В поисковом индексе есть цена, прямое открытие товарной страницы при проверке не удалось. Предложение не добавлено."
+    }
+  ]
+}

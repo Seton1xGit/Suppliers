@@ -9,7 +9,7 @@ const data = JSON.parse(
   ),
 );
 test("добавлено ровно 20 екатеринбургских компаний во всех сегментах", () => {
-  const added = data.slice(80);
+  const added = data.slice(80, 100);
   assert.equal(added.length, 20);
   assert(added.every((s) => s.city === "Екатеринбург"));
   assert.equal(added.filter((s) => s.category === "ingredients").length, 7);
@@ -21,7 +21,7 @@ test("добавлено ровно 20 екатеринбургских комп
     );
 });
 test("город компании и доставка не смешиваются", () => {
-  const withoutDelivery = data.slice(80).filter((s) => !s.delivery.length);
+  const withoutDelivery = data.slice(80, 100).filter((s) => !s.delivery.length);
   assert(withoutDelivery.length > 0);
   for (const s of withoutDelivery)
     assert(
