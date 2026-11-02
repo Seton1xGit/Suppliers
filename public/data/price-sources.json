@@ -42,14 +42,29 @@
   {
     "id": "packtochka-public",
     "supplierId": "packtochka",
-    "url": "https://packtochka.ru/",
+    "url": "https://packtochka.ru/collection/katalog",
     "verifiedAt": "2026-11-02",
     "category": "packaging",
-    "imported": 16,
+    "imported": 72,
     "manualPreserved": 0,
-    "seconds": 0.01,
-    "rowsWithPrice": 16,
+    "seconds": 5.91,
+    "rowsWithPrice": 72,
     "skipped": 0,
-    "format": "HTML Schema.org Product/Offer"
+    "pages": 2,
+    "format": "Public HTML catalog with pagination, initial quantity tier"
+  },
+  {
+    "id": "leopak-public",
+    "supplierId": "leopak",
+    "url": "https://market.leopak.ru/",
+    "verifiedAt": "2026-11-02",
+    "category": "packaging",
+    "imported": 688,
+    "manualPreserved": 0,
+    "seconds": 122.22,
+    "rowsWithPrice": 688,
+    "skipped": 2,
+    "format": "Public product cards, current price and explicit sale unit",
+    "scope": "Homepage and six food packaging categories with pagination, selected city Moscow"
   }
 ]

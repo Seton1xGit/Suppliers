@@ -183,6 +183,120 @@ def parse_packtochka(html, supplier, verified_at):
     return list(result.values()), {"rowsWithPrice":len(result),"skipped":skipped,"format":"HTML Schema.org Product/Offer"}
 
 
+def fetch_packtochka(url):
+    pages, seen = [], set()
+    while url and url not in seen and len(pages) < 30:
+        seen.add(url)
+        html = fetch(url)
+        pages.append(html)
+        root = Document(html).root
+        next_page = root.find(lambda n: bool(n.attrs.get("data-collection-infinity")))
+        url = "https://packtochka.ru" + next_page.attrs["data-collection-infinity"] if next_page else None
+        if url:
+            time.sleep(0.4)
+    if url:
+        raise ValueError("Пагинация каталога не завершена, предыдущая партия сохранена")
+    return json.dumps(pages, ensure_ascii=False)
+
+
+def parse_packtochka_catalog(payload, supplier, verified_at):
+    pages = json.loads(payload)
+    result, skipped = {}, 0
+    for html in pages:
+        root = Document(html).root
+        tiers = {n.attrs["data-product-id"]: n for n in root.nodes() if "data-catalog-tier-product" in n.attrs}
+        for card in root.nodes():
+            if card.tag != "form" or not card.attrs.get("data-product-id"):
+                continue
+            code = card.attrs["data-product-id"]
+            title = card.find(lambda n: n.has_class("product-preview__title"))
+            tier = tiers.get(code)
+            if not title or not tier:
+                skipped += 1
+                continue
+            values = []
+            for node in tier.nodes():
+                if "data-catalog-tier-price" not in node.attrs or not node.attrs.get("data-value"):
+                    continue
+                try:
+                    values.append((amount(node.attrs["data-min"]), amount(node.attrs["data-value"])))
+                except ValueError:
+                    continue
+            base = [value for minimum, value in values if minimum == 1 and value > 0]
+            if len(set(base)) != 1:
+                skipped += 1
+                continue
+            name = title.text()
+            unit = "piece" if name == "Коробка картонная 150х120х100 мм" else "unknown"
+            notes = ["Цена начальной ступени от 1 единицы товара. Единицу продажи и комплектацию уточни у поставщика."]
+            discounts = sorted(set((minimum, value) for minimum, value in values if minimum > 1 and value > 0))
+            if discounts:
+                notes.append("Опубликованные ступени партии: " + "; ".join(f"от {minimum:g}: {value:g} руб." for minimum, value in discounts) + ". В основной цене скидка за объем не применена.")
+            offer = make_offer(supplier, "packtochka-public", code, name, base[0], unit,
+                "https://packtochka.ru/collection/katalog", "unknown", verified_at,
+                pack="Размер и комплектация указаны в названии товара.", notes=notes,
+                minimum="Ступень цены от 1 единицы товара. Общий минимум заказа не опубликован.")
+            result[offer["id"]] = offer
+    return list(result.values()), dict(rowsWithPrice=len(result), skipped=skipped, pages=len(pages), format="Public HTML catalog with pagination, initial quantity tier")
+
+
+def fetch_leopak(url):
+    homepage = fetch(url)
+    root = Document(homepage).root
+    categories = {"stakany", "pakety-vakuumnye", "pakety-bumazhnye", "pakety-fasovochnye", "tartaletki", "termopakety"}
+    links = sorted({n.attrs["href"] for n in root.nodes() if n.tag == "a" and n.attrs.get("href", "").startswith(url + "categories/") and n.attrs["href"].rsplit("/", 1)[-1] in categories})
+    pages = [homepage]
+    for category in links:
+        next_url, seen = category, set()
+        while next_url and next_url not in seen and len(seen) < 20:
+            seen.add(next_url)
+            html = fetch(next_url)
+            pages.append(html)
+            document = Document(html).root
+            next_page = document.find(lambda n: n.tag == "a" and n.has_class("pagenumberer-next"))
+            next_url = "https://market.leopak.ru" + next_page.attrs["href"] if next_page else None
+            time.sleep(0.4)
+        if next_url:
+            raise ValueError("Не завершена пагинация категории, предыдущая партия сохранена")
+    return "\n".join(pages)
+
+
+def parse_leopak(html, supplier, verified_at):
+    result, skipped = {}, 0
+    for card in Document(html).root.nodes():
+        if not card.has_class("products-view-item"):
+            continue
+        title = card.find(lambda n: n.has_class("products-view-name-link"))
+        current = card.find(lambda n: n.has_class("price-new")) or card.find(lambda n: n.has_class("price-current"))
+        value = current.find(lambda n: n.has_class("price-number")) if current else None
+        label = current.find(lambda n: n.has_class("price-currency")) if current else None
+        if not title or not value or not label:
+            skipped += 1
+            continue
+        try:
+            price = amount(value.text())
+        except ValueError:
+            skipped += 1
+            continue
+        if price <= 0:
+            skipped += 1
+            continue
+        text = key(label.text())
+        unit = "piece" if re.search(r"/\s*шт", text) else "pack" if re.search(r"/\s*уп", text) else "unknown"
+        url = title.attrs.get("href")
+        if not url or not url.startswith("https://market.leopak.ru/products/"):
+            skipped += 1
+            continue
+        native = hashlib.sha256(url.encode()).hexdigest()[:16]
+        offer = make_offer(supplier, "leopak-public", native, title.text(), price, unit, url, "unknown", verified_at,
+            pack="Единица цены: " + label.text() + ". Размер и упаковка указаны в названии.",
+            notes=["Цена публичной витрины с выбранным городом Москва. Цена для других городов требует подтверждения.", "Зачеркнутая старая цена не импортирована. Доставка и минимальная партия отдельно согласуются с поставщиком."])
+        offer["fulfillment"]["deliveryRegions"] = []
+        offer["fulfillment"]["text"] = "Стоимость доставки не включена. Маршрут и применимость цены к городу уточни у поставщика."
+        result[offer["id"]] = offer
+    return list(result.values()), dict(rowsWithPrice=len(result), skipped=skipped, format="Public product cards, current price and explicit sale unit", scope="Homepage and six food packaging categories with pagination, selected city Moscow")
+
+
 def fetch_cake_me(url):
     products, total = {}, None
     for page in range(1, 26):
@@ -227,9 +341,10 @@ def parse_cake_me(payload, supplier, verified_at):
 
 
 ADAPTERS = {
+    "leopak": dict(supplierId="leopak",sourceId="leopak-public",url="https://market.leopak.ru/",fetch=fetch_leopak,parse=parse_leopak),
     "food-star": dict(supplierId="food-star", sourceId="food-star-price", url="https://www.food-star.ru/price/", parse=parse_food_star),
     "sibprod": dict(supplierId="sibirskiy-produkt-nsk",sourceId="sibprod-public",url="https://sibprod.info/",parse=parse_sibprod),
-    "packtochka": dict(supplierId="packtochka",sourceId="packtochka-public",url="https://packtochka.ru/",parse=parse_packtochka),
+    "packtochka": dict(supplierId="packtochka",sourceId="packtochka-public",url="https://packtochka.ru/collection/katalog",fetch=fetch_packtochka,parse=parse_packtochka_catalog),
     "cake-me":dict(supplierId="cake-me",sourceId="cake-me-store",url="https://cake-me.ru/",fetch=fetch_cake_me,parse=parse_cake_me),
 }
 
