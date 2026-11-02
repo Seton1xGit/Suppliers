@@ -135,11 +135,11 @@ try {
     );
     await page.screenshot({ path: `test-results/${name}-comparison-v2.png` });
     if (name === "mobile") {
-      assert(await page.locator(".compare-mobile").isVisible());
+      assert(await page.locator(".compare-grid").isVisible());
       assert(
         await page
           .locator("#compare-content")
-          .evaluate((n) => n.scrollWidth <= n.clientWidth + 1),
+          .evaluate((n) => n.scrollWidth > n.clientWidth),
       );
     }
     await page.keyboard.press("Escape");

@@ -1,7 +1,3 @@
-.compare-mobile {
-  display: none;
-}
-
 @media (max-width: 900px) {
   body[data-design] {
     font-size: 15px;
@@ -417,70 +413,179 @@
     align-items: center;
     min-height: 44px;
   }
-  body[data-design] .comparison {
-    overflow: visible;
+  body[data-design] #compare-dialog {
+    padding: 0 12px 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: calc(100dvh - 24px);
   }
-  body[data-design] .compare-grid,
-  body[data-design] .compare-scroll-hint {
+  body[data-design] #compare-dialog:not([open]) {
     display: none;
   }
-  .compare-mobile {
-    display: grid;
-    gap: 20px;
+  body[data-design] #compare-dialog > .muted {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 10px 0;
   }
-  .compare-mobile-company {
-    min-width: 0;
-    padding: 16px;
+  body[data-design] #compare-dialog h2 {
+    font-size: 22px;
+  }
+  body[data-design] #compare-dialog .dialog-top {
+    flex-shrink: 0;
+  }
+  body[data-design] .compare-scroll-hint {
+    display: block;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0 0 10px;
+  }
+  body[data-design] .comparison {
+    overflow: auto;
+    min-height: 0;
+    flex: 1;
+    padding: 0;
+    overscroll-behavior: contain;
     border: 1px solid var(--line);
-    border-radius: 8px;
+    border-radius: 6px;
+    --field-width: clamp(76px, 20vw, 104px);
+    --company-width: clamp(88px, 28vw, 156px);
   }
-  .compare-mobile-company > h3 {
-    font-size: 21px;
-    margin: 8px 0;
+  body[data-design] .compare-grid {
+    display: grid;
+    border-top: 0;
   }
-  .compare-mobile-company > h4 {
+  body[data-design] .columns-1 {
+    grid-template-columns: var(--field-width) minmax(var(--company-width), 1fr);
+    min-width: calc(var(--field-width) + var(--company-width));
+  }
+  body[data-design] .columns-2 {
+    grid-template-columns: var(--field-width) repeat(
+        2,
+        minmax(var(--company-width), 1fr)
+      );
+    min-width: calc(var(--field-width) + 2 * var(--company-width));
+  }
+  body[data-design] .columns-3 {
+    grid-template-columns: var(--field-width) repeat(
+        3,
+        minmax(var(--company-width), 1fr)
+      );
+    min-width: calc(var(--field-width) + 3 * var(--company-width));
+  }
+  body[data-design] .columns-4 {
+    grid-template-columns: var(--field-width) repeat(
+        4,
+        minmax(var(--company-width), 1fr)
+      );
+    min-width: calc(var(--field-width) + 4 * var(--company-width));
+  }
+  body[data-design] .compare-cell {
+    padding: 10px 8px;
     font-size: 13px;
-    color: var(--muted);
-    margin: 18px 0 6px;
+    line-height: 1.5;
+    background: var(--surface);
   }
-  .compare-mobile-company > p {
-    font-size: 15px;
-    line-height: 1.6;
-    margin: 0 0 12px;
-  }
-  .compare-mobile-company > button,
-  .compare-mobile-details > summary {
-    min-height: 44px;
-    padding: 12px 0;
-    font-size: 14px;
-  }
-  .compare-mobile-details {
-    border-top: 1px solid var(--line);
-    margin-top: 16px;
-  }
-  .compare-mobile-field {
-    margin-bottom: 20px;
-    overflow-wrap: anywhere;
-  }
-  .compare-mobile-field h4 {
-    font-size: 13px;
-    color: var(--muted);
-    margin: 0 0 6px;
+  body[data-design] .compare-cell.field-name {
+    left: 0;
+    z-index: 2;
+    font-size: 12px;
     font-weight: 500;
+    color: var(--ink);
+    border-right: 2px solid var(--line);
   }
-  .compare-mobile-field h3 {
-    font-size: 21px;
-    margin: 8px 0;
+  body[data-design] .compare-row:first-child > .compare-cell {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    border-bottom: 2px solid var(--line);
   }
-  .compare-mobile-field p {
+  body[data-design] .compare-row:first-child > .field-name {
+    z-index: 4;
+  }
+  body[data-design] .company-cell h3 {
     font-size: 15px;
-    line-height: 1.65;
+    line-height: 1.35;
+    margin: 6px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  .compare-mobile-field button,
-  .compare-mobile-field a {
+  body[data-design] .company-cell .tag {
+    display: none;
+  }
+  body[data-design] .company-cell button {
+    font-size: 12px;
+    min-height: 44px;
+  }
+  body[data-design] .compare-cell a {
+    font-size: 12px;
     display: inline-flex;
     min-height: 44px;
     align-items: center;
-    font-size: 14px;
+  }
+  body[data-design] .compare-cell p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  body[data-design] .compare-more > summary {
+    min-height: 44px;
+    padding: 4px 0;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  body[data-design] .compare-cell .delivery-rate {
+    margin: 0 0 10px;
+  }
+  body[data-design] .compare-label-full {
+    display: none;
+  }
+  body[data-design] .compare-label-short {
+    display: inline;
+  }
+  body[data-design] .compare-tools {
+    display: block;
+    margin-bottom: 8px;
+  }
+  body[data-design] .compare-difference-option {
+    font-size: 13px;
+  }
+  body[data-design] #compare-columns {
+    gap: 4px;
+  }
+  body[data-design] .compare-column-button {
+    font-size: 12px;
+    padding: 6px;
+  }
+  body[data-design] .compare-more:not([open]) .compare-preview {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  body[data-design] .compare-more > summary::after {
+    content: "Подробнее";
+    display: block;
+    font-size: 11px;
+    color: var(--accent);
+    margin-top: 4px;
+  }
+  body[data-design] .compare-more[open] > summary::after {
+    content: "Свернуть";
+  }
+  @media (max-height: 500px) {
+    body[data-design] #compare-dialog > .muted,
+    body[data-design] .compare-scroll-hint,
+    body[data-design] #compare-dialog .eyebrow {
+      display: none;
+    }
+    body[data-design] .compare-tools {
+      display: flex;
+      gap: 12px;
+    }
+    body[data-design] #compare-dialog .dialog-top {
+      padding: 6px 0;
+    }
   }
 }

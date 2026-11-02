@@ -1204,3 +1204,91 @@ textarea {
 .price-bounds {
   grid-column: 1 / -1;
 }
+.compare-label-short {
+  display: none;
+}
+#compare-dialog {
+  height: calc(100dvh - 64px);
+  overflow: hidden;
+}
+#compare-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+#compare-dialog .dialog-top {
+  flex-shrink: 0;
+}
+#compare-content {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0;
+}
+.compare-row:first-child > .compare-cell {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--surface);
+  border-bottom: 2px solid var(--line);
+}
+.compare-row:first-child > .field-name {
+  z-index: 4;
+}
+.comparison.only-differences .compare-row[data-equal="true"] {
+  display: none;
+}
+.compare-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  margin: 0 0 12px;
+  flex-shrink: 0;
+}
+.compare-difference-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.compare-difference-option input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+}
+#compare-columns {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+.compare-column-button {
+  flex: 1;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.compare-column-button[aria-current="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.compare-more > summary {
+  min-height: 44px;
+  cursor: pointer;
+}
+.compare-more[open] > summary {
+  margin-bottom: 8px;
+}

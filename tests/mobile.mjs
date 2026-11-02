@@ -48,17 +48,18 @@ try {
       await page.locator(".compare-button").nth(0).tap();
       await page.locator(".compare-button").nth(1).tap();
       await page.locator("#compare-open").tap();
-      assert(await page.locator(".compare-mobile").isVisible());
-      assert.equal(await page.locator(".compare-mobile-company").count(), 2);
-      assert(
-        await page
-          .locator("#compare-content")
-          .evaluate((n) => n.scrollWidth <= n.clientWidth + 1),
-      );
-      await page.locator(".compare-mobile-details summary").first().tap();
-      assert(await page.locator(".compare-mobile-field").first().isVisible());
-      await page.locator(".compare-mobile-company > button").first().tap();
-      assert.equal(await page.locator(".compare-mobile-company").count(), 1);
+      assert(await page.locator(".compare-grid").isVisible());
+      assert.equal(await page.locator(".company-cell").count(), 2);
+      const frame = page.locator("#compare-content");
+      assert(await frame.evaluate((n) => n.scrollWidth <= n.clientWidth + 1));
+      const header = page.locator(".company-cell").first();
+      const before = await header.boundingBox();
+      await frame.evaluate((n) => (n.scrollTop = 250));
+      const after = await header.boundingBox();
+      assert(Math.abs(before.y - after.y) < 2, "sticky company header");
+      await frame.evaluate((n) => (n.scrollTop = 0));
+      await page.locator(".company-cell button").first().tap();
+      assert.equal(await page.locator(".company-cell").count(), 1);
       await page.locator("#compare-dialog .close-dialog").tap();
       await page.locator(".company-name-button").first().tap();
       assert(

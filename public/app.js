@@ -395,7 +395,12 @@ function appendDeliveryCost(node, supplier, bound) {
         fact("Минимальная цена доставки", money(rate.min)),
         fact("Максимальная цена доставки", money(rate.max)),
       );
-    block.append(
+    const info = bound ? el("details", "compare-more") : block;
+    if (bound) {
+      info.append(el("summary", "", "Условия тарифа"));
+      block.append(info);
+    }
+    info.append(
       el("p", "", rate.conditions),
       link("Источник тарифа", rate.sourceUrl),
       el(
@@ -525,9 +530,11 @@ function detail(id, show = true) {
   if (show) $("detail-dialog").showModal();
 }
 function renderComparison() {
-  const restoreFocus = !!document.activeElement?.closest(
-    ".company-cell, .compare-mobile-company",
-  );
+  const restoreFocus = !!document.activeElement?.closest(".company-cell");
+  const scroll = {
+    left: $("compare-content").scrollLeft,
+    top: $("compare-content").scrollTop,
+  };
   $("compare-content").replaceChildren();
   const selected = store.state.compare.map((id) =>
     items.find((s) => s.id === id),
@@ -539,61 +546,59 @@ function renderComparison() {
   const grid = el("div", `compare-grid columns-${selected.length}`);
   grid.setAttribute("role", "table");
   grid.setAttribute("aria-label", "Условия выбранных поставщиков");
-  const mobile = el("div", "compare-mobile");
-  const panels = selected.map((s) => {
-    const panel = el("article", "compare-mobile-company");
-    panel.dataset.supplierId = s.id;
-    panel.append(
-      el("span", "tag", `${categories[s.category]} / ${s.city}`),
-      el("h3", "", s.name),
-      button("Удалить", "text-button", () => toggleCompare(s.id)),
-    );
-    panel.append(
-      el("h4", "", "Минимальный заказ"),
-      el("p", "", optional(s, "minimumOrder")),
-    );
-    panel.append(el("h4", "", "Цена доставки"));
-    const rates = deliveryRates(s, filters.region);
-    if (!rates.length)
-      panel.append(el("p", "", "Минимум и максимум не опубликованы"));
-    for (const rate of rates)
-      panel.append(
-        el(
-          "p",
-          "",
-          `${rate.region}: минимум ${money(rate.min)}, максимум ${money(rate.max)}. Условия ниже.`,
-        ),
-      );
-    const more = el("details", "compare-mobile-details");
-    more.append(el("summary", "", "Товары, условия и контакты"));
-    panel.append(more);
-    mobile.append(panel);
-    return more;
-  });
-  const addRow = (label, build) => {
+  const addRow = (label, build, summary) => {
     const row = el("div", "compare-row");
     row.setAttribute("role", "row");
-    const field = el("div", "compare-cell field-name", label);
+    const field = el("div", "compare-cell field-name");
+    const shortLabels = {
+      "Город компании": "Город",
+      "Минимальный заказ": "Мин. заказ",
+      "Подтвержденная доставка": "Доставка",
+      "Минимальная цена доставки": "Доставка: минимум",
+      "Максимальная цена доставки": "Доставка: максимум",
+      "Минимальная цена товара": "Товар: минимум",
+      "Максимальная цена товара": "Товар: максимум",
+      "Особенности поставщика": "Особенности",
+    };
+    field.append(el("span", "compare-label-full", label));
+    const short = el(
+      "span",
+      "compare-label-short",
+      shortLabels[label] || label,
+    );
+    short.setAttribute("aria-hidden", "true");
+    field.append(short);
     field.setAttribute("role", "rowheader");
+    field.setAttribute("aria-label", label);
     row.append(field);
     for (const s of selected) {
       const cell = el("div", "compare-cell");
       cell.setAttribute("role", "cell");
-      build(cell, s);
+      const preview = summary?.(s);
+      if (preview) {
+        const more = el("details", "compare-more");
+        const heading = el("summary");
+        heading.append(el("span", "compare-preview", preview));
+        more.append(heading);
+        const content = el("div");
+        build(content, s);
+        more.append(content);
+        cell.append(more);
+      } else build(cell, s);
       row.append(cell);
     }
+    const values = [...row.children].slice(1).map((cell) =>
+      JSON.stringify({
+        text: cell.textContent,
+        links: [...cell.querySelectorAll("a")].map((a) => a.href),
+      }),
+    );
+    row.dataset.equal = String(
+      label !== "Компания" &&
+        values.length > 1 &&
+        values.every((value) => value === values[0]),
+    );
     grid.append(row);
-    if (label === "Компания") return;
-    selected.forEach((s, i) => {
-      const section = el("section", "compare-mobile-field");
-      section.append(el("h4", "", label));
-      const value = el("div");
-      build(value, s);
-      value.classList.remove("company-cell");
-      value.removeAttribute("role");
-      section.append(value);
-      panels[i].append(section);
-    });
   };
   addRow("Компания", (cell, s) => {
     cell.classList.add("company-cell");
@@ -606,21 +611,41 @@ function renderComparison() {
     );
   });
   addRow("Город компании", (cell, s) => cell.append(el("span", "", s.city)));
-  addRow("Товары", (cell, s) =>
-    cell.append(el("span", "", s.products.join(", "))),
+  addRow(
+    "Минимальный заказ",
+    (cell, s) => {
+      cell.append(el("p", "", optional(s, "minimumOrder")));
+      if (s.minimumOrder?.sourceUrl)
+        cell.append(link("Источник", s.minimumOrder.sourceUrl));
+    },
+    (s) => (s.minimumOrder ? optional(s, "minimumOrder") : null),
   );
-  addRow("Подтвержденная доставка", (cell, s) => {
-    if (!s.delivery.length) cell.append(el("span", "", "Не найдено"));
-    for (const d of s.delivery) {
-      const p = el("p");
-      p.append(
-        el("b", "", d.region),
-        el("span", "", `. ${d.evidence} `),
-        link("Источник", d.sourceUrl),
-      );
-      cell.append(p);
-    }
-  });
+  addRow(
+    "Товары",
+    (cell, s) => cell.append(el("p", "", s.products.join(", "))),
+    (s) =>
+      s.products.slice(0, 3).join(", ") +
+      (s.products.length > 3 ? ` и еще ${s.products.length - 3}` : ""),
+  );
+  addRow(
+    "Подтвержденная доставка",
+    (cell, s) => {
+      if (!s.delivery.length) cell.append(el("span", "", "Не найдено"));
+      for (const d of s.delivery) {
+        const p = el("p");
+        p.append(
+          el("b", "", d.region),
+          el("span", "", `. ${d.evidence} `),
+          link("Источник", d.sourceUrl),
+        );
+        cell.append(p);
+      }
+    },
+    (s) =>
+      s.delivery.length
+        ? s.delivery.map((d) => d.region).join(", ")
+        : "Не подтверждена",
+  );
   addRow("Минимальная цена доставки", (cell, s) =>
     appendDeliveryCost(cell, s, "min"),
   );
@@ -628,7 +653,6 @@ function renderComparison() {
     appendDeliveryCost(cell, s, "max"),
   );
   for (const [label, key] of [
-    ["Минимальный заказ", "minimumOrder"],
     ["Цена конкретного товара", "price"],
     ["Документы", "documents"],
   ])
@@ -660,7 +684,11 @@ function renderComparison() {
       ),
     ),
   );
-  addRow("Особенности поставщика", (cell, s) => appendNuances(cell, s));
+  addRow(
+    "Особенности поставщика",
+    (cell, s) => appendNuances(cell, s),
+    () => "Условия и ограничения",
+  );
   addRow("Контакты", (cell, s) => {
     for (const c of s.contacts) {
       const p = el("p");
@@ -675,11 +703,42 @@ function renderComparison() {
   addRow("Проверено", (cell, s) =>
     cell.append(el("span", "", s.verifiedAt.split("-").reverse().join("."))),
   );
-  $("compare-content").append(grid, mobile);
-  if (restoreFocus) {
-    const target = matchMedia("(max-width: 900px)").matches ? mobile : grid;
-    target.querySelector("button")?.focus({ preventScroll: true });
-  }
+  $("compare-content").append(grid);
+  $("compare-differences").disabled = selected.length < 2;
+  if (selected.length < 2) $("compare-differences").checked = false;
+  $("compare-content").classList.toggle(
+    "only-differences",
+    $("compare-differences").checked,
+  );
+  $("compare-columns").replaceChildren();
+  selected.forEach((supplier, index) => {
+    const jump = button(
+      `${index + 1}. ${supplier.name}`,
+      "compare-column-button",
+      () => {
+        const cell = grid.querySelectorAll(".company-cell")[index];
+        const fieldWidth = grid
+          .querySelector(".field-name")
+          .getBoundingClientRect().width;
+        $("compare-content").scrollTo({
+          left:
+            cell.getBoundingClientRect().left -
+            grid.getBoundingClientRect().left -
+            fieldWidth,
+          behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "instant"
+            : "smooth",
+        });
+      },
+    );
+    jump.setAttribute("aria-label", `Показать столбец: ${supplier.name}`);
+    jump.title = supplier.name;
+    jump.setAttribute("aria-current", String(index === 0));
+    $("compare-columns").append(jump);
+  });
+  $("compare-content").scrollTo(scroll);
+  if (restoreFocus)
+    grid.querySelector(".company-cell button")?.focus({ preventScroll: true });
 }
 function reset() {
   filters = { query: "", category: "", region: "", savedOnly: false };
@@ -816,6 +875,35 @@ $("compare-open").addEventListener("click", () => {
   renderComparison();
   $("compare-dialog").showModal();
 });
+$("compare-differences").addEventListener("change", () => {
+  $("compare-content").classList.toggle(
+    "only-differences",
+    $("compare-differences").checked,
+  );
+});
+$("compare-content").addEventListener(
+  "scroll",
+  () => {
+    const frame = $("compare-content");
+    const cells = [...frame.querySelectorAll(".company-cell")];
+    const width =
+      frame.querySelector(".field-name")?.getBoundingClientRect().width || 0;
+    let current = 0;
+    cells.forEach((cell, index) => {
+      if (
+        cell.getBoundingClientRect().left <=
+        frame.getBoundingClientRect().left + width + 8
+      )
+        current = index;
+    });
+    $("compare-columns")
+      .querySelectorAll("button")
+      .forEach((button, index) =>
+        button.setAttribute("aria-current", String(index === current)),
+      );
+  },
+  { passive: true },
+);
 $("compare-clear").addEventListener("click", () => {
   store.state.compare = [];
   persist();
