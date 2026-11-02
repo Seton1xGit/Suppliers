@@ -48,7 +48,7 @@ docker exec plov-caddy caddy reload --config /etc/caddy/Caddyfile --adapter cadd
 curl --retry 12 --retry-delay 5 --retry-all-errors --max-time 15 --resolve suppliers.178-236-242-240.sslip.io:443:127.0.0.1 --fail --silent --show-error https://suppliers.178-236-242-240.sslip.io/data/catalog.json > "$base/live-catalog.json"
 python3 - "$base/live-catalog.json" <<'PY'
 import json,sys
-assert len(json.load(open(sys.argv[1])))>=75
+assert len(json.load(open(sys.argv[1])))>=100
 PY
 trap - EXIT
 echo "Deployment verified. Backup: $backup"

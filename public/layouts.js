@@ -100,6 +100,7 @@ export function supplierView(s, index, view, kit) {
       view.deliveryLabel,
     ),
   );
+  shipping.append(el("p", "delivery-cost", view.deliveryCost));
   const evidence = view.evidence;
   if (evidence) {
     shipping.append(
@@ -160,10 +161,7 @@ export function appendSupplierViews(container, list, start, design, build, el) {
   if (design === "03") {
     wrapper.tabIndex = 0;
     wrapper.setAttribute("role", "region");
-    wrapper.setAttribute(
-      "aria-label",
-      "Таблица поставщиков, прокручивается по горизонтали",
-    );
+    wrapper.setAttribute("aria-label", "Поставщики и условия заказа");
     const table = el("table", "procurement-table");
     const caption = el("caption", "sr-only", "Поставщики и условия заказа");
     table.append(caption);

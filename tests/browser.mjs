@@ -18,7 +18,7 @@ try {
     await page.goto(base);
     await page.waitForSelector(".card");
     await dismissTour(page);
-    assert.equal(await page.locator(".card").count(), 75);
+    assert.equal(await page.locator(".card").count(), 100);
     for (const region of ["Россия", ...Object.keys(regionalIds)]) {
       await page.locator("#region").selectOption(region);
       const ids = await page
@@ -56,7 +56,7 @@ try {
     await page.screenshot({ path: `test-results/${name}-v2.png` });
     await page.locator("#reset").click();
     await page.locator("[data-category=packaging]").click();
-    assert.equal(await page.locator(".card").count(), 12);
+    assert.equal(await page.locator(".card").count(), 19);
     await page.locator("#query").fill("стакан");
     assert((await page.locator(".card").count()) > 0);
     await page.locator("#region").selectOption("Екатеринбург");
@@ -70,7 +70,7 @@ try {
     await page.waitForSelector(".empty");
     assert.equal(await page.locator(".card").count(), 0);
     await page.locator("#reset").click();
-    assert.equal(await page.locator(".card").count(), 75);
+    assert.equal(await page.locator(".card").count(), 100);
     await page.locator("#query").fill("7 ВЕРСТ");
     assert.equal(await page.locator(".card").count(), 1);
     await page.locator("#reset").click();
@@ -128,17 +128,18 @@ try {
       await page.locator("#compare-content .company-cell").count(),
       4,
     );
-    await page.locator("#compare-content button").first().click();
+    await page.locator("#compare-content button:visible").first().click();
     assert.equal(
       await page.locator("#compare-content .company-cell").count(),
       3,
     );
     await page.screenshot({ path: `test-results/${name}-comparison-v2.png` });
     if (name === "mobile") {
-      await page.locator("#compare-content").focus();
-      await page.keyboard.press("ArrowRight");
-      await page.waitForFunction(
-        () => document.getElementById("compare-content").scrollLeft > 0,
+      assert(await page.locator(".compare-mobile").isVisible());
+      assert(
+        await page
+          .locator("#compare-content")
+          .evaluate((n) => n.scrollWidth <= n.clientWidth + 1),
       );
     }
     await page.keyboard.press("Escape");

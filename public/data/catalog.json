@@ -1312,7 +1312,65 @@
       "value": "Для Москвы, Московской области, Санкт-Петербурга и Ленинградской области: от 2000 руб. Самовывоз: от 2000 руб., партия от 1 коробки.",
       "sourceUrl": "https://eco-geovita.ru/dostavka",
       "evidence": "Условия минимального заказа опубликованы отдельно по способам получения."
-    }
+    },
+    "deliveryRates": [
+      {
+        "region": "Санкт-Петербург",
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "conditions": "Заказ от 10 000 ₽, адрес в пределах КАД.",
+        "sourceUrl": "https://eco-geovita.ru/dostavka",
+        "evidence": "Заказ от 10 000 ₽, адрес в пределах КАД.",
+        "verifiedAt": "2026-11-02"
+      },
+      {
+        "region": "Санкт-Петербург",
+        "min": 790,
+        "max": 790,
+        "currency": "RUB",
+        "conditions": "Платная доставка по городу; минимальный заказ 2000 ₽, партия от одной коробки.",
+        "sourceUrl": "https://eco-geovita.ru/dostavka",
+        "evidence": "Платная доставка по городу; минимальный заказ 2000 ₽, партия от одной коробки.",
+        "verifiedAt": "2026-11-02"
+      },
+      {
+        "region": "Москва",
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "conditions": "Заказ от 10 000 ₽, адрес в пределах МКАД.",
+        "sourceUrl": "https://eco-geovita.ru/dostavka",
+        "evidence": "Заказ от 10 000 ₽, адрес в пределах МКАД.",
+        "verifiedAt": "2026-11-02"
+      },
+      {
+        "region": "Москва",
+        "min": 790,
+        "max": null,
+        "currency": "RUB",
+        "conditions": "Платная доставка от 790 ₽; минимальный заказ 2000 ₽. Верхняя граница не указана.",
+        "sourceUrl": "https://eco-geovita.ru/dostavka",
+        "evidence": "Платная доставка от 790 ₽; минимальный заказ 2000 ₽. Верхняя граница не указана.",
+        "verifiedAt": "2026-11-02"
+      },
+      {
+        "region": "Московская область",
+        "min": 1200,
+        "max": 1200,
+        "currency": "RUB",
+        "conditions": "Адрес в пределах 20 км от МКАД; дальше стоимость рассчитывается отдельно.",
+        "sourceUrl": "https://eco-geovita.ru/dostavka",
+        "evidence": "Адрес в пределах 20 км от МКАД; дальше стоимость рассчитывается отдельно.",
+        "verifiedAt": "2026-11-02"
+      }
+    ],
+    "conditions": [
+      {
+        "text": "По Ленинградской области: 50 ₽ за км от КАД, итог рассчитывают по адресу. Разгрузка силами покупателя. Доставка до ТК бесплатна от 15 000 ₽, иначе 990 ₽; перевозка самой ТК оплачивается отдельно.",
+        "sourceUrl": "https://eco-geovita.ru/dostavka"
+      }
+    ]
   },
   {
     "id": "pelmeni-eco-nsk",
@@ -1562,7 +1620,25 @@
       "value": "Доставка по Новосибирску от 2000 руб.; самовывоз от 1000 руб.",
       "sourceUrl": "https://sibprod.info/delivery/",
       "evidence": "Пороги указаны в разделе доставки. Для населенных пунктов области опубликованы отдельные суммы и расписание."
-    }
+    },
+    "deliveryRates": [
+      {
+        "region": "Новосибирск",
+        "min": 305,
+        "max": 305,
+        "currency": "RUB",
+        "conditions": "Курьерская доставка при заказе от 2000 ₽. Самовывоз от 1000 ₽.",
+        "sourceUrl": "https://sibprod.info/delivery/",
+        "evidence": "Курьерская доставка при заказе от 2000 ₽. Самовывоз от 1000 ₽.",
+        "verifiedAt": "2026-11-02"
+      }
+    ],
+    "conditions": [
+      {
+        "text": "В другие регионы доставка оплачивается по тарифам транспортной компании; 305 ₽ относится только к Новосибирску.",
+        "sourceUrl": "https://sibprod.info/delivery/"
+      }
+    ]
   },
   {
     "id": "korrex-td",
@@ -2106,6 +2182,10 @@
       {
         "url": "https://ekorfish.com/contacts/",
         "label": "Центральный офис и контакты"
+      },
+      {
+        "url": "https://ekorfish.com/catalog/ryba-optom/",
+        "label": "Альтернативные условия в каталоге"
       }
     ],
     "verifiedAt": "2026-11-02",
@@ -2137,10 +2217,16 @@
       }
     ],
     "minimumOrder": {
-      "value": "Самовывоз от 3000 руб.; доставка от 5000 руб. Оптовая цена от 300 000 руб. при самовывозе.",
-      "sourceUrl": "https://ekorfish.com/delivery/",
-      "evidence": "Минимальные суммы и отдельные условия оптовой цены опубликованы на странице доставки."
-    }
+      "value": "Требует подтверждения: доставка от 10 000 ₽, самовывоз от 5000 ₽ на странице доставки.",
+      "evidence": "Условия страницы доставки расходятся с условиями в каталоге; окончательный порог нужно подтвердить у менеджера.",
+      "sourceUrl": "https://ekorfish.com/delivery/"
+    },
+    "conditions": [
+      {
+        "text": "На страницах поставщика разные пороги заказа и бесплатной доставки. Перед оплатой подтверди условия: страница доставки указывает заказ от 10 000 ₽ и бесплатную доставку от 15 000 ₽, каталог приводит другие суммы.",
+        "sourceUrl": "https://ekorfish.com/delivery/"
+      }
+    ]
   },
   {
     "id": "aqvatoriy-nsk",
@@ -2172,6 +2258,10 @@
       {
         "url": "https://www.aqvatoriy.ru/catalog-novosibirsk",
         "label": "Новосибирский каталог"
+      },
+      {
+        "url": "https://www.aqvatoriy.ru/catalog-novosibirsk/tovary-dlya-sushi/vasabi-porosok-premium-yakimal-1-kg-20-stkor-novosibirsk",
+        "label": "Цена в карточке товара"
       }
     ],
     "verifiedAt": "2026-11-02",
@@ -2180,6 +2270,24 @@
         "region": "Новосибирск",
         "sourceUrl": "https://www.aqvatoriy.ru/",
         "evidence": "Новосибирская версия сайта предлагает поставки HoReCa и доставку на дом. Адрес, сроки и условия согласовываются."
+      }
+    ],
+    "price": {
+      "value": "Нужно уточнить: карточка 410 ₽, список каталога 485 ₽",
+      "min": null,
+      "max": null,
+      "currency": "RUB",
+      "product": "Васаби порошок Premium Якимал",
+      "unit": "упаковка 1 кг",
+      "verifiedAt": "2026-11-02",
+      "conditions": "Карточка товара и список каталога показывают разные цены. Диапазон не подтвержден; запроси актуальный прайс.",
+      "sourceUrl": "https://www.aqvatoriy.ru/catalog-novosibirsk/tovary-dlya-sushi/vasabi-porosok-premium-yakimal-1-kg-20-stkor-novosibirsk",
+      "evidence": "В карточке цена 410 ₽; в списке этого же каталога 485 ₽."
+    },
+    "conditions": [
+      {
+        "text": "Для васаби 1 кг цены в карточке и списке различаются: 410 ₽ и 485 ₽. Подтверди текущую цену и оптовую фасовку.",
+        "sourceUrl": "https://www.aqvatoriy.ru/catalog-novosibirsk"
       }
     ]
   },
@@ -2220,6 +2328,10 @@
       {
         "url": "https://www.resfood.ru/delivery/",
         "label": "Доставка и самовывоз"
+      },
+      {
+        "url": "https://www.resfood.ru/how-to-buy/",
+        "label": "Особенности сотрудничества"
       }
     ],
     "verifiedAt": "2026-11-02",
@@ -2228,6 +2340,12 @@
         "region": "Москва",
         "sourceUrl": "https://www.resfood.ru/delivery/",
         "evidence": "Указана доставка до складов клиентов в Москве и до терминалов транспортных компаний. Межрегиональный маршрут нужно согласовать."
+      }
+    ],
+    "conditions": [
+      {
+        "text": "Прямые поставки предназначены для фудсервисных компаний, фабрик-кухонь и крупных сетей. Запрос отдельного ресторана передают региональному дистрибьютору.",
+        "sourceUrl": "https://www.resfood.ru/how-to-buy/"
       }
     ]
   },
@@ -2370,7 +2488,12 @@
         "sourceUrl": "https://www.globalfoods.ru/klientam/dostavka/",
         "evidence": "Указана доставка по всей России с ближайшего склада. Стоимость и минимальную сумму для конкретного города согласовывают с менеджером."
       }
-    ]
+    ],
+    "minimumOrder": {
+      "value": "При заказе на сайте: Москва от 15 000 ₽; до 30 км за МКАД от 20 000 ₽; остальные регионы от 15 000 ₽.",
+      "evidence": "Для конкретного города сумму и дату доставки подтверждает менеджер.",
+      "sourceUrl": "https://www.globalfoods.ru/klientam/dostavka/"
+    }
   },
   {
     "id": "anfish",
@@ -2419,6 +2542,12 @@
         "region": "Московская область",
         "sourceUrl": "https://anfish.ru/",
         "evidence": "Указана доставка по Москве и области рефрижераторным транспортом. Доставку в другие регионы согласовывают отдельно."
+      }
+    ],
+    "conditions": [
+      {
+        "text": "Компания работает только с юридическими лицами; разделку и объем партии согласовывают индивидуально.",
+        "sourceUrl": "https://anfish.ru/"
       }
     ]
   },
@@ -2795,6 +2924,10 @@
       {
         "url": "https://tastycoffee.ru/about",
         "label": "О компании"
+      },
+      {
+        "url": "https://tastycoffee.ru/faq?tab=delivery",
+        "label": "Особенности сотрудничества"
       }
     ],
     "verifiedAt": "2026-11-02",
@@ -2803,6 +2936,12 @@
         "region": "Россия",
         "sourceUrl": "https://tastycoffee.ru/",
         "evidence": "Указана ежедневная отправка по всей России частным и оптовым клиентам. Условия доставки партии нужно согласовать."
+      }
+    ],
+    "conditions": [
+      {
+        "text": "Доставку до города при заказе от 50 кг обычно оплачивает компания. Для удаленных регионов возможна доплата, расчет в корзине. Числовая верхняя граница не опубликована.",
+        "sourceUrl": "https://tastycoffee.ru/faq?tab=delivery"
       }
     ]
   },
@@ -3364,6 +3503,1182 @@
       {
         "url": "https://tdyarmarka.ru/",
         "label": "Каталог, контакты и работа с бизнесом"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "likhachevsky",
+    "name": "Лихачевский кондитерский комбинат",
+    "category": "finished",
+    "products": [
+      "Тесто слоеное дрожжевое",
+      "Тесто слоеное бездрожжевое",
+      "Тесто для круассанов",
+      "Замороженные круассаны",
+      "Печенье",
+      "Кексы",
+      "Пироги"
+    ],
+    "synonyms": [
+      "тесто",
+      "слойки",
+      "замороженная выпечка",
+      "лихачёвский",
+      "полуфабрикаты для выпечки"
+    ],
+    "city": "Новосибирск",
+    "website": "https://lkkombinat.ru/",
+    "contacts": [
+      {
+        "label": "+73832078844",
+        "url": "tel:+73832078844"
+      },
+      {
+        "label": "zam.dir@lihkeks.ru",
+        "url": "mailto:zam.dir@lihkeks.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://lkkombinat.ru/testo",
+        "label": "Тесто, выпечка, контакты и условия заказа"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [],
+    "minimumOrder": {
+      "value": "От 1 коробки, самовывоз",
+      "sourceUrl": "https://lkkombinat.ru/testo",
+      "evidence": "В карточках теста указан минимальный заказ в одну коробку и самовывоз. Фасовку нужно уточнить для выбранного изделия."
+    },
+    "price": {
+      "value": "От 99 ₽ за упаковку 0,5 кг",
+      "min": 99,
+      "max": null,
+      "currency": "RUB",
+      "product": "Тесто слоеное дрожжевое замороженное",
+      "unit": "упаковка 0,5 кг",
+      "verifiedAt": "2026-11-02",
+      "conditions": "Опубликована цена от 99 ₽ для упаковки 0,5 кг; коробка 28 упаковок. Самовывоз. Верхняя граница не указана.",
+      "sourceUrl": "https://lkkombinat.ru/testo",
+      "evidence": "На странице указаны цена от 99 ₽ и фасовка 0,5 кг."
+    },
+    "documents": {
+      "value": "Заявлены декларации соответствия и контроль HACCP",
+      "sourceUrl": "https://lkkombinat.ru/testo",
+      "evidence": "Производитель заявляет обязательную декларацию продукции. Копии и срок действия документов на выбранное изделие нужно запросить."
+    }
+  },
+  {
+    "id": "jambo",
+    "name": "Джамбо",
+    "category": "finished",
+    "products": [
+      "Слоеное тесто",
+      "Тесто для пиццы",
+      "Песочное тесто",
+      "Круассаны",
+      "Слойки",
+      "Эклеры",
+      "Пирожные",
+      "Тарты"
+    ],
+    "synonyms": [
+      "тесто",
+      "замороженная выпечка",
+      "кондитерские изделия",
+      "полуфабрикаты для выпечки"
+    ],
+    "city": "Новосибирск",
+    "website": "https://jambo-nsk.ru/",
+    "contacts": [
+      {
+        "label": "+79139120848",
+        "url": "tel:+79139120848"
+      },
+      {
+        "label": "info@jambo-nsk.ru",
+        "url": "mailto:info@jambo-nsk.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://jambo-nsk.ru/index.html",
+        "label": "Ассортимент для пекарен и HoReCa"
+      },
+      {
+        "url": "https://jambo-nsk.ru/testo.html",
+        "label": "Тесто"
+      },
+      {
+        "url": "https://jambo-nsk.ru/kontakty.html",
+        "label": "Контакты"
+      },
+      {
+        "url": "https://jambo-nsk.ru/partneram.html",
+        "label": "Самовывоз и согласование доставки"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [],
+    "conditions": [
+      {
+        "text": "Самовывоз со склада в Новосибирске либо доставка транспортной компанией по согласованию. Условия расстойки и выпекания зависят от изделия.",
+        "sourceUrl": "https://jambo-nsk.ru/partneram.html"
+      }
+    ]
+  },
+  {
+    "id": "frostmo",
+    "name": "Фростмо (Черемушки)",
+    "category": "finished",
+    "products": [
+      "Слоеное тесто",
+      "Круассаны",
+      "Замороженная выпечка",
+      "Хлеб",
+      "Тортильи",
+      "Десерты",
+      "Основы для сэндвичей"
+    ],
+    "synonyms": [
+      "тесто",
+      "черёмушки",
+      "фростмо",
+      "слойки",
+      "полуфабрикаты для выпечки"
+    ],
+    "city": "Москва",
+    "website": "https://www.frostmo.ru/",
+    "contacts": [
+      {
+        "label": "+74957098710",
+        "url": "tel:+74957098710"
+      },
+      {
+        "label": "info@frostmo.ru",
+        "url": "mailto:info@frostmo.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.frostmo.ru/",
+        "label": "Ассортимент"
+      },
+      {
+        "url": "https://www.frostmo.ru/testo",
+        "label": "Замороженное тесто"
+      },
+      {
+        "url": "https://www.frostmo.ru/contacts",
+        "label": "Контакты"
+      },
+      {
+        "url": "https://www.frostmo.ru/delivery",
+        "label": "География поставок"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://www.frostmo.ru/delivery",
+        "evidence": "Указано покрытие всех регионов России через систему дистрибуции. Схему поставки, дистрибьютора и температурные условия согласовывают при заказе."
+      }
+    ]
+  },
+  {
+    "id": "cake-me",
+    "name": "Cake Me",
+    "category": "finished",
+    "products": ["Замороженные десерты", "Десерты для HoReCa", "Кофе в зернах"],
+    "synonyms": [
+      "кондитерские изделия",
+      "десерты оптом",
+      "кейк ми",
+      "сладости"
+    ],
+    "city": "Новосибирск",
+    "website": "https://cake-me.ru/",
+    "contacts": [
+      {
+        "label": "+79830918424",
+        "url": "tel:+79830918424"
+      },
+      {
+        "label": "sd@ideal-cup.ru",
+        "url": "mailto:sd@ideal-cup.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://cake-me.ru/",
+        "label": "Десерты, контакты и доставка"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Новосибирск",
+        "sourceUrl": "https://cake-me.ru/",
+        "evidence": "Указана бесплатная доставка по Новосибирску. Продукция поставляется в замороженном и дефростированном виде; условия заказа согласовываются."
+      }
+    ],
+    "deliveryRates": [
+      {
+        "region": "Новосибирск",
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "conditions": "Бесплатная доставка по Новосибирску; минимальный заказ 4000 ₽.",
+        "sourceUrl": "https://cake-me.ru/",
+        "evidence": "Бесплатная доставка по Новосибирску; минимальный заказ 4000 ₽.",
+        "verifiedAt": "2026-11-02"
+      }
+    ],
+    "minimumOrder": {
+      "value": "От 4000 ₽",
+      "evidence": "На сайте указан порог заказа для десертов.",
+      "sourceUrl": "https://cake-me.ru/"
+    }
+  },
+  {
+    "id": "lesaffre",
+    "name": "САФ-НЕВА (Lesaffre)",
+    "category": "ingredients",
+    "products": [
+      "Сухие хлебопекарные дрожжи",
+      "Прессованные хлебопекарные дрожжи",
+      "Закваски",
+      "Стартовые культуры",
+      "Улучшители для хлеба",
+      "Заварные пасты для хлебобулочных изделий"
+    ],
+    "synonyms": [
+      "дрожжи",
+      "хлебопечение",
+      "ингредиенты для выпечки",
+      "саф момент",
+      "лесафр"
+    ],
+    "city": "Санкт-Петербург",
+    "website": "https://lesaffre.ru/",
+    "contacts": [
+      {
+        "label": "+78126678570",
+        "url": "tel:+78126678570"
+      },
+      {
+        "label": "market.ru@lesaffre.com",
+        "url": "mailto:market.ru@lesaffre.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://lesaffre.ru/",
+        "label": "Продукты для хлебопечения"
+      },
+      {
+        "url": "https://lesaffre.ru/kontaktyi/",
+        "label": "Контакты и региональные представители"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [],
+    "conditions": [
+      {
+        "text": "Продукцию продают через региональных представителей; они также консультируют по технологии хлебопечения.",
+        "sourceUrl": "https://lesaffre.ru/kontaktyi/"
+      }
+    ]
+  },
+  {
+    "id": "ligales",
+    "name": "ЛигаЛес",
+    "category": "ingredients",
+    "products": [
+      "Замороженные ягоды",
+      "Грибы",
+      "Фрукты",
+      "Овощи",
+      "Орехи",
+      "Сухофрукты",
+      "Мед",
+      "Крупы"
+    ],
+    "synonyms": ["дикоросы", "лига лес", "семечки", "зернобобовые"],
+    "city": "Екатеринбург",
+    "website": "https://ligales.ru/",
+    "contacts": [
+      {
+        "label": "+73432191200",
+        "url": "tel:+73432191200"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://ligales.ru/",
+        "label": "Продукция, адрес и поставки"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Екатеринбург",
+        "sourceUrl": "https://ligales.ru/",
+        "evidence": "Указаны поставки в рестораны и пищевые производства Екатеринбурга и Свердловской области. Партии от 5 кг, ассортимент и график согласовываются."
+      },
+      {
+        "region": "Свердловская область",
+        "sourceUrl": "https://ligales.ru/",
+        "evidence": "Указаны поставки в рестораны и пищевые производства Екатеринбурга и Свердловской области. Партии от 5 кг, ассортимент и график согласовываются."
+      }
+    ],
+    "minimumOrder": {
+      "value": "От 5 кг",
+      "sourceUrl": "https://ligales.ru/",
+      "evidence": "Компания указывает поставки в рестораны и производства от 5 кг. Для конкретного продукта уточни фасовку."
+    }
+  },
+  {
+    "id": "ingred-pro",
+    "name": "Ingred PRO",
+    "category": "ingredients",
+    "products": [
+      "Свежеобжаренный кофе",
+      "Чайные купажи",
+      "Сиропы",
+      "Концентраты для напитков"
+    ],
+    "synonyms": ["барные ингредиенты", "ричеза", "richeza", "ингред про"],
+    "city": "Екатеринбург",
+    "website": "https://ingredpro.ru/",
+    "contacts": [
+      {
+        "label": "+79995822615",
+        "url": "tel:+79995822615"
+      },
+      {
+        "label": "sales@ingredpro.ru",
+        "url": "mailto:sales@ingredpro.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://ingredpro.ru/",
+        "label": "Ассортимент и контакты в Екатеринбурге"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "ingresso",
+    "name": "Ingresso",
+    "category": "ingredients",
+    "products": [
+      "Кофе в зернах",
+      "Кофе для эспрессо",
+      "Кофе для фильтра",
+      "Кофе без кофеина",
+      "Дрип-кофе",
+      "Чай",
+      "Шоколад",
+      "Сиропы"
+    ],
+    "synonyms": ["ингрессо", "кофе для кофеен", "свежеобжаренный кофе"],
+    "city": "Екатеринбург",
+    "website": "https://ingresso.coffee/",
+    "contacts": [
+      {
+        "label": "+79655254551",
+        "url": "tel:+79655254551"
+      },
+      {
+        "label": "horeca@ingresso.coffee",
+        "url": "mailto:horeca@ingresso.coffee"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://ingresso.coffee/kontakty/",
+        "label": "Адрес и оптовый отдел"
+      },
+      {
+        "url": "https://ingresso.coffee/dostavka-i-oplata/",
+        "label": "Доставка и оплата"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Екатеринбург",
+        "sourceUrl": "https://ingresso.coffee/dostavka-i-oplata/",
+        "evidence": "Указаны курьерская доставка по Екатеринбургу и отправка по России через СДЭК и 5POST. Стоимость зависит от способа получения и суммы заказа."
+      },
+      {
+        "region": "Россия",
+        "sourceUrl": "https://ingresso.coffee/dostavka-i-oplata/",
+        "evidence": "Указаны курьерская доставка по Екатеринбургу и отправка по России через СДЭК и 5POST. Стоимость зависит от способа получения и суммы заказа."
+      }
+    ],
+    "deliveryRates": [
+      {
+        "region": "Екатеринбург",
+        "min": 500,
+        "max": 500,
+        "currency": "RUB",
+        "conditions": "Собственная курьерская доставка. Бесплатный вариант от 3000 ₽ указан отдельно; для СДЭК и 5POST другие пороги.",
+        "sourceUrl": "https://ingresso.coffee/dostavka-i-oplata/",
+        "evidence": "Собственная курьерская доставка. Бесплатный вариант от 3000 ₽ указан отдельно; для СДЭК и 5POST другие пороги.",
+        "verifiedAt": "2026-11-02"
+      },
+      {
+        "region": "Екатеринбург",
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "conditions": "Собственный курьер при заказе от 3000 ₽. В пункты СДЭК и 5POST бесплатно от 1500 ₽, курьером СДЭК от 2500 ₽.",
+        "sourceUrl": "https://ingresso.coffee/dostavka-i-oplata/",
+        "evidence": "Собственный курьер при заказе от 3000 ₽. В пункты СДЭК и 5POST бесплатно от 1500 ₽, курьером СДЭК от 2500 ₽.",
+        "verifiedAt": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "ovb4",
+    "name": "4 Овощебаза",
+    "category": "ingredients",
+    "products": [
+      "Овощи",
+      "Фрукты",
+      "Томаты",
+      "Огурцы",
+      "Картофель",
+      "Бананы",
+      "Зелень",
+      "Грибы",
+      "Орехи",
+      "Сухофрукты"
+    ],
+    "synonyms": ["овощебаза", "свежие овощи", "помидоры", "свежие фрукты"],
+    "city": "Екатеринбург",
+    "website": "https://ovb4.ru/",
+    "contacts": [
+      {
+        "label": "+73433524397",
+        "url": "tel:+73433524397"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://ovb4.ru/",
+        "label": "Ассортимент, склад и доставка"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Екатеринбург",
+        "sourceUrl": "https://ovb4.ru/",
+        "evidence": "Указана доставка по Екатеринбургу и всей Свердловской области. Стоимость зависит от района и объема, доступен самовывоз со склада."
+      },
+      {
+        "region": "Свердловская область",
+        "sourceUrl": "https://ovb4.ru/",
+        "evidence": "Указана доставка по Екатеринбургу и всей Свердловской области. Стоимость зависит от района и объема, доступен самовывоз со склада."
+      }
+    ],
+    "minimumOrder": {
+      "value": "От одной коробки",
+      "sourceUrl": "https://ovb4.ru/",
+      "evidence": "На сайте описаны отгрузки от коробки до фуры; вес и фасовка зависят от товара."
+    },
+    "documents": {
+      "value": "Заявлен пакет документов для бизнеса, работа с НДС",
+      "sourceUrl": "https://ovb4.ru/",
+      "evidence": "Поставщик заявляет пакет документов. Наличие нужной декларации и срок ее действия нужно подтвердить для конкретной позиции."
+    }
+  },
+  {
+    "id": "equator-ekb",
+    "name": "Экватор",
+    "category": "ingredients",
+    "products": [
+      "Овощи",
+      "Фрукты",
+      "Грибы",
+      "Зелень",
+      "Замороженные овощи",
+      "Замороженные ягоды",
+      "Орехи",
+      "Сухофрукты"
+    ],
+    "synonyms": ["экватор", "свежие овощи", "свежие фрукты", "овощи в вакууме"],
+    "city": "Екатеринбург",
+    "website": "https://www.ovosfrukt.ru/",
+    "contacts": [
+      {
+        "label": "+79221889157",
+        "url": "tel:+79221889157"
+      },
+      {
+        "label": "torg196e@gmail.com",
+        "url": "mailto:torg196e@gmail.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.ovosfrukt.ru/index.html",
+        "label": "Ассортимент, адрес и условия доставки"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Екатеринбург",
+        "sourceUrl": "https://www.ovosfrukt.ru/index.html",
+        "evidence": "Указана бесплатная доставка по Екатеринбургу от 3000 ₽. Работа по договору и ЭДО."
+      }
+    ],
+    "deliveryRates": [
+      {
+        "region": "Екатеринбург",
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "conditions": "При заказе от 3000 ₽.",
+        "sourceUrl": "https://www.ovosfrukt.ru/index.html",
+        "evidence": "При заказе от 3000 ₽.",
+        "verifiedAt": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "prod66",
+    "name": "Обилие (Prod66)",
+    "category": "ingredients",
+    "products": [
+      "Рыба",
+      "Морепродукты",
+      "Дорадо",
+      "Сибас",
+      "Форель",
+      "Креветки",
+      "Говядина",
+      "Свинина",
+      "Курица",
+      "Индейка"
+    ],
+    "synonyms": ["прод66", "обилие", "свежемороженая рыба", "мясо птицы"],
+    "city": "Екатеринбург",
+    "website": "https://prod66.ru/",
+    "contacts": [
+      {
+        "label": "+79655206555",
+        "url": "tel:+79655206555"
+      },
+      {
+        "label": "Pservice21@mail.ru",
+        "url": "mailto:Pservice21@mail.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://prod66.ru/kontakty",
+        "label": "Контакты и каталог поставщика"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "innda",
+    "name": "ИННДА ГРУПП",
+    "category": "ingredients",
+    "products": [
+      "Фрукты",
+      "Овощи",
+      "Бананы",
+      "Яблоки",
+      "Груши",
+      "Авокадо",
+      "Томаты",
+      "Картофель",
+      "Лук",
+      "Имбирь"
+    ],
+    "synonyms": ["иннда", "овощная база", "фрукты оптом", "помидоры"],
+    "city": "Екатеринбург",
+    "website": "https://innda.ru/",
+    "contacts": [
+      {
+        "label": "Запрос на сайте",
+        "url": "https://innda.ru/"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://innda.ru/",
+        "label": "Ассортимент и склад в Екатеринбурге"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "sdobny-dom",
+    "name": "Сдобный дом",
+    "category": "finished",
+    "products": [
+      "Замороженный хлеб",
+      "Багеты",
+      "Слоеные изделия",
+      "Булочки для сэндвичей",
+      "Пироги",
+      "Пирожки",
+      "Полуфабрикаты для пиццы",
+      "Сырники",
+      "Чизкейки"
+    ],
+    "synonyms": ["выпечка", "слойки", "пекарня", "замороженные полуфабрикаты"],
+    "city": "Екатеринбург",
+    "website": "https://ekathleb.ru/",
+    "contacts": [
+      {
+        "label": "+73433834905",
+        "url": "tel:+73433834905"
+      },
+      {
+        "label": "zakaz@ekathleb.ru",
+        "url": "mailto:zakaz@ekathleb.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://ekathleb.ru/",
+        "label": "Продукция производителя"
+      },
+      {
+        "url": "https://ekathleb.ru/contacts/",
+        "label": "Екатеринбургский офис"
+      },
+      {
+        "url": "https://ekathleb.ru/delivery/",
+        "label": "Доставка замороженной продукции"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Екатеринбург",
+        "sourceUrl": "https://ekathleb.ru/delivery/",
+        "evidence": "Доставка по Екатеринбургу с понедельника по субботу рефрижераторными машинами при температуре -18 °C. Маршрут и цену уточняют при заказе."
+      }
+    ]
+  },
+  {
+    "id": "vkusnye-traditsii",
+    "name": "Вкусные традиции",
+    "category": "finished",
+    "products": [
+      "Тесто",
+      "Замороженная выпечка",
+      "Круассаны",
+      "Слойки",
+      "Пельмени",
+      "Вареники",
+      "Чебуреки",
+      "Хлеб",
+      "Торты"
+    ],
+    "synonyms": ["вкусные традиции", "экспоопт", "полуфабрикаты для выпечки"],
+    "city": "Екатеринбург",
+    "website": "https://www.expoopt.ru/",
+    "contacts": [
+      {
+        "label": "+79826569489",
+        "url": "tel:+79826569489"
+      },
+      {
+        "label": "opt@vktrad.ru",
+        "url": "mailto:opt@vktrad.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.expoopt.ru/",
+        "label": "Каталог, контакты и география поставок"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://www.expoopt.ru/",
+        "evidence": "Замороженные полуфабрикаты поставляются по России; готовая продукция по Свердловской области. Температурный режим и условия конкретной партии согласовываются."
+      },
+      {
+        "region": "Свердловская область",
+        "sourceUrl": "https://www.expoopt.ru/",
+        "evidence": "Замороженные полуфабрикаты поставляются по России; готовая продукция по Свердловской области. Температурный режим и условия конкретной партии согласовываются."
+      }
+    ]
+  },
+  {
+    "id": "smak",
+    "name": "СМАК",
+    "category": "finished",
+    "products": ["Хлеб", "Батоны", "Сдоба", "Булочки"],
+    "synonyms": ["смак", "хлебобулочные изделия", "хлебокомбинат"],
+    "city": "Екатеринбург",
+    "website": "https://www.smakhleb.ru/",
+    "contacts": [
+      {
+        "label": "+73433700910",
+        "url": "tel:+73433700910"
+      },
+      {
+        "label": "zakaz@smakhleb.ru",
+        "url": "mailto:zakaz@smakhleb.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.smakhleb.ru/predpriyatie",
+        "label": "Продукция и география"
+      },
+      {
+        "url": "https://www.smakhleb.ru/kontakty",
+        "label": "Прием заказов и адрес"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Екатеринбург",
+        "sourceUrl": "https://www.smakhleb.ru/predpriyatie",
+        "evidence": "На странице предприятия указаны поставки хлеба и булочек по Екатеринбургу и Свердловской области. Ассортимент и график согласовываются службой продаж."
+      },
+      {
+        "region": "Свердловская область",
+        "sourceUrl": "https://www.smakhleb.ru/predpriyatie",
+        "evidence": "На странице предприятия указаны поставки хлеба и булочек по Екатеринбургу и Свердловской области. Ассортимент и график согласовываются службой продаж."
+      }
+    ]
+  },
+  {
+    "id": "nine-islands",
+    "name": "9 Островов",
+    "category": "finished",
+    "products": [
+      "Торты",
+      "Чизкейки",
+      "Тарты",
+      "Муссовые торты",
+      "Десерты для сладкого стола"
+    ],
+    "synonyms": ["девять островов", "кондитерские изделия", "торты на заказ"],
+    "city": "Екатеринбург",
+    "website": "https://www.9ostrovov.ru/",
+    "contacts": [
+      {
+        "label": "+73432876307",
+        "url": "tel:+73432876307"
+      },
+      {
+        "label": "zakaz@9ostrovov.ru",
+        "url": "mailto:zakaz@9ostrovov.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.9ostrovov.ru/about/kontakty.php",
+        "label": "Ассортимент, производство и прием заказов"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "grossfood-ekb",
+    "name": "Гросс Фуд (Екатеринбург)",
+    "category": "finished",
+    "products": [
+      "Пельмени",
+      "Вареники",
+      "Котлеты",
+      "Наггетсы",
+      "Блинчики",
+      "Сырники",
+      "Сосиски",
+      "Изделия из теста"
+    ],
+    "synonyms": ["гросс фуд", "замороженные полуфабрикаты", "готовые блюда"],
+    "city": "Екатеринбург",
+    "website": "https://ekat.grossfood.ru/",
+    "contacts": [
+      {
+        "label": "+79126422205",
+        "url": "tel:+79126422205"
+      },
+      {
+        "label": "n.muzychenko@grossfood.ru",
+        "url": "mailto:n.muzychenko@grossfood.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://ekat.grossfood.ru/catalog/zamorozhennye-polufabrikaty/",
+        "label": "Ассортимент филиала"
+      },
+      {
+        "url": "https://ekat.grossfood.ru/contacts/",
+        "label": "Офис и склад в Екатеринбурге"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Екатеринбург",
+        "sourceUrl": "https://ekat.grossfood.ru/catalog/zamorozhennye-polufabrikaty/",
+        "evidence": "Указаны поставки замороженных полуфабрикатов по Екатеринбургу и Свердловской области. Цены и ассортимент зависят от филиала."
+      },
+      {
+        "region": "Свердловская область",
+        "sourceUrl": "https://ekat.grossfood.ru/catalog/zamorozhennye-polufabrikaty/",
+        "evidence": "Указаны поставки замороженных полуфабрикатов по Екатеринбургу и Свердловской области. Цены и ассортимент зависят от филиала."
+      }
+    ]
+  },
+  {
+    "id": "pelmen-cafe",
+    "name": "Pelmen Cafe",
+    "category": "finished",
+    "products": ["Пельмени", "Вареники", "Полуфабрикаты ручной лепки"],
+    "synonyms": ["пельмен кафе", "пельменная", "замороженные полуфабрикаты"],
+    "city": "Екатеринбург",
+    "website": "https://pelmenbar.ru/",
+    "contacts": [
+      {
+        "label": "+79058087855",
+        "url": "tel:+79058087855"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://pelmenbar.ru/",
+        "label": "Собственное производство, продажа и контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Екатеринбург",
+        "sourceUrl": "https://pelmenbar.ru/",
+        "evidence": "На сайте указана доставка в пределах Екатеринбурга через Яндекс Еду. Доступность замороженной продукции и объем партии нужно уточнить отдельно."
+      }
+    ]
+  },
+  {
+    "id": "foodface",
+    "name": "FoodFace",
+    "category": "packaging",
+    "products": [
+      "Бумажные стаканы",
+      "Бумажные тарелки",
+      "Упаковка WOK",
+      "Коробки для роллов",
+      "Коробки для гамбургеров",
+      "Упаковка для мороженого"
+    ],
+    "synonyms": [
+      "фудфейс",
+      "упаковка для суши",
+      "одноразовая посуда",
+      "пищевая упаковка"
+    ],
+    "city": "Екатеринбург",
+    "website": "https://foodface.ru/",
+    "contacts": [
+      {
+        "label": "+73433634505",
+        "url": "tel:+73433634505"
+      },
+      {
+        "label": "foodface.ru@gmail.com",
+        "url": "mailto:foodface.ru@gmail.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://foodface.ru/",
+        "label": "Производство, ассортимент и адрес"
+      },
+      {
+        "url": "https://foodface.ru/pay-shipping",
+        "label": "Оплата и доставка"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "rm-pack",
+    "name": "Расходные материалы-Урал",
+    "category": "packaging",
+    "products": [
+      "Пищевая упаковка",
+      "Одноразовая посуда",
+      "Экоупаковка",
+      "Упаковка для гамбургеров",
+      "Упаковка WOK",
+      "Пищевая фольга"
+    ],
+    "synonyms": ["рм пак", "rm pack", "упаковка для ресторанов"],
+    "city": "Екатеринбург",
+    "website": "https://rm-pack.ru/",
+    "contacts": [
+      {
+        "label": "+73433840708",
+        "url": "tel:+73433840708"
+      },
+      {
+        "label": "info@rm-pack.ru",
+        "url": "mailto:info@rm-pack.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://rm-pack.ru/",
+        "label": "Ассортимент и контакты"
+      },
+      {
+        "url": "https://rm-pack.ru/help/delivery/",
+        "label": "Условия доставки"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Екатеринбург",
+        "sourceUrl": "https://rm-pack.ru/help/delivery/",
+        "evidence": "Доставка по Екатеринбургу бесплатна при заказе от 5000 ₽ и осуществляется по графику поставок."
+      }
+    ],
+    "deliveryRates": [
+      {
+        "region": "Екатеринбург",
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "conditions": "При заказе от 5000 ₽, по графику поставки.",
+        "sourceUrl": "https://rm-pack.ru/help/delivery/",
+        "evidence": "При заказе от 5000 ₽, по графику поставки.",
+        "verifiedAt": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "tu96",
+    "name": "Территория упаковки 96",
+    "category": "packaging",
+    "products": ["Одноразовая посуда", "Экоупаковка", "Упаковочные материалы"],
+    "synonyms": ["территория упаковки", "ту96", "посуда для общепита"],
+    "city": "Екатеринбург",
+    "website": "https://tu96.ru/",
+    "contacts": [
+      {
+        "label": "+79530013186",
+        "url": "tel:+79530013186"
+      },
+      {
+        "label": "vseupak@list.ru",
+        "url": "mailto:vseupak@list.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://tu96.ru/",
+        "label": "Ассортимент и адрес на Студенческой"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "plastproduct",
+    "name": "Пластпродукт",
+    "category": "packaging",
+    "products": [
+      "Бутылки ПЭТ",
+      "Полимерные крышки",
+      "Полимерные ручки для бутылок"
+    ],
+    "synonyms": ["пэт тара", "пластиковые бутылки", "пластпродукт"],
+    "city": "Екатеринбург",
+    "website": "https://www.plastproduct-ekb.ru/",
+    "contacts": [
+      {
+        "label": "+79220200042",
+        "url": "tel:+79220200042"
+      },
+      {
+        "label": "plastproduct-ekb@mail.ru",
+        "url": "mailto:plastproduct-ekb@mail.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.plastproduct-ekb.ru/",
+        "label": "Продукция и варианты получения"
+      },
+      {
+        "url": "https://www.plastproduct-ekb.ru/contacts",
+        "label": "Производство и офис"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Екатеринбург",
+        "sourceUrl": "https://www.plastproduct-ekb.ru/",
+        "evidence": "В форме заказа доступна доставка по Екатеринбургу. Итоговую сумму менеджер рассчитывает после проверки заказа."
+      }
+    ]
+  },
+  {
+    "id": "ural-upakovka",
+    "name": "Урал-упаковка-ЕКБ",
+    "category": "packaging",
+    "products": [
+      "Стрейч-пленка",
+      "Картонные коробки",
+      "Полиэтиленовые пакеты",
+      "Полипропиленовые мешки",
+      "Гофрорулоны",
+      "Термоэтикетки"
+    ],
+    "synonyms": [
+      "упаковочные материалы",
+      "транспортная упаковка",
+      "урал упаковка екб"
+    ],
+    "city": "Екатеринбург",
+    "website": "https://xn-----6kcbahe0a5bbdd6bll1ce.xn--p1ai/",
+    "contacts": [
+      {
+        "label": "+73432176350",
+        "url": "tel:+73432176350"
+      },
+      {
+        "label": "2176389@mail.ru",
+        "url": "mailto:2176389@mail.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://xn-----6kcbahe0a5bbdd6bll1ce.xn--p1ai/",
+        "label": "Ассортимент и адрес"
+      },
+      {
+        "url": "https://xn-----6kcbahe0a5bbdd6bll1ce.xn--p1ai/dostavka",
+        "label": "Пороги доставки и самовывоз"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Екатеринбург",
+        "sourceUrl": "https://xn-----6kcbahe0a5bbdd6bll1ce.xn--p1ai/dostavka",
+        "evidence": "По Екатеринбургу заказы от 5000 ₽ доставляются бесплатно. Меньшие заказы выдаются самовывозом."
+      }
+    ],
+    "deliveryRates": [
+      {
+        "region": "Екатеринбург",
+        "min": 0,
+        "max": 0,
+        "currency": "RUB",
+        "conditions": "При заказе от 5000 ₽; меньшие заказы выдаются самовывозом.",
+        "sourceUrl": "https://xn-----6kcbahe0a5bbdd6bll1ce.xn--p1ai/dostavka",
+        "evidence": "При заказе от 5000 ₽; меньшие заказы выдаются самовывозом.",
+        "verifiedAt": "2026-11-02"
+      }
+    ]
+  },
+  {
+    "id": "upakovka-ural",
+    "name": "Упаковка Урал",
+    "category": "packaging",
+    "products": [
+      "Картон и бумага",
+      "Пластиковая тара",
+      "Пакеты",
+      "Пленки ПЭТ",
+      "Пленки ПВД",
+      "Стрейч-пленка"
+    ],
+    "synonyms": [
+      "упаковка урал",
+      "транспортная упаковка",
+      "упаковочные материалы"
+    ],
+    "city": "Екатеринбург",
+    "website": "https://xn--80aaag3bbjtgqzh.xn--p1ai/",
+    "contacts": [
+      {
+        "label": "+79965993987",
+        "url": "tel:+79965993987"
+      },
+      {
+        "label": "upakovkaural@yandex.ru",
+        "url": "mailto:upakovkaural@yandex.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://xn--80aaag3bbjtgqzh.xn--p1ai/",
+        "label": "Ассортимент и склад в Екатеринбурге"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "leopak",
+    "name": "Торговый Дом Леопак",
+    "category": "packaging",
+    "products": [
+      "Одноразовая посуда",
+      "Упаковочные материалы",
+      "Пакеты с замком",
+      "Емкости для сыпучих продуктов",
+      "Пищевая упаковка"
+    ],
+    "synonyms": ["леопак", "посуда для horeca", "пластиковая упаковка"],
+    "city": "Екатеринбург",
+    "website": "https://market.leopak.ru/",
+    "contacts": [
+      {
+        "label": "+73433441075",
+        "url": "tel:+73433441075"
+      },
+      {
+        "label": "Leopak@leopak.ru",
+        "url": "mailto:Leopak@leopak.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://market.leopak.ru/",
+        "label": "Каталог и склад"
+      },
+      {
+        "url": "https://market.leopak.ru/pages/articles-contacts",
+        "label": "Екатеринбургский офис и отдел HoReCa"
       }
     ],
     "verifiedAt": "2026-11-02",

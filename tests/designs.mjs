@@ -161,10 +161,11 @@ try {
         .first()
         .boundingBox();
       assert(action.x + action.width <= 390);
-      await page.locator(".table-scroll").first().focus();
-      await page.keyboard.press("ArrowRight");
-      await page.waitForFunction(
-        () => document.querySelector(".table-scroll").scrollLeft > 0,
+      assert(
+        await page
+          .locator(".procurement-table")
+          .first()
+          .evaluate((n) => n.scrollWidth <= n.clientWidth + 1),
       );
     }
     await page.locator(".details-button").first().focus();

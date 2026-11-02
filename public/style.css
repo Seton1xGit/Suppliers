@@ -1186,3 +1186,21 @@ textarea {
   font-weight: 500;
   color: var(--muted);
 }
+
+.delivery-cost {
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 8px 0;
+}
+.delivery-rate {
+  margin: 12px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.delivery-rate small {
+  display: block;
+  margin-top: 4px;
+}
+.price-bounds {
+  grid-column: 1 / -1;
+}

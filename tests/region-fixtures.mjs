@@ -1,6 +1,7 @@
 export const nationalIds = [
   "7-verst",
   "a-gross",
+  "vkusnye-traditsii",
   "garnec",
   "grandresurs",
   "dikiy-sbor",
@@ -17,7 +18,9 @@ export const nationalIds = [
   "farwater",
   "fishman",
   "flexaprint",
+  "frostmo",
   "global-foods",
+  "ingresso",
   "oshi-cosmos",
   "tasty-coffee",
 ];
@@ -51,8 +54,26 @@ export const regionalIds = {
     "lavka-konditera-nsk",
     "pelmeni-eco-nsk",
     "sibirskiy-produkt-nsk",
+    "cake-me",
   ],
-  Екатеринбург: ["packtochka", "tk-dip", "korrex-td", "food-fiction"],
+  Екатеринбург: [
+    "ovb4",
+    "vkusnye-traditsii",
+    "grossfood-ekb",
+    "ligales",
+    "packtochka",
+    "plastproduct",
+    "rm-pack",
+    "sdobny-dom",
+    "smak",
+    "tk-dip",
+    "korrex-td",
+    "ural-upakovka",
+    "equator-ekb",
+    "food-fiction",
+    "ingresso",
+    "pelmen-cafe",
+  ],
 };
 export function expectedIds(region) {
   const local = regionalIds[region] || [];

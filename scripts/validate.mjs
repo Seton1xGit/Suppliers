@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import assert from "node:assert/strict";
 export function validate(items) {
-  assert(items.length >= 75, "Нужно минимум 75 поставщиков");
+  assert(items.length >= 100, "Нужно минимум 100 поставщиков");
   const ids = new Set(),
     sites = new Set(),
     names = new Set();
@@ -55,6 +55,34 @@ export function validate(items) {
         url(s[k].sourceUrl);
         assert(sources.has(s[k].sourceUrl));
       }
+    const bounds = (value) => {
+      for (const key of ["min", "max"])
+        assert(
+          value[key] === null ||
+            (Number.isFinite(value[key]) && value[key] >= 0),
+          `${s.id}: ${key}`,
+        );
+      if (value.min !== null && value.max !== null)
+        assert(value.min <= value.max, `${s.id}: диапазон цен`);
+      assert(value.currency === "RUB");
+      assert(/^\d{4}-\d{2}-\d{2}$/.test(value.verifiedAt));
+    };
+    for (const rate of s.deliveryRates || []) {
+      bounds(rate);
+      assert(rate.region && rate.conditions && rate.evidence);
+      url(rate.sourceUrl);
+      assert(sources.has(rate.sourceUrl));
+      assert(
+        s.delivery.some((d) => d.region === rate.region),
+        `${s.id}: тариф вне подтвержденного покрытия`,
+      );
+    }
+    for (const note of s.conditions || []) {
+      assert(note.text);
+      url(note.sourceUrl);
+      assert(sources.has(note.sourceUrl));
+    }
+    if (s.price) bounds(s.price);
     if (s.price)
       for (const key of ["product", "unit", "verifiedAt", "conditions"])
         assert(s.price[key], `Цена: ${key}`);

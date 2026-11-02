@@ -1,0 +1,486 @@
+.compare-mobile {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  body[data-design] {
+    font-size: 15px;
+    padding-bottom: calc(120px + env(safe-area-inset-bottom));
+  }
+  body[data-design] .site-toolbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 12px;
+    padding: 4px 16px;
+  }
+  .site-toolbar nav {
+    gap: 16px;
+    min-width: 0;
+  }
+  body[data-design] .site-toolbar .nav-button,
+  body[data-design] #design-picker > summary {
+    font-size: 13px;
+    min-height: 44px;
+    padding: 10px 0;
+  }
+  body[data-design] #design-current {
+    font-size: 12px;
+    max-width: 130px;
+  }
+  .site-toolbar .toolbar-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+  }
+  body[data-design] .toolbar-actions button {
+    min-height: 44px;
+    font-size: 13px;
+  }
+  body[data-design] .design-option {
+    min-height: 48px;
+    font-size: 14px;
+  }
+  body[data-design] .design-panel {
+    top: 64px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-width: none;
+  }
+  body[data-design] .header {
+    padding: 16px;
+    gap: 12px;
+    min-height: auto;
+    flex-wrap: wrap;
+  }
+  .header > b,
+  .header > nav,
+  .header .brand-line,
+  .header .database-label,
+  .dark-status,
+  .technical-header-note,
+  .type-number,
+  .technical-strip,
+  .selection-panel,
+  .app-rail,
+  .app-memo {
+    display: none !important;
+  }
+  body[data-design] .header .open-compare {
+    margin-left: auto;
+    min-height: 44px;
+    font-size: 13px;
+  }
+  body[data-design] main {
+    padding: 20px 16px;
+    min-width: 0;
+  }
+  body[data-design] h1,
+  body[data-design] .page-title h1,
+  body[data-design] .type-heading h1,
+  body[data-design] .table-heading h1 {
+    font-size: 27px;
+    line-height: 1.2;
+    letter-spacing: -0.7px;
+  }
+  body[data-design] .page-title,
+  body[data-design] .dark-heading,
+  body[data-design] .type-heading {
+    margin-bottom: 20px;
+  }
+  body[data-design] .app-shell,
+  body[data-design] .app-body[data-design],
+  body[data-design] .app-workspace,
+  body[data-design] .registry-layout,
+  body[data-design] .technical-layout,
+  body[data-design] .dark-layout {
+    display: block;
+    width: auto;
+    margin-left: 0;
+  }
+  body[data-design] .app-body[data-design] .header {
+    margin-left: 0;
+  }
+  body[data-design] .app-workspace main {
+    padding: 20px 16px;
+  }
+  body[data-design] .app-filters {
+    padding: 12px 16px;
+    border-right: 0;
+  }
+  body[data-design] .registry-layout > aside,
+  body[data-design] .technical-layout > aside {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  body[data-design] .table-controls,
+  body[data-design] .dark-controls,
+  body[data-design] .type-filters,
+  body[data-design] .search-first-filters {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  body[data-design] .search-first {
+    padding: 0 0 20px;
+  }
+  body[data-design] .search {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0 0 14px;
+  }
+  body[data-design] .search label {
+    min-width: 0;
+    flex: 1;
+  }
+  body[data-design] .search input {
+    width: 100%;
+    min-width: 0;
+    font-size: 16px;
+    min-height: 48px;
+    padding: 12px;
+  }
+  body[data-design] .search-submit {
+    min-height: 48px;
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+  body[data-design] .region-control {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 7px;
+    margin: 0;
+    font-size: 13px;
+  }
+  body[data-design] .region-control select {
+    width: 100%;
+    max-width: 100%;
+    min-height: 48px;
+    font-size: 16px;
+    padding: 10px;
+  }
+  body[data-design] .category-control {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    width: 100%;
+    padding: 4px 0 8px;
+    margin: 8px 0;
+  }
+  body[data-design] .category-control button {
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 44px;
+    font-size: 13px;
+    padding: 10px 12px;
+    gap: 6px;
+  }
+  body[data-design] .category-control [data-count] {
+    font-size: 12px;
+  }
+  body[data-design] .result-summary,
+  body[data-design] .filter-note,
+  body[data-design] .group-description {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  body[data-design] .section-title {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  body[data-design] .section-title h2 {
+    font-size: 20px;
+  }
+  body[data-design] [data-count] {
+    font-size: 13px;
+  }
+  body[data-design] .registry-columns {
+    display: none;
+  }
+  body[data-design] .result-items {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  body[data-design] .supplier {
+    display: block;
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+    margin: 0 0 14px;
+  }
+  body[data-design] .supplier .item-index {
+    display: none;
+  }
+  body[data-design] .supplier .company-name h2 {
+    font-size: 20px;
+    line-height: 1.35;
+    margin: 0 0 6px;
+  }
+  body[data-design] .company-name-button {
+    min-height: 44px;
+  }
+  body[data-design] .supplier .category-label,
+  body[data-design] .supplier .city,
+  body[data-design] .supplier .minimum {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  body[data-design] .supplier .products {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 12px 0;
+  }
+  body[data-design] .supplier .shipping {
+    margin: 12px 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+  body[data-design] .supplier .shipping-label {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  body[data-design] .supplier .delivery-cost {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  body[data-design] .supplier .shipping-proof {
+    display: none;
+  }
+  body[data-design] .supplier .shipping .source {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    font-size: 13px;
+  }
+  body[data-design] .supplier .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    align-items: stretch;
+    gap: 8px;
+    margin: 12px 0 0;
+    padding: 0;
+  }
+  body[data-design] .supplier .actions > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    width: auto;
+    margin: 0;
+    padding: 10px 8px;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+  body[data-design] .supplier .actions .contact {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    font-size: 15px;
+  }
+  body[data-design] .supplier .actions .details-button {
+    grid-column: 1 / -1;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 5px;
+  }
+  body[data-design] .supplier .actions .source {
+    grid-column: 1 / -1;
+  }
+  body[data-design] .table-scroll {
+    overflow: visible;
+  }
+  body[data-design] .table-scroll:before {
+    display: none;
+  }
+  body[data-design] .procurement-table {
+    display: block;
+    min-width: 0;
+    width: 100%;
+    border: 0;
+  }
+  body[data-design] .procurement-table thead {
+    display: none;
+  }
+  body[data-design] .procurement-table tbody[data-design] {
+    display: block;
+  }
+  body[data-design] .procurement-table tr.supplier {
+    display: flex;
+    flex-direction: column;
+  }
+  body[data-design] .procurement-table td,
+  body[data-design] .procurement-table td:last-child {
+    display: block;
+    position: static;
+    width: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+  body[data-design] .procurement-table td:nth-child(3) {
+    order: -1;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  body[data-design] .procurement-table td:nth-child(5) {
+    display: none;
+  }
+  body[data-design] .compare-bar {
+    left: 12px;
+    right: 12px;
+    bottom: calc(10px + env(safe-area-inset-bottom));
+    width: auto;
+    max-width: none;
+    transform: none;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 12px;
+    gap: 8px 12px;
+    border-radius: 10px;
+  }
+  body[data-design] .compare-bar[hidden] {
+    display: none;
+  }
+  body[data-design] .compare-bar > div {
+    min-width: 0;
+  }
+  body[data-design] #compare-count {
+    font-size: 14px;
+  }
+  body[data-design] #compare-names {
+    display: none;
+  }
+  body[data-design] #compare-open {
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+  body[data-design] #compare-clear {
+    min-height: 44px;
+    grid-column: 1 / -1;
+    padding: 8px;
+  }
+  body[data-design] dialog#detail-dialog,
+  body[data-design] dialog#compare-dialog {
+    width: calc(100% - 24px);
+    max-width: none;
+    max-height: calc(100dvh - 24px);
+    margin: auto;
+    padding: 0 18px 24px;
+    border-radius: 12px;
+  }
+  body[data-design] .dialog-top {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: var(--surface);
+    padding: 14px 0;
+    gap: 12px;
+  }
+  body[data-design] .icon-button {
+    width: 44px;
+    height: 44px;
+  }
+  body[data-design] .detail-title,
+  body[data-design] #compare-dialog h2 {
+    font-size: 25px;
+    line-height: 1.3;
+  }
+  body[data-design] dialog .detail-section p,
+  body[data-design] dialog .fact-value,
+  body[data-design] dialog .muted {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  body[data-design] dialog textarea {
+    font-size: 16px;
+  }
+  body[data-design] dialog a {
+    overflow-wrap: anywhere;
+  }
+  body[data-design] dialog .contact-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  body[data-design] .comparison {
+    overflow: visible;
+  }
+  body[data-design] .compare-grid,
+  body[data-design] .compare-scroll-hint {
+    display: none;
+  }
+  .compare-mobile {
+    display: grid;
+    gap: 20px;
+  }
+  .compare-mobile-company {
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .compare-mobile-company > h3 {
+    font-size: 21px;
+    margin: 8px 0;
+  }
+  .compare-mobile-company > h4 {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 18px 0 6px;
+  }
+  .compare-mobile-company > p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 12px;
+  }
+  .compare-mobile-company > button,
+  .compare-mobile-details > summary {
+    min-height: 44px;
+    padding: 12px 0;
+    font-size: 14px;
+  }
+  .compare-mobile-details {
+    border-top: 1px solid var(--line);
+    margin-top: 16px;
+  }
+  .compare-mobile-field {
+    margin-bottom: 20px;
+    overflow-wrap: anywhere;
+  }
+  .compare-mobile-field h4 {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 6px;
+    font-weight: 500;
+  }
+  .compare-mobile-field h3 {
+    font-size: 21px;
+    margin: 8px 0;
+  }
+  .compare-mobile-field p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .compare-mobile-field button,
+  .compare-mobile-field a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    font-size: 14px;
+  }
+}

@@ -99,7 +99,7 @@ test("регион учитывает доставку, а не адрес оф�
 });
 test("фильтры сочетаются, пустой поиск и сохраненное", () => {
   assert.equal(searchCatalog(data, { query: "несуществующийтовар" }).length, 0);
-  assert.equal(searchCatalog(data, { category: "packaging" }).length, 12);
+  assert.equal(searchCatalog(data, { category: "packaging" }).length, 19);
   assert.deepEqual(
     searchCatalog(data, { savedOnly: true, saved: ["flexaprint"] }).map(
       (s) => s.id,

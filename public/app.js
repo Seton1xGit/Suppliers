@@ -1,4 +1,10 @@
 import {
+  money,
+  deliveryRates,
+  deliverySummary,
+  supplierNuances,
+} from "./terms.js";
+import {
   JsonCatalogSource,
   categories,
   deliveryMatch,
@@ -182,6 +188,7 @@ function supplierRow(s, index) {
     {
       design: designLayout(design),
       searchMatch: productMatch(s, filters.query),
+      deliveryCost: deliverySummary(s, filters.region),
       match,
       deliveryLabel: deliveryLabel || "География не найдена",
       evidence,
@@ -367,6 +374,55 @@ function notesField(s) {
   );
   return wrapper;
 }
+function appendDeliveryCost(node, supplier, bound) {
+  const rates = deliveryRates(supplier, filters.region);
+  if (!rates.length) {
+    node.append(
+      el(
+        "p",
+        "",
+        "Не опубликовано. Запроси расчет для своего адреса и объема.",
+      ),
+    );
+    return;
+  }
+  for (const rate of rates) {
+    const block = el("div", "delivery-rate");
+    block.append(el("b", "", rate.region));
+    if (bound) block.append(el("p", "", money(rate[bound])));
+    else
+      block.append(
+        fact("Минимальная цена доставки", money(rate.min)),
+        fact("Максимальная цена доставки", money(rate.max)),
+      );
+    block.append(
+      el("p", "", rate.conditions),
+      link("Источник тарифа", rate.sourceUrl),
+      el(
+        "small",
+        "muted",
+        `Проверено: ${rate.verifiedAt.split("-").reverse().join(".")}`,
+      ),
+    );
+    node.append(block);
+  }
+}
+function appendNuances(node, supplier) {
+  const notes = supplierNuances(supplier, filters.region);
+  if (!notes.length)
+    node.append(
+      el(
+        "p",
+        "",
+        "Уточни минимальную партию, цену, сроки, температурный режим и документы у поставщика.",
+      ),
+    );
+  for (const note of notes) {
+    const p = el("p", "", note.text + " ");
+    p.append(link("Источник", note.sourceUrl));
+    node.append(p);
+  }
+}
 function detail(id, show = true) {
   const s = items.find((i) => i.id === id);
   activeDetail = id;
@@ -406,6 +462,9 @@ function detail(id, show = true) {
     delivery.append(p);
   });
   body.append(delivery);
+  const deliveryCost = section("Стоимость доставки");
+  appendDeliveryCost(deliveryCost, s);
+  body.append(deliveryCost);
   const terms = section("Условия для запроса"),
     facts = el("div", "facts");
   [
@@ -417,6 +476,21 @@ function detail(id, show = true) {
     if (s[key]?.sourceUrl) f.append(link("Источник", s[key].sourceUrl));
     facts.append(f);
   });
+  const priceBounds = el("div", "price-bounds");
+  priceBounds.append(
+    fact("Минимальная цена товара", money(s.price?.min)),
+    fact("Максимальная цена товара", money(s.price?.max)),
+  );
+  if (s.price)
+    priceBounds.append(
+      el(
+        "p",
+        "",
+        `${s.price.product}. Единица: ${s.price.unit}. ${s.price.conditions}`,
+      ),
+      link("Источник цены", s.price.sourceUrl),
+    );
+  facts.append(priceBounds);
   terms.append(
     facts,
     el(
@@ -426,6 +500,9 @@ function detail(id, show = true) {
     ),
   );
   body.append(terms);
+  const nuances = section("Особенности поставщика");
+  appendNuances(nuances, s);
+  body.append(nuances);
   body.append(notesField(s));
   const sources = section(
     `Источники / проверено ${s.verifiedAt.split("-").reverse().join(".")}`,
@@ -448,7 +525,9 @@ function detail(id, show = true) {
   if (show) $("detail-dialog").showModal();
 }
 function renderComparison() {
-  const restoreFocus = !!document.activeElement?.closest(".company-cell");
+  const restoreFocus = !!document.activeElement?.closest(
+    ".company-cell, .compare-mobile-company",
+  );
   $("compare-content").replaceChildren();
   const selected = store.state.compare.map((id) =>
     items.find((s) => s.id === id),
@@ -460,6 +539,37 @@ function renderComparison() {
   const grid = el("div", `compare-grid columns-${selected.length}`);
   grid.setAttribute("role", "table");
   grid.setAttribute("aria-label", "Условия выбранных поставщиков");
+  const mobile = el("div", "compare-mobile");
+  const panels = selected.map((s) => {
+    const panel = el("article", "compare-mobile-company");
+    panel.dataset.supplierId = s.id;
+    panel.append(
+      el("span", "tag", `${categories[s.category]} / ${s.city}`),
+      el("h3", "", s.name),
+      button("Удалить", "text-button", () => toggleCompare(s.id)),
+    );
+    panel.append(
+      el("h4", "", "Минимальный заказ"),
+      el("p", "", optional(s, "minimumOrder")),
+    );
+    panel.append(el("h4", "", "Цена доставки"));
+    const rates = deliveryRates(s, filters.region);
+    if (!rates.length)
+      panel.append(el("p", "", "Минимум и максимум не опубликованы"));
+    for (const rate of rates)
+      panel.append(
+        el(
+          "p",
+          "",
+          `${rate.region}: минимум ${money(rate.min)}, максимум ${money(rate.max)}. Условия ниже.`,
+        ),
+      );
+    const more = el("details", "compare-mobile-details");
+    more.append(el("summary", "", "Товары, условия и контакты"));
+    panel.append(more);
+    mobile.append(panel);
+    return more;
+  });
   const addRow = (label, build) => {
     const row = el("div", "compare-row");
     row.setAttribute("role", "row");
@@ -473,6 +583,17 @@ function renderComparison() {
       row.append(cell);
     }
     grid.append(row);
+    if (label === "Компания") return;
+    selected.forEach((s, i) => {
+      const section = el("section", "compare-mobile-field");
+      section.append(el("h4", "", label));
+      const value = el("div");
+      build(value, s);
+      value.classList.remove("company-cell");
+      value.removeAttribute("role");
+      section.append(value);
+      panels[i].append(section);
+    });
   };
   addRow("Компания", (cell, s) => {
     cell.classList.add("company-cell");
@@ -500,6 +621,12 @@ function renderComparison() {
       cell.append(p);
     }
   });
+  addRow("Минимальная цена доставки", (cell, s) =>
+    appendDeliveryCost(cell, s, "min"),
+  );
+  addRow("Максимальная цена доставки", (cell, s) =>
+    appendDeliveryCost(cell, s, "max"),
+  );
   for (const [label, key] of [
     ["Минимальный заказ", "minimumOrder"],
     ["Цена конкретного товара", "price"],
@@ -509,6 +636,31 @@ function renderComparison() {
       cell.append(el("p", "", optional(s, key)));
       if (s[key]?.sourceUrl) cell.append(link("Источник", s[key].sourceUrl));
     });
+  addRow("Минимальная цена товара", (cell, s) =>
+    cell.append(
+      el("p", "", money(s.price?.min)),
+      el(
+        "p",
+        "",
+        s.price
+          ? `${s.price.product}, ${s.price.unit}`
+          : "Товар и единица не указаны",
+      ),
+    ),
+  );
+  addRow("Максимальная цена товара", (cell, s) =>
+    cell.append(
+      el("p", "", money(s.price?.max)),
+      el(
+        "p",
+        "",
+        s.price
+          ? `${s.price.product}, ${s.price.unit}`
+          : "Товар и единица не указаны",
+      ),
+    ),
+  );
+  addRow("Особенности поставщика", (cell, s) => appendNuances(cell, s));
   addRow("Контакты", (cell, s) => {
     for (const c of s.contacts) {
       const p = el("p");
@@ -523,9 +675,11 @@ function renderComparison() {
   addRow("Проверено", (cell, s) =>
     cell.append(el("span", "", s.verifiedAt.split("-").reverse().join("."))),
   );
-  $("compare-content").append(grid);
-  if (restoreFocus)
-    grid.querySelector(".company-cell button")?.focus({ preventScroll: true });
+  $("compare-content").append(grid, mobile);
+  if (restoreFocus) {
+    const target = matchMedia("(max-width: 900px)").matches ? mobile : grid;
+    target.querySelector("button")?.focus({ preventScroll: true });
+  }
 }
 function reset() {
   filters = { query: "", category: "", region: "", savedOnly: false };

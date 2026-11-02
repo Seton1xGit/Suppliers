@@ -42,15 +42,15 @@ const other = [
   "belaya-dacha",
   "td-yarmarka",
 ];
-test("75 компаний: добавлено 15 морских и 15 по другим направлениям", () => {
-  assert.equal(data.length, 75);
+test("морская подборка и остальные новые направления сохранены", () => {
+  assert.equal(data.length, 100);
   assert.deepEqual(
-    new Set(data.slice(45).map((s) => s.id)),
+    new Set(data.slice(45, 75).map((s) => s.id)),
     new Set([...marine, ...other]),
   );
-  assert.equal(data.filter((s) => s.category === "ingredients").length, 41);
-  assert.equal(data.filter((s) => s.category === "finished").length, 22);
-  assert.equal(data.filter((s) => s.category === "packaging").length, 12);
+  assert.equal(data.filter((s) => s.category === "ingredients").length, 49);
+  assert.equal(data.filter((s) => s.category === "finished").length, 32);
+  assert.equal(data.filter((s) => s.category === "packaging").length, 19);
 });
 for (const [q, id] of [
   ["суши", "aqvatoriy-nsk"],
