@@ -1,3 +1,4 @@
+import { dismissTour } from "./browser-helpers.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -11,7 +12,10 @@ const ids = (page) =>
   page
     .locator("#cards .card")
     .evaluateAll((ns) => ns.map((n) => n.dataset.supplierId));
-const ready = (page) => page.waitForSelector("body[data-ready=true]");
+const ready = async (page) => {
+  await page.waitForSelector("body[data-ready=true]");
+  await dismissTour(page);
+};
 const row = (page, id) => page.locator(`#cards [data-supplier-id="${id}"]`);
 async function choose(page, id) {
   if (!(await page.locator("#design-picker").evaluate((n) => n.open)))

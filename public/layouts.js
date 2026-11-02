@@ -72,10 +72,14 @@ export function supplierView(s, index, view, kit) {
   card.dataset.supplierId = s.id;
   card.dataset.scope = view.match.scope;
   const name = el("div", "company-name");
-  name.append(
-    el("h2", "", s.name),
-    el("span", "category-label", categories[s.category]),
-  );
+  const heading = el("h2"),
+    open = el("button", "company-name-button", s.name);
+  open.type = "button";
+  open.setAttribute("aria-haspopup", "dialog");
+  open.setAttribute("aria-controls", "detail-dialog");
+  open.addEventListener("click", kit.openDetail);
+  heading.append(open);
+  name.append(heading, el("span", "category-label", categories[s.category]));
   const city = el("p", "city", `Компания: ${s.city}`),
     products = el("p", "products", s.products.join(", "));
   const shipping = el("div", "shipping");

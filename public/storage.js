@@ -2,7 +2,13 @@ import { normalizeDesign } from "./designs.js";
 export function createSavedStore(storageProvider = () => localStorage) {
   const key = "suppliers:v1";
   let available = true,
-    state = { saved: [], notes: {}, compare: [], design: "03" },
+    state = {
+      saved: [],
+      notes: {},
+      compare: [],
+      design: "03",
+      tourSeen: false,
+    },
     storage;
   try {
     storage = storageProvider();
@@ -17,6 +23,7 @@ export function createSavedStore(storageProvider = () => localStorage) {
       Array.isArray(raw.compare)
     ) {
       state = {
+        tourSeen: raw.tourSeen === true,
         design: normalizeDesign(raw.design),
         saved: raw.saved.filter((x) => typeof x === "string"),
         notes: Object.fromEntries(

@@ -1,3 +1,4 @@
+import { dismissTour } from "./browser-helpers.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
@@ -16,6 +17,7 @@ try {
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto(base);
     await page.waitForSelector(".card");
+    await dismissTour(page);
     assert.equal(await page.locator(".card").count(), 45);
     for (const region of ["Россия", ...Object.keys(regionalIds)]) {
       await page.locator("#region").selectOption(region);
@@ -44,6 +46,7 @@ try {
     await page.locator("#region").selectOption("Новосибирск");
     await page.reload();
     await page.waitForSelector(".card");
+    await dismissTour(page);
     assert.equal(await page.locator("#region").inputValue(), "Новосибирск");
     await page.screenshot({ path: `test-results/${name}-filters-v2.png` });
     if (name === "mobile")
@@ -80,6 +83,7 @@ try {
     await page.locator("#detail-dialog .close-dialog").click();
     await page.reload();
     await page.waitForSelector(".card");
+    await dismissTour(page);
     assert.equal(await page.locator(".card").count(), 1);
     await page.locator(".details-button").first().click();
     assert(
@@ -144,6 +148,7 @@ try {
     );
     await page.reload();
     await page.waitForSelector(".card");
+    await dismissTour(page);
     assert((await page.locator("#compare-count").textContent()).includes("3"));
     page.once("dialog", (d) => d.accept());
     await page.locator("#clear-saved").click();
@@ -187,6 +192,7 @@ try {
     base + "/?region=" + encodeURIComponent("Неизвестная область"),
   );
   await unknown.waitForSelector(".card");
+  await dismissTour(unknown);
   assert.deepEqual(
     await unknown
       .locator(".card")
@@ -209,6 +215,7 @@ try {
   const page = await context.newPage();
   await page.goto(base);
   await page.waitForSelector(".card");
+  await dismissTour(page);
   assert(await page.locator("#storage-warning").isVisible());
   await page.locator(".save-button").first().click();
   assert.equal(await page.locator("#saved-count").textContent(), "1");

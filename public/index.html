@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="./designs.css" />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./tour.css" />
     <script type="module" src="./app.js"></script>
   </head>
   <body class="v03" data-design="03">
@@ -47,11 +48,21 @@
           ><a href="/previews/designs/">Обзор всех вариантов</a>
         </div>
       </details>
-      <button id="reset" class="text-button">Сбросить фильтры</button>
+      <div class="toolbar-actions">
+        <button id="reset" class="text-button">Сбросить фильтры</button
+        ><button
+          id="tour-help"
+          class="text-button"
+          aria-haspopup="dialog"
+          aria-controls="tour-dialog"
+        >
+          Как пользоваться
+        </button>
+      </div>
     </div>
     <p id="storage-warning" class="notice" hidden>
       Браузер запретил сохранение. Выбор, заметки и оформление доступны до
-      закрытия страницы.
+      закрытия страницы. Подсказки могут появиться снова при следующем открытии.
     </p>
     <div id="workspace"></div>
     <footer id="catalog-info">

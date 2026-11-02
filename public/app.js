@@ -4,6 +4,7 @@ import {
   deliveryMatch,
 } from "./catalog-source.js";
 import { createSavedStore } from "./storage.js";
+import { createTour } from "./tour.js";
 import { designs, normalizeDesign, initialDesign } from "./designs.js";
 import { mountLayout, supplierView, appendSupplierViews } from "./layouts.js";
 const $ = (id) => document.getElementById(id),
@@ -178,7 +179,7 @@ function supplierRow(s, index) {
       evidence,
       note: store.state.notes[s.id],
     },
-    { el, link, actions },
+    { el, link, actions, openDetail: () => detail(s.id) },
   );
 }
 function appendSuppliers(container, list, start = 0) {
@@ -653,7 +654,13 @@ $("clear-saved").addEventListener("click", () => {
     )
   )
     return;
-  store.save({ saved: [], notes: {}, compare: [], design });
+  store.save({
+    saved: [],
+    notes: {},
+    compare: [],
+    design,
+    tourSeen: store.state.tourSeen,
+  });
   activeDetail = null;
   persist();
   render();
@@ -665,6 +672,7 @@ document
     b.addEventListener("click", () => b.closest("dialog").close()),
   );
 $("detail-dialog").addEventListener("close", () => (activeDetail = null));
+const tour = createTour({ store, persist });
 try {
   items = await source.load();
   const valid = new Set(items.map((s) => s.id));
@@ -677,7 +685,9 @@ try {
   $("total-count").textContent = items.length;
   populateRegions();
   render();
+  await tour.startIfNeeded();
 } catch {
+  document.body.dataset.tourReady = "true";
   $("result-count").textContent = "Не удалось загрузить каталог";
   const empty = el("div", "empty");
   empty.append(
