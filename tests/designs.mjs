@@ -2,7 +2,7 @@ import { dismissTour } from "./browser-helpers.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 import { mkdir } from "node:fs/promises";
-import { designs } from "../public/designs.js";
+import { designs, designNumber } from "../public/designs.js";
 import { expectedIds } from "./region-fixtures.mjs";
 const base = process.env.TEST_URL || "http://127.0.0.1:4173",
   out = "test-results/app-designs";
@@ -39,11 +39,11 @@ try {
     first = await initial.newPage();
   await first.goto(base);
   await ready(first);
-  assert.equal(await first.getAttribute("body", "data-design"), "03");
+  assert.equal(await first.getAttribute("body", "data-design"), "table");
   assert.equal(await first.locator(".procurement-table").count(), 1);
   await first.screenshot({ path: `${out}/default-03.png` });
   await first.locator("#design-picker summary").click();
-  assert.equal(await first.locator("[data-design-choice]").count(), 10);
+  assert.equal(await first.locator("[data-design-choice]").count(), 7);
   await first.screenshot({ path: `${out}/switcher.png` });
   await first.keyboard.press("Escape");
   await initial.close();
@@ -62,7 +62,7 @@ try {
     await page.screenshot({ path: `${out}/${id}-desktop.png` });
     if (process.env.CAPTURE_GALLERY)
       await page.screenshot({
-        path: `public/previews/designs/shots/${id}.png`,
+        path: `public/previews/designs/shots/${designNumber(id)}.png`,
       });
     await page.locator("#region").selectOption("Екатеринбург");
     assert.deepEqual(await ids(page), expectedIds("Екатеринбург"));
@@ -152,10 +152,10 @@ try {
       pickerBox.x >= 0 && pickerBox.x + pickerBox.width <= 390,
       `picker ${id}`,
     );
-    if (id === "03")
+    if (id === "table")
       await page.screenshot({ path: `${out}/switcher-mobile.png` });
     await page.locator("#design-picker summary").click();
-    if (id === "03") {
+    if (id === "table") {
       const action = await page
         .locator(".card .details-button")
         .first()
@@ -188,7 +188,7 @@ try {
   await row(page, "flexaprint").locator(".compare-button").click();
   const text = "Общая заметка между оформлениями";
   await note(page, "korrex-td", text);
-  for (const [id] of [...designs.filter(([id]) => id !== "03"), ["03"]]) {
+  for (const [id] of [...designs.filter(([id]) => id !== "table"), ["table"]]) {
     await choose(page, id);
     assert.equal(await page.locator("#query").inputValue(), "стакан");
     assert.equal(await page.locator("#region").inputValue(), "Екатеринбург");
@@ -214,31 +214,31 @@ try {
     assert(!new URL(page.url()).searchParams.has("notes"));
     assert(!new URL(page.url()).searchParams.has("saved"));
   }
-  await choose(page, "05");
+  await choose(page, "workspace");
   await page.reload();
   await ready(page);
-  assert.equal(await page.getAttribute("body", "data-design"), "05");
+  assert.equal(await page.getAttribute("body", "data-design"), "workspace");
   assert.equal(await page.locator("#query").inputValue(), "стакан");
   await page.goto(base);
   await ready(page);
-  assert.equal(await page.getAttribute("body", "data-design"), "05");
-  await page.goto(`${base}/?design=02`);
+  assert.equal(await page.getAttribute("body", "data-design"), "workspace");
+  await page.goto(`${base}/?design=registry`);
   await ready(page);
-  assert.equal(await page.getAttribute("body", "data-design"), "02");
+  assert.equal(await page.getAttribute("body", "data-design"), "registry");
   await page.goto(`${base}/?design=unknown`);
   await ready(page);
-  assert.equal(await page.getAttribute("body", "data-design"), "03");
+  assert.equal(await page.getAttribute("body", "data-design"), "table");
   await page.locator("#design-picker summary").focus();
   await page.keyboard.press("Enter");
-  await page.locator('[data-design-choice="06"]').focus();
+  await page.locator('[data-design-choice="dark"]').focus();
   await page.keyboard.press("Enter");
-  assert.equal(await page.getAttribute("body", "data-design"), "06");
+  assert.equal(await page.getAttribute("body", "data-design"), "dark");
   await page.locator("#design-picker summary").click();
   await page.locator("#main-design").click();
-  assert.equal(await page.getAttribute("body", "data-design"), "03");
+  assert.equal(await page.getAttribute("body", "data-design"), "table");
   await context.close();
   console.log(
-    "Все переходы: query/category/region/IDs/saved/notes сохранены; URL, fallback, основной 03 и восстановление - OK",
+    "Все переходы: query/category/region/IDs/saved/notes сохранены; URL, fallback, основной 01 и восстановление - OK",
   );
   const blocked = await browser.newContext();
   await blocked.addInitScript(() =>
@@ -270,7 +270,7 @@ try {
   }
   await blocked.close();
   console.log(
-    "Storage blocked: все 10 оформлений с общим выбором и заметкой в памяти - OK",
+    "Storage blocked: все 7 оформлений с общим выбором и заметкой в памяти - OK",
   );
   const quota = await browser.newContext();
   await quota.addInitScript(() => {
@@ -288,7 +288,7 @@ try {
   await qp.evaluate(() => window.blockWrites());
   await qp.locator(".save-button").first().click();
   assert(await qp.locator("#storage-warning").isVisible());
-  await choose(qp, "06");
+  await choose(qp, "dark");
   assert.equal(await qp.locator("#saved-count").textContent(), "1");
   await quota.close();
   const gal = await browser.newContext({
@@ -297,9 +297,9 @@ try {
     gp = await gal.newPage();
   await gp.goto(base + "/previews/designs/");
   await gp.waitForSelector("body[data-ready=true]");
-  assert.equal(await gp.locator(".concept-card").count(), 10);
+  assert.equal(await gp.locator(".concept-card").count(), 7);
   for (const [id] of designs) {
-    await gp.goto(base + `/previews/designs/${id}.html`);
+    await gp.goto(base + `/previews/designs/${designNumber(id)}.html`);
     await ready(gp);
     assert.equal(await gp.getAttribute("body", "data-design"), id);
     assert.equal(await gp.locator("#region").inputValue(), "Новосибирск");
@@ -318,7 +318,7 @@ try {
   }
   await gal.close();
   console.log(
-    "Галерея: 10 ссылок ведут в полноценный сервис, листы обновлены - OK",
+    "Галерея: 7 ссылок ведут в полноценный сервис, листы обновлены - OK",
   );
 } finally {
   await browser.close();

@@ -5,7 +5,13 @@ import {
 } from "./catalog-source.js";
 import { createSavedStore } from "./storage.js";
 import { createTour } from "./tour.js";
-import { designs, normalizeDesign, initialDesign } from "./designs.js";
+import {
+  designs,
+  normalizeDesign,
+  initialDesign,
+  designNumber,
+  designLayout,
+} from "./designs.js";
 import { mountLayout, supplierView, appendSupplierViews } from "./layouts.js";
 const $ = (id) => document.getElementById(id),
   source = new JsonCatalogSource(),
@@ -167,13 +173,13 @@ function supplierRow(s, index) {
     compare,
     save,
   );
-  if (design !== "03")
+  if (design !== "table")
     actions.append(link("Сайт компании", s.website, "source"));
   return supplierView(
     s,
     index,
     {
-      design,
+      design: designLayout(design),
       match,
       deliveryLabel: deliveryLabel || "География не найдена",
       evidence,
@@ -183,7 +189,14 @@ function supplierRow(s, index) {
   );
 }
 function appendSuppliers(container, list, start = 0) {
-  appendSupplierViews(container, list, start, design, supplierRow, el);
+  appendSupplierViews(
+    container,
+    list,
+    start,
+    designLayout(design),
+    supplierRow,
+    el,
+  );
 }
 function resultGroup(title, list, scope, description) {
   const group = el("section", `result-group ${scope}`),
@@ -602,14 +615,14 @@ function updateDesignPicker() {
 }
 for (const [id, name] of designs) {
   const b = button(
-    `${id}. ${name}${id === "03" ? " (основной)" : ""}`,
+    `${designNumber(id)}. ${name}${id === "table" ? " (основной)" : ""}`,
     "design-option",
     () => chooseDesign(id),
   );
   b.dataset.designChoice = id;
   $("design-options").append(b);
 }
-$("main-design").addEventListener("click", () => chooseDesign("03"));
+$("main-design").addEventListener("click", () => chooseDesign("table"));
 document.addEventListener("keydown", (event) => {
   if (
     event.key === "Escape" &&
@@ -671,6 +684,28 @@ document
   .forEach((b) =>
     b.addEventListener("click", () => b.closest("dialog").close()),
   );
+document
+  .querySelectorAll("#detail-dialog, #compare-dialog")
+  .forEach((dialog) => {
+    let backdropPress = false;
+    const outside = (event) => {
+      const r = dialog.getBoundingClientRect();
+      return (
+        event.clientX < r.left ||
+        event.clientX > r.right ||
+        event.clientY < r.top ||
+        event.clientY > r.bottom
+      );
+    };
+    dialog.addEventListener("pointerdown", (event) => {
+      backdropPress = event.target === dialog && outside(event);
+    });
+    dialog.addEventListener("click", (event) => {
+      if (backdropPress && event.target === dialog && outside(event))
+        dialog.close();
+      backdropPress = false;
+    });
+  });
 $("detail-dialog").addEventListener("close", () => (activeDetail = null));
 const tour = createTour({ store, persist });
 try {

@@ -6,7 +6,7 @@ export function createSavedStore(storageProvider = () => localStorage) {
       saved: [],
       notes: {},
       compare: [],
-      design: "03",
+      design: "table",
       tourSeen: false,
     },
     storage;

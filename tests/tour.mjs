@@ -36,7 +36,7 @@ try {
             card.y + card.height <= (width === 390 ? 844 : 1000) + 1,
           `${id} ${width} step ${step}`,
         );
-        if (id === "03")
+        if (id === "table")
           await page.screenshot({
             path: `test-results/tour-${width}-${step}.png`,
           });

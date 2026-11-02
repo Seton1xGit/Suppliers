@@ -1,5 +1,5 @@
 import { categories } from "./catalog-source.js";
-import { designs } from "./designs.js";
+import { designs, designNumber, designLayout } from "./designs.js";
 const logo = '<a class="logo" href="/">поставка<span>.</span></a>';
 const search =
   '<form class="search"><label><span class="sr-only">Товар или компания</span><input data-query type="search" placeholder="Товар или компания"></label><button class="search-submit">Найти</button></form>';
@@ -16,19 +16,16 @@ const filterHelp =
   '<p class="filter-note">Фильтр учитывает опубликованную доставку. Город компании указан отдельно.</p>';
 const provenance = "";
 const layouts = {
-  "01": `<header class="header">${logo}<span class="brand-line">Снабжение food-бизнеса</span><nav>Каталог поставщиков</nav>${comparisonButton}</header><main><div class="page-title"><small>Поставка / Каталог</small><h1>Поставщики для вашего бизнеса</h1></div><div class="registry-layout"><aside><h2>Параметры поиска</h2>${search}${region}<h3>Направление</h3>${category}${filterHelp}</aside><section><div class="section-title"><h2>Результаты поиска</h2>${count}</div>${summary}<div class="registry-columns"><span>Компания и ассортимент</span><span>Подтвержденная доставка</span><span>Действия</span></div>${results}</section></div>${provenance}</main>`,
-  "02": `<header class="header">${logo}<span class="brand-line">Поставщики. Товары. Контакты.</span>${search}${comparisonButton}</header><main><div class="market-heading"><div><small>КАТАЛОГ ДЛЯ ЗАКУПОК</small><h1>Что нужно вашему бизнесу?</h1></div>${region}</div>${category}${filterHelp}<div class="section-title"><h2>Предложения поставщиков</h2>${count}</div>${summary}${results}${provenance}</main>`,
-  "03": `<header class="header">${logo}<b>РЕЕСТР ПОСТАВЩИКОВ</b><span class="database-label">КАТАЛОГ: 45 КОМПАНИЙ</span>${comparisonButton}</header><main><div class="table-heading"><h1>Подбор поставщиков</h1>${count}</div><div class="table-controls">${search}${region}${category}</div>${summary}${results}${filterHelp}${provenance}</main>`,
-  "04": `<header class="header"><span class="edition">FOOD / ЗАКУПКИ</span>${logo}${comparisonButton}</header><main><div class="editorial-heading"><h1>Найти своих<br><em>поставщиков.</em></h1><div class="editorial-search"><p>Ингредиенты, готовая продукция и упаковка. Прямые контакты компаний для первого разговора.</p>${search}${region}</div></div><div class="editorial-rule">${category}${count}</div>${summary}${results}${provenance}</main>`,
-  "05": `<div class="app-shell"><aside class="app-rail"><a class="rail-brand" href="/">п.</a><span class="rail-active">К</span><button data-open-compare aria-label="Открыть сравнение">С</button><span class="rail-bottom">45</span></aside><div class="app-body"><header class="header"><div><small>Рабочее пространство</small><h1>Поставщики</h1></div>${region}${comparisonButton}</header><div class="app-workspace"><aside class="app-filters"><h2>Направления</h2>${category}<div class="app-memo"><b>Ваш список для закупки</b><p>Выберите до 4 компаний и сравните условия в одном окне.</p></div>${filterHelp}</aside><main>${search}<div class="section-title"><h2>Каталог компаний</h2>${count}</div>${summary}${results}${provenance}</main></div></div></div>`,
-  "06": `<header class="header">${logo}<span class="brand-line">РАБОЧИЙ КАТАЛОГ</span><span class="dark-status">Официальные источники</span>${comparisonButton}</header><main><div class="dark-heading"><div><small>ЗАКУПКИ / ПОСТАВЩИКИ</small><h1>Поставки под вашу задачу</h1></div>${count}</div><div class="dark-controls">${search}${region}</div>${category}<div class="dark-layout"><section>${summary}${results}</section><aside class="selection-panel"><span class="panel-label">СРАВНЕНИЕ</span><h2>Кого добавить<br>в список?</h2><p>Выберите компании в каталоге. Здесь появится ваш список для связи.</p><div data-selection></div>${comparisonButton}${filterHelp}</aside></div>${provenance}</main>`,
-  "07": `<header class="header">${logo}<span class="brand-line">Все для кухни и производства</span>${comparisonButton}</header><main><div class="natural-heading"><div><small>КАТАЛОГ ДЛЯ FOOD-БИЗНЕСА</small><h1>Хорошие продукты<br>начинаются с поставки</h1></div><span class="natural-caption">Ингредиенты<br>Продукция<br>Упаковка</span></div><div class="natural-layout"><aside><h2>Что ищем?</h2>${search}${region}${category}${filterHelp}</aside><section><div class="section-title"><h2>Поставщики</h2>${count}</div>${summary}${results}</section></div>${provenance}</main>`,
-  "08": `<header class="header">${logo}<span>КАТАЛОГ / РОССИЯ</span>${comparisonButton}</header><main><div class="type-heading"><h1>ПОСТАВЩИКИ<br>ДЛЯ FOOD-БИЗНЕСА</h1><div class="type-number">${count}<span>ВЫБРАННАЯ ГЕОГРАФИЯ</span></div></div><div class="type-filters">${search}${region}</div>${category}${summary}${results}${provenance}</main>`,
-  "09": `<header class="header"><div class="technical-brand">ПОСТАВКА<span> / СНАБЖЕНИЕ</span></div><span class="technical-header-note">ИНГРЕДИЕНТЫ · ПРОДУКЦИЯ · УПАКОВКА</span>${comparisonButton}</header><div class="technical-strip"><span>КАТАЛОГ ПОСТАВЩИКОВ</span><span>ПРОВЕРКА: 02.11.2026</span></div><main><div class="technical-layout"><aside><small>ПАРАМЕТРЫ ПОДБОРА</small>${search}${region}${category}${filterHelp}</aside><section><div class="section-title"><h1>Реестр предложений</h1>${count}</div>${summary}${results}</section></div>${provenance}</main>`,
-  10: `<header class="header">${logo}<span class="brand-line">Каталог food-поставщиков</span>${comparisonButton}</header><main><div class="search-first"><h1>Кого ищем для закупки?</h1>${search}<div class="search-first-filters">${region}${category}</div></div><div class="section-title"><h2>Подходящие компании</h2>${count}</div>${summary}${results}${filterHelp}${provenance}</main>`,
+  registry: `<header class="header">${logo}<span class="brand-line">Снабжение food-бизнеса</span><nav>Каталог поставщиков</nav>${comparisonButton}</header><main><div class="page-title"><small>Поставка / Каталог</small><h1>Поставщики для вашего бизнеса</h1></div><div class="registry-layout"><aside><h2>Параметры поиска</h2>${search}${region}<h3>Направление</h3>${category}${filterHelp}</aside><section><div class="section-title"><h2>Результаты поиска</h2>${count}</div>${summary}<div class="registry-columns"><span>Компания и ассортимент</span><span>Подтвержденная доставка</span><span>Действия</span></div>${results}</section></div>${provenance}</main>`,
+  table: `<header class="header">${logo}<b>РЕЕСТР ПОСТАВЩИКОВ</b><span class="database-label">КАТАЛОГ: 45 КОМПАНИЙ</span>${comparisonButton}</header><main><div class="table-heading"><h1>Подбор поставщиков</h1>${count}</div><div class="table-controls">${search}${region}${category}</div>${summary}${results}${filterHelp}${provenance}</main>`,
+  workspace: `<div class="app-shell"><aside class="app-rail"><a class="rail-brand" href="/">п.</a><span class="rail-active">К</span><button data-open-compare aria-label="Открыть сравнение">С</button><span class="rail-bottom">45</span></aside><div class="app-body"><header class="header"><div><small>Рабочее пространство</small><h1>Поставщики</h1></div>${region}${comparisonButton}</header><div class="app-workspace"><aside class="app-filters"><h2>Направления</h2>${category}<div class="app-memo"><b>Ваш список для закупки</b><p>Выберите до 4 компаний и сравните условия в одном окне.</p></div>${filterHelp}</aside><main>${search}<div class="section-title"><h2>Каталог компаний</h2>${count}</div>${summary}${results}${provenance}</main></div></div></div>`,
+  dark: `<header class="header">${logo}<span class="brand-line">РАБОЧИЙ КАТАЛОГ</span><span class="dark-status">Официальные источники</span>${comparisonButton}</header><main><div class="dark-heading"><div><small>ЗАКУПКИ / ПОСТАВЩИКИ</small><h1>Поставки под вашу задачу</h1></div>${count}</div><div class="dark-controls">${search}${region}</div>${category}<div class="dark-layout"><section>${summary}${results}</section><aside class="selection-panel"><span class="panel-label">СРАВНЕНИЕ</span><h2>Кого добавить<br>в список?</h2><p>Выберите компании в каталоге. Здесь появится ваш список для связи.</p><div data-selection></div>${comparisonButton}${filterHelp}</aside></div>${provenance}</main>`,
+  type: `<header class="header">${logo}<span>КАТАЛОГ / РОССИЯ</span>${comparisonButton}</header><main><div class="type-heading"><h1>ПОСТАВЩИКИ<br>ДЛЯ FOOD-БИЗНЕСА</h1><div class="type-number">${count}<span>ВЫБРАННАЯ ГЕОГРАФИЯ</span></div></div><div class="type-filters">${search}${region}</div>${category}${summary}${results}${provenance}</main>`,
+  technical: `<header class="header"><div class="technical-brand">ПОСТАВКА<span> / СНАБЖЕНИЕ</span></div><span class="technical-header-note">ИНГРЕДИЕНТЫ · ПРОДУКЦИЯ · УПАКОВКА</span>${comparisonButton}</header><div class="technical-strip"><span>КАТАЛОГ ПОСТАВЩИКОВ</span><span>ПРОВЕРКА: 02.11.2026</span></div><main><div class="technical-layout"><aside><small>ПАРАМЕТРЫ ПОДБОРА</small>${search}${region}${category}${filterHelp}</aside><section><div class="section-title"><h1>Реестр предложений</h1>${count}</div>${summary}${results}</section></div>${provenance}</main>`,
+  search: `<header class="header">${logo}<span class="brand-line">Каталог food-поставщиков</span>${comparisonButton}</header><main><div class="search-first"><h1>Кого ищем для закупки?</h1>${search}<div class="search-first-filters">${region}${category}</div></div><div class="section-title"><h2>Подходящие компании</h2>${count}</div>${summary}${results}${filterHelp}${provenance}</main>`,
 };
 export function mountLayout(root, design) {
-  document.body.className = `v${design}`;
+  document.body.className = `v${designLayout(design)}`;
   document.body.dataset.design = design;
   root.innerHTML = layouts[design];
   root.querySelector(".search").id = "search-form";
@@ -63,7 +60,7 @@ export function mountLayout(root, design) {
   root.querySelector("main").tabIndex = -1;
   root.querySelectorAll(".provenance").forEach((n) => n.remove());
   document.getElementById("design-current").textContent =
-    `${design}. ${designs.find(([id]) => id === design)[1]}`;
+    `${designNumber(design)}. ${designs.find(([id]) => id === design)[1]}`;
 }
 export function supplierView(s, index, view, kit) {
   const { el, link, actions } = kit,
@@ -127,16 +124,7 @@ export function supplierView(s, index, view, kit) {
     }
     return card;
   }
-  if (view.design === "02") {
-    const cover = el("div", "product-cover");
-    cover.append(
-      el("span", "cover-category", categories[s.category]),
-      el("strong", "", s.products[0]),
-      el("span", "", s.products.slice(1, 3).join(" / ")),
-    );
-    card.append(cover);
-  }
-  if (["04", "08", "09"].includes(view.design))
+  if (["08", "09"].includes(view.design))
     card.append(
       el(
         "span",
@@ -147,7 +135,7 @@ export function supplierView(s, index, view, kit) {
   name.append(city);
   const main = el("div", "supplier-main");
   main.append(name, products);
-  if (s.minimumOrder && ["01", "05", "07", "09"].includes(view.design))
+  if (s.minimumOrder && ["01", "05", "09"].includes(view.design))
     main.append(el("p", "minimum", s.minimumOrder.value));
   if (view.note) main.append(el("span", "note-indicator", "Есть заметка"));
   card.append(main, shipping, actions);

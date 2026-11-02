@@ -17,15 +17,15 @@ const data = JSON.parse(
   ),
 );
 test("каталог соответствует схеме и не содержит дублей", () => validate(data));
-test("оформление: основной 03, URL приоритетнее сохраненного, неизвестный дает 03", () => {
-  assert.equal(designs.length, 10);
-  assert.equal(initialDesign("", undefined), "03");
-  assert.equal(initialDesign("", "06"), "06");
-  assert.equal(initialDesign("?design=02&q=стакан", "06"), "02");
-  assert.equal(initialDesign("?design=unknown", "06"), "03");
-  assert.equal(normalizeDesign("3"), "03");
+test("оформление: основной 01, URL приоритетнее сохраненного, неизвестный дает таблицу", () => {
+  assert.equal(designs.length, 7);
+  assert.equal(initialDesign("", undefined), "table");
+  assert.equal(initialDesign("", "06"), "dark");
+  assert.equal(initialDesign("?design=registry&q=стакан", "06"), "registry");
+  assert.equal(initialDesign("?design=unknown", "06"), "table");
+  assert.equal(normalizeDesign("3"), "table");
 });
-test("старое сохранение получает 03 без потери ID и заметок", () => {
+test("старое сохранение получает таблицу без потери ID и заметок", () => {
   const saved = {
     saved: ["7-verst"],
     notes: { "7-verst": "Запросить прайс" },
@@ -36,7 +36,7 @@ test("старое сохранение получает 03 без потери 
     setItem() {},
     removeItem() {},
   }));
-  assert.equal(store.state.design, "03");
+  assert.equal(store.state.design, "table");
   assert.deepEqual(store.state.saved, saved.saved);
   assert.deepEqual(store.state.notes, saved.notes);
 });
@@ -47,7 +47,7 @@ test("сохраненное оформление читается из того
     setItem() {},
     removeItem() {},
   }));
-  assert.equal(store.state.design, "06");
+  assert.equal(store.state.design, "dark");
 });
 test("поиск нормализует регистр и ё, находит синонимы", () => {
   assert.equal(normalize(" ВЁРСТ "), "верст");
@@ -193,4 +193,12 @@ test("поврежденный storage и ошибка записи обраба
   }));
   fail.save({ saved: [], notes: {}, compare: [] });
   assert.equal(fail.available, false);
+});
+
+test("удаленные оформления возвращают таблицу, старые номера сохраняют вид", () => {
+  for (const id of ["02", "04", "07"])
+    assert.equal(normalizeDesign(id), "table");
+  assert.equal(normalizeDesign("01"), "registry");
+  assert.equal(normalizeDesign("03"), "table");
+  assert.equal(normalizeDesign("10"), "search");
 });
