@@ -41,16 +41,7 @@ export function createOfferBlock(
     );
     if (filters.query)
       block.append(
-        el(
-          "p",
-          "",
-          "Публичная цена выбранного товара для этих условий не найдена.",
-        ),
-        link(
-          "Запросить цену",
-          supplier.contacts[0]?.url || supplier.website,
-          "price-source",
-        ),
+        el("p", "price-status", "Цена не найдена в каталоге. Уточни у поставщика"),
       );
     return block;
   }
