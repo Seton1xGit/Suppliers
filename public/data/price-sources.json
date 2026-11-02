@@ -1,1 +1,55 @@
-[{"id":"food-star-price","supplierId":"food-star","url":"https://www.food-star.ru/price/","verifiedAt":"2026-11-02","imported":459,"manualPreserved":3,"seconds":0.03,"rowsWithPrice":462,"skipped":0,"format":"HTML table"}]
+[
+  {
+    "id": "cake-me-store",
+    "supplierId": "cake-me",
+    "url": "https://cake-me.ru/",
+    "verifiedAt": "2026-11-02",
+    "category": "finished",
+    "imported": 25,
+    "manualPreserved": 0,
+    "seconds": 16.91,
+    "rowsWithPrice": 25,
+    "skipped": 0,
+    "totalInSource": 25,
+    "format": "Public storefront JSON, paginated"
+  },
+  {
+    "id": "food-star-price",
+    "supplierId": "food-star",
+    "url": "https://www.food-star.ru/price/",
+    "verifiedAt": "2026-11-02",
+    "category": "ingredients",
+    "imported": 459,
+    "manualPreserved": 3,
+    "seconds": 0.03,
+    "rowsWithPrice": 462,
+    "skipped": 0,
+    "format": "HTML table"
+  },
+  {
+    "id": "sibprod-public",
+    "supplierId": "sibirskiy-produkt-nsk",
+    "url": "https://sibprod.info/",
+    "verifiedAt": "2026-11-02",
+    "category": "finished",
+    "imported": 171,
+    "manualPreserved": 0,
+    "seconds": 0.08,
+    "rowsWithPrice": 171,
+    "skipped": 0,
+    "format": "HTML product cards, active retail price"
+  },
+  {
+    "id": "packtochka-public",
+    "supplierId": "packtochka",
+    "url": "https://packtochka.ru/",
+    "verifiedAt": "2026-11-02",
+    "category": "packaging",
+    "imported": 16,
+    "manualPreserved": 0,
+    "seconds": 0.01,
+    "rowsWithPrice": 16,
+    "skipped": 0,
+    "format": "HTML Schema.org Product/Offer"
+  }
+]

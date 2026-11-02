@@ -50,6 +50,7 @@ export function createOfferBlock(
     return block;
   }
   const normalized = normalizedPrice(offer);
+  const originalPrimary = offer.family !== "fresh-tomato" && offer.price.unit !== "kg" && normalized?.unit === "кг";
   block.append(
     el(
       "span",
@@ -57,10 +58,10 @@ export function createOfferBlock(
       tomatoGroups[offer.group] || "Товарное предложение",
     ),
     el("b", "offer-name", offer.name),
-    el("strong", "price-amount", priceText(offer)),
+    el("strong", "price-amount", priceText(offer, !originalPrimary)),
   );
   const original =
-    offer.price.unit !== "kg" && normalized
+    originalPrimary ? `${offer.pack.label}. Для сравнения: ${priceText(offer)}` : offer.price.unit !== "kg" && normalized?.unit === "кг"
       ? `${priceText(offer, false)}. ${offer.pack.label}`
       : offer.pack.label;
   block.append(
