@@ -1,7 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { normalize, searchCatalog } from "../public/catalog-source.js";
+import {
+  normalize,
+  searchCatalog,
+  deliveryMatch,
+} from "../public/catalog-source.js";
+import { nationalIds, regionalIds, expectedIds } from "./region-fixtures.mjs";
 import { createSavedStore } from "../public/storage.js";
 import { validate } from "../scripts/validate.mjs";
 const data = JSON.parse(
@@ -61,12 +66,74 @@ test("регион учитывает доставку, а не адрес оф�
 });
 test("фильтры сочетаются, пустой поиск и сохраненное", () => {
   assert.equal(searchCatalog(data, { query: "несуществующийтовар" }).length, 0);
-  assert.equal(searchCatalog(data, { category: "packaging" }).length, 10);
+  assert.equal(searchCatalog(data, { category: "packaging" }).length, 12);
   assert.deepEqual(
     searchCatalog(data, { savedOnly: true, saved: ["flexaprint"] }).map(
       (s) => s.id,
     ),
     ["flexaprint"],
+  );
+});
+
+for (const region of Object.keys(regionalIds))
+  test(`реальные IDs и порядок доставки: ${region}`, () => {
+    const found = searchCatalog(data, { region });
+    assert.deepEqual(
+      found.map((s) => s.id),
+      expectedIds(region),
+    );
+    assert.deepEqual(
+      found
+        .filter((s) => deliveryMatch(s, region).scope === "regional")
+        .map((s) => s.id),
+      regionalIds[region],
+    );
+    assert(!found.some((s) => s.id === "tehnopoliz"));
+  });
+test("вся Россия и неизвестный регион сохраняют только подтвержденное покрытие", () => {
+  assert.deepEqual(
+    searchCatalog(data, { region: "Россия" }).map((s) => s.id),
+    nationalIds,
+  );
+  assert.deepEqual(
+    searchCatalog(data, { region: "Неизвестная область" }).map((s) => s.id),
+    nationalIds,
+  );
+  assert(
+    !searchCatalog(data, { region: "Россия" }).some(
+      (s) => s.id === "zernov-nsk",
+    ),
+  );
+});
+test("город наследует область, городская доставка не расширяется на область", () => {
+  const food = data.find((s) => s.id === "food-fiction"),
+    korrex = data.find((s) => s.id === "korrex-td");
+  assert.equal(deliveryMatch(food, "г. ЕКАТЕРИНБУРГ ").scope, "regional");
+  assert.equal(deliveryMatch(korrex, "Свердловская область").scope, "none");
+  assert.equal(
+    deliveryMatch(
+      data.find((s) => s.id === "tehnopoliz"),
+      "Екатеринбург",
+    ).scope,
+    "none",
+  );
+});
+test("география имеет приоритет перед федеральной группой при товаре и категории", () => {
+  assert.deepEqual(
+    searchCatalog(data, {
+      region: "Екатеринбург",
+      category: "packaging",
+      query: "стакан",
+    }).map((s) => s.id),
+    ["korrex-td", "flexaprint"],
+  );
+  assert.equal(
+    searchCatalog(data, {
+      region: "Москва",
+      category: "packaging",
+      query: "молоко",
+    }).length,
+    0,
   );
 });
 test("отказ storage не ломает работу, состояние остается в памяти", () => {

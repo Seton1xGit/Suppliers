@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import assert from "node:assert/strict";
 export function validate(items) {
-  assert.equal(items.length, 30, "Нужно 30 поставщиков");
+  assert(items.length >= 45, "Нужно минимум 45 поставщиков");
   const ids = new Set(),
     sites = new Set(),
     names = new Set();
@@ -60,7 +60,7 @@ export function validate(items) {
         assert(s.price[key], `Цена: ${key}`);
   }
   for (const c of ["ingredients", "finished", "packaging"])
-    assert.equal(items.filter((s) => s.category === c).length, 10);
+    assert(items.filter((s) => s.category === c).length >= 10);
   return `${items.length} записей, IDs, контакты, ссылки и доказательства условий проверены`;
 }
 if (process.argv[1]?.endsWith("validate.mjs"))

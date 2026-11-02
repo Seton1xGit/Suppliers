@@ -5,6 +5,36 @@ export const categories = {
 };
 export const normalize = (value) =>
   String(value).toLocaleLowerCase("ru").replaceAll("ё", "е").trim();
+const regionKey = (value) =>
+  normalize(value)
+    .replace(/^г\.\s*/, "")
+    .replace(/\s+/g, " ");
+// Покрытие области включает город, обратное утверждение недопустимо.
+const cityRegions = {
+  новосибирск: "новосибирская область",
+  екатеринбург: "свердловская область",
+  краснодар: "краснодарский край",
+  воронеж: "воронежская область",
+  самара: "самарская область",
+  волгоград: "волгоградская область",
+  астрахань: "астраханская область",
+  "нижний новгород": "нижегородская область",
+  уфа: "республика башкортостан",
+  казань: "республика татарстан",
+};
+export function deliveryMatch(supplier, region = "") {
+  const key = regionKey(region);
+  if (!key) return { scope: "all", entries: supplier.delivery };
+  const regional = supplier.delivery.filter((d) => {
+    const entry = regionKey(d.region);
+    return entry !== "россия" && (entry === key || entry === cityRegions[key]);
+  });
+  if (regional.length) return { scope: "regional", entries: regional };
+  const national = supplier.delivery.filter(
+    (d) => regionKey(d.region) === "россия",
+  );
+  return { scope: national.length ? "national" : "none", entries: national };
+}
 export function searchCatalog(
   items,
   {
@@ -21,10 +51,7 @@ export function searchCatalog(
     .filter(
       (s) =>
         (!category || s.category === category) &&
-        (!region ||
-          s.delivery.some(
-            (d) => d.region === region || d.region === "Россия",
-          )) &&
+        (!region || deliveryMatch(s, region).scope !== "none") &&
         (!savedOnly || saved.includes(s.id)),
     )
     .map((s) => {
@@ -42,10 +69,21 @@ export function searchCatalog(
             : name.includes(q)
               ? 60
               : 20;
-      return { s, score, matches: tokens.every((t) => haystack.includes(t)) };
+      const match = deliveryMatch(s, region);
+      return {
+        s,
+        score,
+        rank: region && match.scope === "national" ? 1 : 0,
+        matches: tokens.every((t) => haystack.includes(t)),
+      };
     })
     .filter((r) => r.matches)
-    .sort((a, b) => b.score - a.score || a.s.name.localeCompare(b.s.name, "ru"))
+    .sort(
+      (a, b) =>
+        a.rank - b.rank ||
+        b.score - a.score ||
+        a.s.name.localeCompare(b.s.name, "ru"),
+    )
     .map((r) => r.s);
 }
 export class JsonCatalogSource {

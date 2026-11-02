@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Поставка | Поставщики для food-бизнеса</title>
+    <title>Поставка | Каталог поставщиков для food-бизнеса</title>
     <meta
       name="description"
-      content="Каталог поставщиков ингредиентов, продуктов и упаковки. Источники, контакты и сравнение условий без регистрации."
+      content="Поставщики ингредиентов, готовой продукции и упаковки. Подтвержденная доставка, официальные источники, контакты и сравнение."
     />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%231d554b'/%3E%3Cpath d='M11 29V11h18v18h-6V17h-6v12' fill='%23fff7e9'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23273543'/%3E%3Cpath d='M10 29V11h20v18h-6V17h-8v12' fill='%23fff'/%3E%3C/svg%3E"
     />
     <link rel="stylesheet" href="./style.css" />
     <script type="module" src="./app.js"></script>
@@ -18,126 +18,177 @@
   <body>
     <a class="skip" href="#results">К результатам</a>
     <header class="topbar">
-      <a class="brand" href="./"
-        ><span class="brand-mark" aria-hidden="true">п</span>поставка<span
-          class="brand-dot"
-          >.</span
-        ></a
-      ><span class="top-caption">Для тех, кто закупает</span
-      ><button id="saved-nav" class="button quiet">
-        Сохраненные <span id="saved-count">0</span>
-      </button>
+      <a class="brand" href="./" aria-label="Поставка, главная"
+        ><span class="brand-symbol" aria-hidden="true"
+          ><i></i><i></i><i></i></span
+        >поставка<span class="brand-period">.</span></a
+      >
+      <span class="brand-description"
+        >Справочник поставщиков<br />для food-бизнеса</span
+      >
+      <nav aria-label="Разделы каталога">
+        <button id="catalog-nav" class="nav-button active" aria-pressed="true">
+          Каталог</button
+        ><button id="saved-nav" class="nav-button" aria-pressed="false">
+          Сохраненные <span id="saved-count">0</span>
+        </button>
+      </nav>
+      <a class="about-link" href="#catalog-info">О данных</a>
     </header>
     <main>
-      <section class="hero">
-        <div class="eyebrow">
-          <span class="status-dot"></span> Открытый каталог / Россия
-        </div>
-        <h1>Найди поставщика.<br /><span>Договорись о поставке.</span></h1>
-        <p class="intro">
-          Ингредиенты, готовая продукция и упаковка для твоего бизнеса. Сравни
-          предложения и собери список для первого звонка.
-        </p>
-        <div class="hero-bottom">
-          <span><b id="total-count">30</b> компаний в стартовой подборке</span
-          ><span>Официальные источники</span><span>Без регистрации</span>
-        </div>
-      </section>
-      <section class="workspace" aria-label="Поиск поставщиков">
-        <form id="search-form" class="search-bar" role="search">
-          <label class="search-label"
-            ><span aria-hidden="true" class="search-icon"></span
-            ><span class="sr-only">Товар или компания</span
-            ><input
-              id="query"
-              type="search"
-              placeholder="Что закупаем? Например, крахмал или стаканы"
-              autocomplete="off" /></label
-          ><button class="button primary" type="submit">
-            Найти поставщиков
-          </button>
-        </form>
-        <div class="filters">
-          <div
-            id="categories"
-            class="chips"
-            role="group"
-            aria-label="Категории"
-          >
-            <button class="chip active" data-category="" aria-pressed="true">
-              Все категории</button
-            ><button
-              class="chip"
-              data-category="ingredients"
-              aria-pressed="false"
-            >
-              Ингредиенты</button
-            ><button class="chip" data-category="finished" aria-pressed="false">
-              Готовая продукция</button
-            ><button
-              class="chip"
-              data-category="packaging"
-              aria-pressed="false"
-            >
-              Упаковка
-            </button>
-          </div>
-          <label class="region-label"
-            >Доставка в
-            <select id="region">
-              <option value="">Любой регион</option>
-            </select></label
-          >
-        </div>
-        <p class="filter-help">
-          Регион учитывает подтвержденную доставку. Город компании указан в
-          карточке. Если география не опубликована, уточни ее у поставщика.
-        </p>
-      </section>
-      <section id="results" tabindex="-1">
-        <div class="results-heading">
-          <div>
-            <span class="eyebrow" id="view-caption">Подборка для закупки</span>
-            <h2 id="result-count" aria-live="polite">Загружаем каталог</h2>
-          </div>
-          <button id="reset" class="text-button">Сбросить фильтры</button>
-        </div>
-        <p id="storage-warning" class="notice" hidden>
-          Браузер запретил сохранение. Выбор и заметки доступны до закрытия
-          страницы.
-        </p>
-        <div id="cards" class="cards"></div>
-      </section>
-      <aside class="catalog-note">
-        <span class="note-symbol" aria-hidden="true">i</span>
+      <div class="page-heading">
         <div>
-          <b>Отправная точка для закупки</b>
-          <p>
-            Это ограниченный каталог, а не весь рынок. Данные проверены по
-            открытым страницам поставщиков. Наличие, цены, документы и условия
-            доставки уточняй перед заказом.
-          </p>
+          <p class="eyebrow">Ингредиенты / Готовая продукция / Упаковка</p>
+          <h1>Каталог поставщиков</h1>
         </div>
-      </aside>
+        <p class="catalog-meta">
+          <b id="total-count">45</b> компаний<br /><span
+            >Проверено 2 ноября 2026</span
+          >
+        </p>
+      </div>
+      <form id="search-form" class="search-bar" role="search">
+        <label class="search-label" for="query"
+          ><span class="search-icon" aria-hidden="true"></span
+          ><span class="sr-only">Товар или компания</span
+          ><input
+            id="query"
+            type="search"
+            placeholder="Товар, материал или название компании"
+            autocomplete="off" /></label
+        ><button class="button primary" type="submit">Найти</button>
+      </form>
+      <div class="catalog-layout">
+        <aside class="filter-panel" aria-label="Фильтры каталога">
+          <div class="filter-top">
+            <h2>Условия поиска</h2>
+            <button id="reset" class="text-button">Сбросить</button>
+          </div>
+          <div class="filter-section">
+            <h3><span>01</span> Направление</h3>
+            <div
+              id="categories"
+              class="category-list"
+              role="group"
+              aria-label="Категория поставщика"
+            >
+              <button
+                class="category-button active"
+                data-category=""
+                aria-pressed="true"
+              >
+                <span>Все направления</span><span data-count=""></span></button
+              ><button
+                class="category-button"
+                data-category="ingredients"
+                aria-pressed="false"
+              >
+                <span>Ингредиенты</span
+                ><span data-count="ingredients"></span></button
+              ><button
+                class="category-button"
+                data-category="finished"
+                aria-pressed="false"
+              >
+                <span>Готовая продукция</span
+                ><span data-count="finished"></span></button
+              ><button
+                class="category-button"
+                data-category="packaging"
+                aria-pressed="false"
+              >
+                <span>Упаковка</span><span data-count="packaging"></span>
+              </button>
+            </div>
+          </div>
+          <div class="filter-section">
+            <h3><span>02</span> Доставка</h3>
+            <label class="field-label" for="region"
+              >Город или регион получения</label
+            ><select id="region" aria-describedby="region-hint">
+              <option value="">Без ограничения</option>
+            </select>
+            <p id="region-hint" class="filter-help">
+              Только география, опубликованная поставщиком. Адрес офиса не
+              подтверждает доставку.
+            </p>
+            <div
+              class="quick-regions"
+              role="group"
+              aria-label="Быстрый выбор города"
+            >
+              <button data-region="Новосибирск" aria-pressed="false">
+                Новосибирск</button
+              ><button data-region="Екатеринбург" aria-pressed="false">
+                Екатеринбург</button
+              ><button data-region="Москва" aria-pressed="false">Москва</button
+              ><button data-region="Санкт-Петербург" aria-pressed="false">
+                Санкт-Петербург
+              </button>
+            </div>
+          </div>
+          <details class="filter-explainer">
+            <summary>Как упорядочены результаты</summary>
+            <p>
+              Для выбранного города сначала показаны компании с подтвержденной
+              доставкой в город или его область. Далее отдельной группой идут
+              поставщики по всей России. Внутри группы точный товар выше
+              описания.
+            </p>
+          </details>
+          <div id="catalog-info" class="catalog-info">
+            <h3>Данные для первого контакта</h3>
+            <p>
+              Это ограниченная подборка. Уточни наличие, цену, документы и
+              маршрут перед заказом. У каждой записи есть официальный источник.
+            </p>
+            <p>Сохраненные и заметки остаются в этом браузере.</p>
+          </div>
+        </aside>
+        <section id="results" tabindex="-1" aria-label="Результаты поиска">
+          <div class="results-heading">
+            <div>
+              <p class="eyebrow" id="view-caption">
+                Все направления / Без ограничения доставки
+              </p>
+              <h2 id="result-count" aria-live="polite">Загружаем каталог</h2>
+            </div>
+            <span class="result-order">Сначала подходящие по доставке</span>
+          </div>
+          <p id="region-summary" class="region-summary" role="status"></p>
+          <p id="storage-warning" class="notice" hidden>
+            Браузер запретил сохранение. Выбор и заметки доступны до закрытия
+            страницы.
+          </p>
+          <div class="list-columns" aria-hidden="true">
+            <span>Поставщик и ассортимент</span><span>Доставка и условия</span
+            ><span>Контакты и выбор</span>
+          </div>
+          <div id="cards" class="supplier-list"></div>
+        </section>
+      </div>
     </main>
     <footer>
-      <a class="brand footer-brand" href="./">поставка.</a
-      ><span>Сначала сравнить. Потом связаться.</span
+      <span
+        >поставка.
+        <span class="footer-description"
+          >Открытые данные для закупок</span
+        ></span
       ><button id="clear-saved" class="text-button">
-        Очистить сохраненное
+        Очистить сохраненное и заметки
       </button>
     </footer>
     <div id="compare-bar" class="compare-bar" hidden>
       <div>
         <b id="compare-count">Выбрано: 0 из 4</b
-        ><span>Для сравнения нужно от 2 компаний</span>
+        ><span id="compare-names">Добавь от 2 компаний для сравнения</span>
       </div>
       <button id="compare-open" class="button primary">Сравнить</button
       ><button id="compare-clear" class="button quiet">Очистить</button>
     </div>
     <dialog id="detail-dialog" aria-labelledby="detail-title">
       <div class="dialog-top">
-        <span class="eyebrow">Карточка поставщика</span
+        <span class="eyebrow">Сведения из открытых источников</span
         ><button class="icon-button close-dialog" aria-label="Закрыть">
           ×
         </button>
@@ -151,15 +202,25 @@
     >
       <div class="dialog-top">
         <div>
-          <span class="eyebrow">Твой список для звонка</span>
+          <span class="eyebrow">Выбранные компании</span>
           <h2 id="compare-title">Сравнение поставщиков</h2>
         </div>
         <button class="icon-button close-dialog" aria-label="Закрыть">×</button>
       </div>
       <p class="muted">
-        Условия могут зависеть от товара и объема. Здесь нет рейтинга качества.
+        Сопоставь географию и условия, затем свяжись с компанией. Данные по
+        разным товарам не являются сравнением цен.
       </p>
-      <div id="compare-content" class="comparison"></div>
+      <p class="compare-scroll-hint">
+        Прокрути таблицу вправо, чтобы увидеть остальные компании.
+      </p>
+      <div
+        id="compare-content"
+        class="comparison"
+        role="region"
+        aria-label="Сравнение, таблица с горизонтальной прокруткой"
+        tabindex="0"
+      ></div>
     </dialog>
     <div id="toast" class="toast" role="status" hidden></div>
   </body>

@@ -14,6 +14,9 @@ import pathlib,sys
 text=pathlib.Path(sys.argv[1]).read_text()
 if 'suppliers.178-236-242-240.sslip.io' not in text:
     text+='\nsuppliers.178-236-242-240.sslip.io {\n\tencode gzip zstd\n\troot * /srv/suppliers/current\n\tfile_server\n\theader {\n\t\tX-Content-Type-Options nosniff\n\t\tReferrer-Policy strict-origin-when-cross-origin\n\t\tContent-Security-Policy "default-src \'self\'; script-src \'self\'; style-src \'self\' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src \'self\' data:; connect-src \'self\'; frame-ancestors \'none\'; base-uri \'self\'; form-action \'self\'"\n\t}\n}\n'
+marker='\troot * /srv/suppliers/current\n'
+if marker in text and '\theader Cache-Control "no-cache"\n' not in text:
+    text=text.replace(marker,marker+'\theader Cache-Control "no-cache"\n',1)
 pathlib.Path(sys.argv[2]).write_text(text)
 PY
 docker cp "$base/Caddyfile.next" plov-caddy:/tmp/suppliers-Caddyfile
@@ -44,7 +47,7 @@ docker exec plov-caddy caddy reload --config /etc/caddy/Caddyfile --adapter cadd
 curl --retry 12 --retry-delay 5 --retry-all-errors --max-time 15 --resolve suppliers.178-236-242-240.sslip.io:443:127.0.0.1 --fail --silent --show-error https://suppliers.178-236-242-240.sslip.io/data/catalog.json > "$base/live-catalog.json"
 python3 - "$base/live-catalog.json" <<'PY'
 import json,sys
-assert len(json.load(open(sys.argv[1])))==30
+assert len(json.load(open(sys.argv[1])))>=45
 PY
 trap - EXIT
 echo "Deployment verified. Backup: $backup"
