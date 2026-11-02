@@ -155,34 +155,6 @@ def parse_sibprod(html, supplier, verified_at):
     return list(result.values()), {"rowsWithPrice":len(result),"skipped":skipped,"format":"HTML product cards, active retail price"}
 
 
-def parse_packtochka(html, supplier, verified_at):
-    result, skipped = {}, 0
-    for card in Document(html).root.nodes():
-        if not card.attrs.get("itemtype", "").endswith("/Product"):
-            continue
-        name_node = card.find(lambda n:n.attrs.get("itemprop")=="name")
-        value = card.find(lambda n:n.attrs.get("itemprop")=="price")
-        currency = card.find(lambda n:n.attrs.get("itemprop")=="priceCurrency")
-        native = card.find(lambda n:n.attrs.get("itemprop")=="sku")
-        if not name_node or not value or not currency or currency.attrs.get("content")!="RUB":
-            skipped += 1
-            continue
-        name = name_node.attrs.get("content") or name_node.text()
-        try:
-            price=amount(value.attrs.get("content", ""))
-        except ValueError:
-            skipped+=1
-            continue
-        code = (native.attrs.get("content") if native else None) or hashlib.sha256(key(name).encode()).hexdigest()[:16]
-        unit = "piece" if name == "Коробка картонная 150х120х100 мм" else "unknown"
-        offer=make_offer(supplier,"packtochka-public",code,name,price,unit,"https://packtochka.ru/","unknown",verified_at,
-            pack="Размер и комплектация указаны в названии. Единицу и оптовую ступень уточни у поставщика.",
-            notes=["Открытая цена витрины. Оптовые скидки не применены автоматически."])
-        if unit=="piece":offer["notes"].append("В товарной карточке этой коробки прямо указана поштучная продажа.")
-        result[offer["id"]]=offer
-    return list(result.values()), {"rowsWithPrice":len(result),"skipped":skipped,"format":"HTML Schema.org Product/Offer"}
-
-
 def fetch_packtochka(url):
     pages, seen = [], set()
     while url and url not in seen and len(pages) < 30:

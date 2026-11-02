@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
-from import_prices import amount, parse_food_star, parse_sibprod, parse_packtochka, parse_cake_me, parse_packtochka_catalog, parse_leopak
+from import_prices import amount, parse_food_star, parse_sibprod, parse_cake_me, parse_packtochka_catalog, parse_leopak
 
 
 class PriceImportTest(unittest.TestCase):
@@ -32,13 +32,13 @@ class PriceImportTest(unittest.TestCase):
         self.assertEqual(offers[0]["price"]["weightPerUnitKg"], 0.15)
         self.assertEqual(offers[0]["market"], "retail")
 
-    def test_empty_sku_does_not_merge_packaging_products(self):
-        def card(name, price):
-            return f'<div itemtype="https://schema.org/Product"><meta itemprop="name" content="{name}"><meta itemprop="sku" content=""><meta itemprop="price" content="{price}"><meta itemprop="priceCurrency" content="RUB"></div>'
-        offers, _ = parse_packtochka(card("Коробка 1", 16)+card("Коробка 2", 22), self.supplier, "2026-11-02")
+    def test_product_ids_keep_distinct_packaging_names(self):
+        def card(code):
+            return f'<form data-product-id="{code}"><div class="product-preview__title">Коробка {code}</div></form><div data-catalog-tier-product data-product-id="{code}"><span data-catalog-tier-price data-min="1" data-value="16"></span></div>'
+        offers, _ = parse_packtochka_catalog(json.dumps([card(1) + card(2)]), self.supplier, "2026-11-02")
         self.assertEqual(len(offers), 2)
         self.assertEqual(len({o["id"] for o in offers}), 2)
-        self.assertTrue(all(o["price"]["unit"]=="unknown" for o in offers))
+        self.assertTrue(all(o["price"]["unit"] == "unknown" for o in offers))
 
     def test_initial_tier_does_not_use_volume_discount(self):
         html = '<form data-product-id="10"><div class="product-preview__title">Коробка</div></form><div data-catalog-tier-product data-product-id="10"><span data-catalog-tier-price data-min="1" data-value="16"></span><span data-catalog-tier-price data-min="1000" data-value="9"></span></div>'
