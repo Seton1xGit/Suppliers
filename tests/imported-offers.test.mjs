@@ -5,7 +5,7 @@ import {searchCatalog} from "../public/catalog-source.js";
 import {selectedOffer,priceText,normalizedPrice} from "../public/offers.js";
 import {validate} from "../scripts/validate.mjs";
 const load=async n=>JSON.parse(await readFile(new URL(`../public/data/${n}.json`,import.meta.url),"utf8"));
-const catalog=await load("catalog"),manual=await load("offers"),imported=await load("imported-offers"),offers=[...manual,...imported];
+const catalog=await load("catalog"),manual=await load("manual-offers"),imported=await load("imported-offers"),offers=[...manual,...imported];
 test("массовые предложения проходят общую схему без дублей и затирания ручных",()=>{
  validate(catalog,offers);assert.equal(new Set(offers.map(o=>o.id)).size,offers.length);
  assert.equal(manual.length,21);assert(imported.length>=459);

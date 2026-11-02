@@ -1203,10 +1203,9 @@ try {
   const loaded = await Promise.all([
     source.load(),
     loadOffers("./data/offers.json"),
-    loadOffers("./data/imported-offers.json"),
   ]);
   items = loaded[0];
-  offers = [...loaded[1], ...loaded[2]];
+  offers = loaded[1];
   const valid = new Set(items.map((s) => s.id));
   store.state.saved = store.state.saved.filter((id) => valid.has(id));
   store.state.compare = store.state.compare.filter((id) => valid.has(id));

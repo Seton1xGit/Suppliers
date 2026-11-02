@@ -23,7 +23,7 @@ const load = async (name) =>
     ),
   );
 const data = await load("catalog"),
-  offers = await load("offers");
+  offers = await load("manual-offers");
 const get = (id) => offers.find((o) => o.id === id);
 const fixture = (price, extra = {}) => ({
   ...structuredClone(get("kalinbaza-red-kg")),

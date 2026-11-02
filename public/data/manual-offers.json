@@ -1,0 +1,934 @@
+[
+  {
+    "id": "food-star-mahitos",
+    "supplierId": "food-star",
+    "name": "Помидоры Махитос Ростовские",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "regular",
+    "pack": {
+      "label": "Весовой товар, цена за 1 кг; тара согласуется"
+    },
+    "price": {
+      "type": "exact",
+      "min": 322,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Минимальная партия согласуется индивидуально"
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Москва",
+        "Московская область"
+      ],
+      "pickupRegions": [
+        "Москва"
+      ],
+      "text": "Собственная доставка по Москве и Московской области. В пределах МКАД бесплатно от 25 000 руб., меньше и за МКАД по расчету. Только юрлица и ИП, безналичный расчет.",
+      "sourceUrl": "https://www.food-star.ru/delivery/"
+    },
+    "availability": "in_stock",
+    "sourceUrl": "https://www.food-star.ru/tovar/pomidory-mahitos-rostovskie/",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Только юрлица и ИП, безналичная оплата. Доставка оплачивается отдельно по условиям маршрута."
+    ],
+    "sourceUpdatedAt": "2026-10-22"
+  },
+  {
+    "id": "food-star-vine",
+    "supplierId": "food-star",
+    "name": "Помидоры на ветке",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "vine",
+    "pack": {
+      "label": "Весовой товар, цена за 1 кг; тара согласуется"
+    },
+    "price": {
+      "type": "exact",
+      "min": 344,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Минимальная партия согласуется индивидуально"
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Москва",
+        "Московская область"
+      ],
+      "pickupRegions": [
+        "Москва"
+      ],
+      "text": "Собственная доставка по Москве и Московской области. В пределах МКАД бесплатно от 25 000 руб., меньше и за МКАД по расчету. Только юрлица и ИП, безналичный расчет.",
+      "sourceUrl": "https://www.food-star.ru/delivery/"
+    },
+    "availability": "in_stock",
+    "sourceUrl": "https://www.food-star.ru/tovar/pomidory-na-vetke/",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Только юрлица и ИП, безналичная оплата. Доставка оплачивается отдельно по условиям маршрута."
+    ],
+    "sourceUpdatedAt": "2026-10-22"
+  },
+  {
+    "id": "food-star-cherry-vine",
+    "supplierId": "food-star",
+    "name": "Помидоры черри на ветке",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "cherry",
+    "pack": {
+      "label": "Весовой товар, цена за 1 кг; тара согласуется"
+    },
+    "price": {
+      "type": "exact",
+      "min": 1090,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Минимальная партия согласуется индивидуально"
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Москва",
+        "Московская область"
+      ],
+      "pickupRegions": [
+        "Москва"
+      ],
+      "text": "Собственная доставка по Москве и Московской области. В пределах МКАД бесплатно от 25 000 руб., меньше и за МКАД по расчету. Только юрлица и ИП, безналичный расчет.",
+      "sourceUrl": "https://www.food-star.ru/delivery/"
+    },
+    "availability": "in_stock",
+    "sourceUrl": "https://www.food-star.ru/tovar/pomidory-cherri-na-vetke/",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Только юрлица и ИП, безналичная оплата. Доставка оплачивается отдельно по условиям маршрута."
+    ],
+    "sourceUpdatedAt": "2026-10-29"
+  },
+  {
+    "id": "sofiiskaya-red",
+    "supplierId": "sofiiskaya-baza",
+    "name": "Томаты свежие красные (Россия)",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "regular",
+    "pack": {
+      "label": "1 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 242,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "В карточке от 1 кг; общие условия базы от ящика. Минимум требует подтверждения."
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Санкт-Петербург",
+        "Ленинградская область"
+      ],
+      "pickupRegions": [
+        "Санкт-Петербург"
+      ],
+      "text": "Перевозка со склада на Софийской, 151 по Санкт-Петербургу и Ленинградской области. Наличие, партия и расчет доставки согласуются с отделом опта.",
+      "sourceUrl": "https://sofiiskayabaza.ru/perspektiva"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://sofiiskayabaza.ru/tomaty-svezhie-krasnye-rossiya",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Цена и наличие подтверждаются менеджером. Общие условия базы и товарная карточка различаются по минимальной партии."
+    ]
+  },
+  {
+    "id": "sofiiskaya-vine",
+    "supplierId": "sofiiskaya-baza",
+    "name": "Томаты красные на ветке (Россия)",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "vine",
+    "pack": {
+      "label": "1 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 205,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "В карточке от 1 кг; общие условия базы от ящика. Минимум требует подтверждения."
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Санкт-Петербург",
+        "Ленинградская область"
+      ],
+      "pickupRegions": [
+        "Санкт-Петербург"
+      ],
+      "text": "Перевозка со склада на Софийской, 151 по Санкт-Петербургу и Ленинградской области. Наличие, партия и расчет доставки согласуются с отделом опта.",
+      "sourceUrl": "https://sofiiskayabaza.ru/perspektiva"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://sofiiskayabaza.ru/tomaty-svekie-krasnye-vetka-rossiya-1kg",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Цена и наличие подтверждаются менеджером. Общие условия базы и товарная карточка различаются по минимальной партии."
+    ]
+  },
+  {
+    "id": "sofiiskaya-cherry",
+    "supplierId": "sofiiskaya-baza",
+    "name": "Томаты черри красные (Россия)",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "cherry",
+    "pack": {
+      "label": "1 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 352,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "В карточке от 1 кг; общие условия базы от ящика. Минимум требует подтверждения."
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Санкт-Петербург",
+        "Ленинградская область"
+      ],
+      "pickupRegions": [
+        "Санкт-Петербург"
+      ],
+      "text": "Перевозка со склада на Софийской, 151 по Санкт-Петербургу и Ленинградской области. Наличие, партия и расчет доставки согласуются с отделом опта.",
+      "sourceUrl": "https://sofiiskayabaza.ru/perspektiva"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://sofiiskayabaza.ru/tomaty-svekie-krasnye-cherri-rossiya-1kg",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Цена и наличие подтверждаются менеджером. Общие условия базы и товарная карточка различаются по минимальной партии."
+    ]
+  },
+  {
+    "id": "sofiiskaya-plum",
+    "supplierId": "sofiiskaya-baza",
+    "name": "Томаты сливка (Россия)",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "plum",
+    "pack": {
+      "label": "1 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 121,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "В карточке от 1 кг; общие условия базы от ящика. Минимум требует подтверждения."
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Санкт-Петербург",
+        "Ленинградская область"
+      ],
+      "pickupRegions": [
+        "Санкт-Петербург"
+      ],
+      "text": "Перевозка со склада на Софийской, 151 по Санкт-Петербургу и Ленинградской области. Наличие, партия и расчет доставки согласуются с отделом опта.",
+      "sourceUrl": "https://sofiiskayabaza.ru/perspektiva"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://sofiiskayabaza.ru/tomaty-svekie-slivka-rossiya-1kg",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Цена и наличие подтверждаются менеджером. Общие условия базы и товарная карточка различаются по минимальной партии."
+    ]
+  },
+  {
+    "id": "kalinbaza-red-kg",
+    "supplierId": "kalinbaza",
+    "name": "Томаты красные, весовые",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "regular",
+    "pack": {
+      "label": "Поставляются в коробе 7 кг; есть вариант цены за 1 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 299,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "В карточке минимальный заказ от 1 кг",
+      "quantity": 1,
+      "unit": "kg"
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Санкт-Петербург",
+        "Ленинградская область"
+      ],
+      "pickupRegions": [
+        "Санкт-Петербург"
+      ],
+      "text": "Карточка свежих томатов подтверждает доставку по Санкт-Петербургу и Ленинградской области. Самовывоз: проспект Непокоренных, 63. Региональные отгрузки от паллеты требуют отдельного расчета.",
+      "sourceUrl": "https://kalinbaza.ru/ovoshi-i-frukti/ovoshchi-svezhie/tomaty"
+    },
+    "availability": "in_stock",
+    "sourceUrl": "https://kalinbaza.ru/ovoshi-i-frukti/ovoshchi-svezhie/tomaty",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Ориентировочная опубликованная цена, итог зависит от объема и доставки."
+    ]
+  },
+  {
+    "id": "kalinbaza-red-box",
+    "supplierId": "kalinbaza",
+    "name": "Томаты красные, ящик 7 кг",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "regular",
+    "pack": {
+      "label": "Ящик 7 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 2093,
+      "max": null,
+      "currency": "RUB",
+      "unit": "pack",
+      "weightPerUnitKg": 7,
+      "weightEvidence": "Масса одной оплачиваемой упаковки указана в карточке товара: Ящик 7 кг"
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Выбран вариант ящика 7 кг. Также опубликована продажа от 1 кг."
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Санкт-Петербург",
+        "Ленинградская область"
+      ],
+      "pickupRegions": [
+        "Санкт-Петербург"
+      ],
+      "text": "Карточка свежих томатов подтверждает доставку по Санкт-Петербургу и Ленинградской области. Самовывоз: проспект Непокоренных, 63. Региональные отгрузки от паллеты требуют отдельного расчета.",
+      "sourceUrl": "https://kalinbaza.ru/ovoshi-i-frukti/ovoshchi-svezhie/tomaty"
+    },
+    "availability": "in_stock",
+    "sourceUrl": "https://kalinbaza.ru/ovoshi-i-frukti/ovoshchi-svezhie/tomaty",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "За ящик опубликовано 2093 руб.; 299 руб./кг. Итог подтверждает менеджер."
+    ]
+  },
+  {
+    "id": "kalinbaza-vine",
+    "supplierId": "kalinbaza",
+    "name": "Томаты на ветке",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "vine",
+    "pack": {
+      "label": "Короб 6 кг, цена за 1 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 345,
+      "max": null,
+      "currency": "RUB",
+      "unit": "unknown",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Минимальную партию этой позиции уточни у поставщика"
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Санкт-Петербург",
+        "Ленинградская область"
+      ],
+      "pickupRegions": [
+        "Санкт-Петербург"
+      ],
+      "text": "Карточка свежих томатов подтверждает доставку по Санкт-Петербургу и Ленинградской области. Самовывоз: проспект Непокоренных, 63. Региональные отгрузки от паллеты требуют отдельного расчета.",
+      "sourceUrl": "https://kalinbaza.ru/ovoshi-i-frukti/ovoshchi-svezhie/tomaty"
+    },
+    "availability": "in_stock",
+    "sourceUrl": "https://kalinbaza.ru/ovoshi-i-frukti/ovoshchi-svezhie/tomaty-na-vetke",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "На странице видны цена 345 руб. и короб 6 кг. Единицу этой цены перед пересчетом нужно подтвердить."
+    ]
+  },
+  {
+    "id": "food-fresh-pink",
+    "supplierId": "food-fresh",
+    "name": "Розовые томаты",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "pink",
+    "pack": {
+      "label": "Коробка 10 кг, цена за 1 кг"
+    },
+    "price": {
+      "type": "from",
+      "min": 378,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Общий заказ от 10 000 руб.",
+      "orderRub": 10000
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Москва",
+        "Московская область"
+      ],
+      "pickupRegions": [
+        "Москва"
+      ],
+      "text": "Доставка по Москве, за МКАД по области по договоренности. Общий минимальный заказ от 10 000 руб. Самовывоз со склада в Москве, Бережковская набережная, 12А.",
+      "sourceUrl": "https://food-fresh.ru/dostavka-i-oplata/"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://food-fresh.ru/ovoshhi-i-frukty/ovoshhi/rozovye-tomaty/",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Начальная цена. Работа с НДС 10% и 22% указана в целом; включен ли НДС в эту цену, нужно уточнить."
+    ]
+  },
+  {
+    "id": "food-fresh-bunch",
+    "supplierId": "food-fresh",
+    "name": "Томаты Банч",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "unspecified",
+    "pack": {
+      "label": "Коробка 5 кг"
+    },
+    "price": {
+      "type": "from",
+      "min": 101.25,
+      "max": null,
+      "currency": "RUB",
+      "unit": "unknown",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Общий заказ от 10 000 руб.",
+      "orderRub": 10000
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Москва",
+        "Московская область"
+      ],
+      "pickupRegions": [
+        "Москва"
+      ],
+      "text": "Доставка по Москве, за МКАД по области по договоренности. Общий минимальный заказ от 10 000 руб. Самовывоз со склада в Москве, Бережковская набережная, 12А.",
+      "sourceUrl": "https://food-fresh.ru/dostavka-i-oplata/"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://food-fresh.ru/ovoshhi-i-frukty/ovoshhi/tomaty-banch/",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "На странице есть число и вес короба, но единица цены не указана. Не пересчитано в руб./кг. Вид томатов Банч требует уточнения."
+    ]
+  },
+  {
+    "id": "food-fresh-plum",
+    "supplierId": "food-fresh",
+    "name": "Сливовидные помидоры",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "plum",
+    "pack": {
+      "label": "Коробка 5 кг"
+    },
+    "price": {
+      "type": "from",
+      "min": 81,
+      "max": null,
+      "currency": "RUB",
+      "unit": "unknown",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Общий заказ от 10 000 руб.",
+      "orderRub": 10000
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Москва",
+        "Московская область"
+      ],
+      "pickupRegions": [
+        "Москва"
+      ],
+      "text": "Доставка по Москве, за МКАД по области по договоренности. Общий минимальный заказ от 10 000 руб. Самовывоз со склада в Москве, Бережковская набережная, 12А.",
+      "sourceUrl": "https://food-fresh.ru/dostavka-i-oplata/"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://food-fresh.ru/ovoshhi-i-frukty/ovoshhi/slivovidnye-pomidory/",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Единица цены на странице не указана. Сумма не трактуется как цена за ящик или килограмм."
+    ]
+  },
+  {
+    "id": "food-fresh-cherry",
+    "supplierId": "food-fresh",
+    "name": "Помидоры черри",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "cherry",
+    "pack": {
+      "label": "250 г x 9 шт."
+    },
+    "price": {
+      "type": "from",
+      "min": 175,
+      "max": null,
+      "currency": "RUB",
+      "unit": "piece",
+      "weightPerUnitKg": null
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Общий заказ от 10 000 руб.",
+      "orderRub": 10000
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Москва",
+        "Московская область"
+      ],
+      "pickupRegions": [
+        "Москва"
+      ],
+      "text": "Доставка по Москве, за МКАД по области по договоренности. Общий минимальный заказ от 10 000 руб. Самовывоз со склада в Москве, Бережковская набережная, 12А.",
+      "sourceUrl": "https://food-fresh.ru/dostavka-i-oplata/"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://food-fresh.ru/ovoshhi-i-frukty/ovoshhi/pomidory-cherri/",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Цена за штуку; относится ли она к отдельной упаковке 250 г или другому месту, нужно уточнить. В руб./кг не пересчитана."
+    ]
+  },
+  {
+    "id": "fermermart-red",
+    "supplierId": "fermermart-ekb",
+    "name": "Томаты свежие вес",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "regular",
+    "pack": {
+      "label": "Весовой товар, цена за 1 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 155,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "retail",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Для доставки заказ от 2000 руб.",
+      "orderRub": 2000
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Екатеринбург"
+      ],
+      "pickupRegions": [
+        "Екатеринбург"
+      ],
+      "text": "Розничный магазин. Курьерская доставка по Екатеринбургу при заказе от 2000 руб., доставка 200 руб. Самовывоз возможен. Условия доставки по области нужно уточнять.",
+      "sourceUrl": "https://ekb.fermermart.ru/dostavka_i_oplata"
+    },
+    "availability": "in_stock",
+    "sourceUrl": "https://ekb.fermermart.ru/katalog/produkt/tomaty-svezhie-ves",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Розничная цена, не оптовое предложение. Доставка по Екатеринбургу 200 руб., отдельно от стоимости товара."
+    ]
+  },
+  {
+    "id": "fermermart-plum",
+    "supplierId": "fermermart-ekb",
+    "name": "Томаты сливовидные",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "plum",
+    "pack": {
+      "label": "Весовой товар, цена за 1 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 200,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "retail",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Для доставки заказ от 2000 руб.",
+      "orderRub": 2000
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Екатеринбург"
+      ],
+      "pickupRegions": [
+        "Екатеринбург"
+      ],
+      "text": "Розничный магазин. Курьерская доставка по Екатеринбургу при заказе от 2000 руб., доставка 200 руб. Самовывоз возможен. Условия доставки по области нужно уточнять.",
+      "sourceUrl": "https://ekb.fermermart.ru/dostavka_i_oplata"
+    },
+    "availability": "in_stock",
+    "sourceUrl": "https://ekb.fermermart.ru/katalog/produkt/tomaty-slivovidnye-1kg",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Розничная цена, не оптовое предложение. Доставка по Екатеринбургу 200 руб., отдельно от стоимости товара."
+    ]
+  },
+  {
+    "id": "fruktline-red",
+    "supplierId": "fruktline",
+    "name": "Томаты красные Махито",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "regular",
+    "pack": {
+      "label": "Весовой товар, цена за 1 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 191,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "retail",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Минимальная партия для этой цены не опубликована"
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Москва",
+        "Московская область"
+      ],
+      "pickupRegions": [
+        "Москва"
+      ],
+      "text": "На сайте указана доставка овощей и фруктов предприятиям и частным покупателям по Москве и Московской области. Условия партии уточняются.",
+      "sourceUrl": "https://fruktlain.ru/"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://fruktlain.ru/catalog/ovoshchi/tomaty-krasnye-makhito-/",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "На странице прямо указана розничная цена. Оптовый прайс запрашивается отдельно; актуальную цену предлагает уточнить менеджер."
+    ]
+  },
+  {
+    "id": "fruktline-vine",
+    "supplierId": "fruktline",
+    "name": "Томаты красные на ветке Россия",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "vine",
+    "pack": {
+      "label": "Весовой товар, цена за 1 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 224,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "retail",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Минимальная партия для этой цены не опубликована"
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Москва",
+        "Московская область"
+      ],
+      "pickupRegions": [
+        "Москва"
+      ],
+      "text": "На сайте указана доставка овощей и фруктов предприятиям и частным покупателям по Москве и Московской области. Условия партии уточняются.",
+      "sourceUrl": "https://fruktlain.ru/"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://fruktlain.ru/catalog/ovoshchi/tomaty-krasnye-na-vetke-rossiya/",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "На странице прямо указана розничная цена. Оптовый прайс запрашивается отдельно; актуальную цену предлагает уточнить менеджер."
+    ]
+  },
+  {
+    "id": "fruktline-pink",
+    "supplierId": "fruktline",
+    "name": "Томаты розовые крупные",
+    "family": "fresh-tomato",
+    "form": "fresh",
+    "group": "pink",
+    "pack": {
+      "label": "Весовой товар, цена за 1 кг"
+    },
+    "price": {
+      "type": "exact",
+      "min": 236,
+      "max": null,
+      "currency": "RUB",
+      "unit": "kg",
+      "weightPerUnitKg": null
+    },
+    "market": "retail",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Минимальная партия для этой цены не опубликована"
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Москва",
+        "Московская область"
+      ],
+      "pickupRegions": [
+        "Москва"
+      ],
+      "text": "На сайте указана доставка овощей и фруктов предприятиям и частным покупателям по Москве и Московской области. Условия партии уточняются.",
+      "sourceUrl": "https://fruktlain.ru/"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://fruktlain.ru/catalog/ovoshchi/tomaty-rozovye-krupnye/",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "На странице прямо указана розничная цена. Оптовый прайс запрашивается отдельно; актуальную цену предлагает уточнить менеджер."
+    ]
+  },
+  {
+    "id": "likhachevsky-legacy-product",
+    "supplierId": "likhachevsky",
+    "name": "Тесто слоеное дрожжевое замороженное",
+    "family": "puff-dough",
+    "form": "frozen",
+    "group": "puff-dough",
+    "pack": {
+      "label": "упаковка 0,5 кг"
+    },
+    "price": {
+      "type": "from",
+      "min": 99,
+      "max": null,
+      "currency": "RUB",
+      "unit": "pack",
+      "weightPerUnitKg": 0.5,
+      "weightEvidence": "Масса одной оплачиваемой упаковки указана в карточке товара: упаковка 0,5 кг"
+    },
+    "market": "unknown",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "От 1 коробки, самовывоз"
+    },
+    "fulfillment": {
+      "deliveryRegions": [],
+      "pickupRegions": [
+        "Новосибирск"
+      ],
+      "text": "Самовывоз и доставка по согласованию",
+      "sourceUrl": "https://lkkombinat.ru/testo"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://lkkombinat.ru/testo",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Опубликована цена от 99 ₽ для упаковки 0,5 кг; коробка 28 упаковок. Самовывоз. Верхняя граница не указана."
+    ]
+  },
+  {
+    "id": "aqvatoriy-nsk-legacy-product",
+    "supplierId": "aqvatoriy-nsk",
+    "name": "Васаби порошок Premium Якимал",
+    "family": "wasabi",
+    "form": "powder",
+    "group": "wasabi",
+    "pack": {
+      "label": "упаковка 1 кг"
+    },
+    "price": {
+      "type": "conflict",
+      "min": null,
+      "max": null,
+      "currency": "RUB",
+      "unit": "pack",
+      "weightPerUnitKg": 1,
+      "weightEvidence": "Масса одной оплачиваемой упаковки указана в карточке товара: упаковка 1 кг"
+    },
+    "market": "b2b",
+    "vat": {
+      "status": "unknown",
+      "text": "НДС в указанной цене не уточнен"
+    },
+    "minimum": {
+      "text": "Уточни минимальный заказ"
+    },
+    "fulfillment": {
+      "deliveryRegions": [
+        "Новосибирск"
+      ],
+      "pickupRegions": [
+        "Новосибирск"
+      ],
+      "text": "Новосибирская версия сайта предлагает поставки HoReCa и доставку на дом. Адрес, сроки и условия согласовываются.",
+      "sourceUrl": "https://www.aqvatoriy.ru/"
+    },
+    "availability": "unknown",
+    "sourceUrl": "https://www.aqvatoriy.ru/catalog-novosibirsk/tovary-dlya-sushi/vasabi-porosok-premium-yakimal-1-kg-20-stkor-novosibirsk",
+    "verifiedAt": "2026-11-02",
+    "notes": [
+      "Карточка товара и список каталога показывают разные цены. Диапазон не подтвержден; запроси актуальный прайс."
+    ]
+  }
+]

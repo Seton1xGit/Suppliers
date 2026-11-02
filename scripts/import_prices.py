@@ -246,7 +246,7 @@ def run():
     parser.add_argument("--input", type=Path, help="Проверка парсера на сохраненной странице без обращения к сайту")
     args = parser.parse_args()
     catalog = json.loads((DATA / "catalog.json").read_text(encoding="utf-8"))
-    manual = json.loads((DATA / "offers.json").read_text(encoding="utf-8"))
+    manual = json.loads((DATA / "manual-offers.json").read_text(encoding="utf-8"))
     imported = json.loads((DATA / "imported-offers.json").read_text(encoding="utf-8")) if (DATA / "imported-offers.json").exists() else []
     metadata = json.loads((DATA / "price-sources.json").read_text(encoding="utf-8")) if (DATA / "price-sources.json").exists() else []
     for name in args.source or ADAPTERS:
@@ -272,7 +272,7 @@ def run():
             category=supplier["category"], imported=len(unique), manualPreserved=len(offers)-len(unique), seconds=round(time.monotonic()-started,2), **report)
         metadata = [m for m in metadata if m["id"] != record["id"]] + [record]
         print(json.dumps(record, ensure_ascii=False))
-    for name, value in [("catalog",catalog),("imported-offers",imported),("price-sources",metadata)]:
+    for name, value in [("catalog",catalog),("imported-offers",imported),("price-sources",metadata),("offers",manual+imported)]:
         target = DATA / (name + ".json")
         temporary = target.with_suffix(".json.tmp")
         payload = json.dumps(value, ensure_ascii=False, indent=2) if name in {"catalog", "price-sources"} else json.dumps(value, ensure_ascii=False, separators=(",", ":"))
