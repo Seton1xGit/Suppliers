@@ -12,11 +12,7 @@
       "Лимонная кислота",
       "Желатин"
     ],
-    "synonyms": [
-      "пищевые добавки",
-      "сахарозаменители",
-      "декстроза"
-    ],
+    "synonyms": ["пищевые добавки", "сахарозаменители", "декстроза"],
     "city": "Новосибирск",
     "website": "https://foodresurs.ru/",
     "contacts": [
@@ -62,12 +58,7 @@
       "Крахмал",
       "Какао порошок"
     ],
-    "synonyms": [
-      "сиропы",
-      "гфс",
-      "загустители",
-      "патоки"
-    ],
+    "synonyms": ["сиропы", "гфс", "загустители", "патоки"],
     "city": "Краснодар",
     "website": "https://a-gross.shop/",
     "contacts": [
@@ -192,12 +183,7 @@
       "Какао порошок",
       "Концентрат молочного белка"
     ],
-    "synonyms": [
-      "адастра",
-      "сухие ингредиенты",
-      "кмб",
-      "ксб"
-    ],
+    "synonyms": ["адастра", "сухие ингредиенты", "кмб", "ксб"],
     "city": "Воронеж",
     "website": "https://tk-adastra.ru/",
     "contacts": [
@@ -276,11 +262,7 @@
       "Подсластители и сахарозаменители",
       "Глицерин"
     ],
-    "synonyms": [
-      "пищевые добавки",
-      "подсластитель",
-      "сахарозаменитель"
-    ],
+    "synonyms": ["пищевые добавки", "подсластитель", "сахарозаменитель"],
     "city": "Екатеринбург",
     "website": "https://tehnopoliz.ru/",
     "contacts": [
@@ -419,12 +401,7 @@
       "Шоколад Белколад",
       "Маргарины и жиры для слоения"
     ],
-    "synonyms": [
-      "puratos",
-      "бельколад",
-      "белколад",
-      "ингредиенты для выпечки"
-    ],
+    "synonyms": ["puratos", "бельколад", "белколад", "ингредиенты для выпечки"],
     "city": "Подольск",
     "website": "https://www.puratos.ru/ru",
     "contacts": [
@@ -458,12 +435,7 @@
       "блинчики",
       "десерты"
     ],
-    "synonyms": [
-      "готовая еда",
-      "кулинария",
-      "завтраки",
-      "СТМ"
-    ],
+    "synonyms": ["готовая еда", "кулинария", "завтраки", "СТМ"],
     "city": "Березовский, Свердловская область",
     "website": "https://foodfiction.ru/",
     "contacts": [
@@ -533,12 +505,7 @@
       "вареники",
       "блинчики"
     ],
-    "synonyms": [
-      "Сибколбасы",
-      "мясная продукция",
-      "консервы",
-      "полуфабрикаты"
-    ],
+    "synonyms": ["Сибколбасы", "мясная продукция", "консервы", "полуфабрикаты"],
     "city": "Омск",
     "website": "https://sibkolbasy.ru/",
     "contacts": [
@@ -564,17 +531,8 @@
     "id": "sady-pridonya",
     "name": "Сады Придонья",
     "category": "finished",
-    "products": [
-      "фруктовые соки",
-      "овощные соки",
-      "морсы",
-      "напитки"
-    ],
-    "synonyms": [
-      "сок",
-      "яблочный сок",
-      "безалкогольные напитки"
-    ],
+    "products": ["фруктовые соки", "овощные соки", "морсы", "напитки"],
+    "synonyms": ["сок", "яблочный сок", "безалкогольные напитки"],
     "city": "Волгоград",
     "website": "https://pridonie.ru/",
     "contacts": [
@@ -611,11 +569,7 @@
       "замороженные полуфабрикаты",
       "злаковые батончики"
     ],
-    "synonyms": [
-      "выпечка",
-      "хлебобулочные изделия",
-      "сладости"
-    ],
+    "synonyms": ["выпечка", "хлебобулочные изделия", "сладости"],
     "city": "Ангарск, Иркутская область",
     "website": "https://karaway.ru/",
     "contacts": [
@@ -645,13 +599,7 @@
     "id": "zernov-nsk",
     "name": "Зернов",
     "category": "finished",
-    "products": [
-      "готовые обеды",
-      "салаты",
-      "супы",
-      "хлеб",
-      "выпечка"
-    ],
+    "products": ["готовые обеды", "салаты", "супы", "хлеб", "выпечка"],
     "synonyms": [
       "готовая еда",
       "корпоративное питание",
@@ -692,13 +640,7 @@
       "тушеное мясо",
       "вяленое мясо"
     ],
-    "synonyms": [
-      "7верст",
-      "7 верст",
-      "готовая еда",
-      "реторт",
-      "еда в поход"
-    ],
+    "synonyms": ["7верст", "7 верст", "готовая еда", "реторт", "еда в поход"],
     "city": "Краснодар",
     "website": "https://7vt.ru/",
     "contacts": [
@@ -738,12 +680,7 @@
       "пасты",
       "завтраки"
     ],
-    "synonyms": [
-      "готовая еда",
-      "кулинария",
-      "гарниры",
-      "закуски"
-    ],
+    "synonyms": ["готовая еда", "кулинария", "гарниры", "закуски"],
     "city": "Краснодар",
     "website": "https://eattery.ru/",
     "contacts": [
@@ -808,12 +745,7 @@
       "кондитерские изделия",
       "мясные полуфабрикаты"
     ],
-    "synonyms": [
-      "готовая еда",
-      "кулинария",
-      "супы",
-      "готовые обеды"
-    ],
+    "synonyms": ["готовая еда", "кулинария", "супы", "готовые обеды"],
     "city": "Санкт-Петербург",
     "website": "https://ff-spb.ru/",
     "contacts": [
@@ -863,11 +795,7 @@
       "пельмени",
       "торты"
     ],
-    "synonyms": [
-      "мясная продукция",
-      "полуфабрикаты",
-      "кондитерские изделия"
-    ],
+    "synonyms": ["мясная продукция", "полуфабрикаты", "кондитерские изделия"],
     "city": "Тольятти, Самарская область",
     "website": "https://fk100.ru/",
     "contacts": [
@@ -903,11 +831,7 @@
       "сдоба",
       "замороженные хлебобулочные изделия"
     ],
-    "synonyms": [
-      "выпечка",
-      "хлебобулочные изделия",
-      "заморозка"
-    ],
+    "synonyms": ["выпечка", "хлебобулочные изделия", "заморозка"],
     "city": "Санкт-Петербург",
     "website": "https://www.karavay.spb.ru/",
     "contacts": [
@@ -937,11 +861,7 @@
       "Пергамент",
       "Парафинированная бумага"
     ],
-    "synonyms": [
-      "упаковка для фастфуда",
-      "стаканчики",
-      "бумага для выпечки"
-    ],
+    "synonyms": ["упаковка для фастфуда", "стаканчики", "бумага для выпечки"],
     "city": "Новосибирск",
     "website": "https://flexaprint.ru/",
     "contacts": [
@@ -1079,11 +999,7 @@
       "Вакуумный рукав",
       "Колбасные оболочки"
     ],
-    "synonyms": [
-      "пищевая пленка",
-      "вакуумная упаковка",
-      "упаковка для мяса"
-    ],
+    "synonyms": ["пищевая пленка", "вакуумная упаковка", "упаковка для мяса"],
     "city": "Екатеринбург",
     "website": "https://www.propak66.ru/",
     "contacts": [
@@ -1122,11 +1038,7 @@
       "Бумажные пакеты",
       "Фасовочные пакеты"
     ],
-    "synonyms": [
-      "контейнеры",
-      "упаковочные материалы",
-      "одноразовая упаковка"
-    ],
+    "synonyms": ["контейнеры", "упаковочные материалы", "одноразовая упаковка"],
     "city": "Москва",
     "website": "https://komus-opt.ru/",
     "contacts": [
@@ -1231,11 +1143,7 @@
       "Полимерные крышки",
       "Флаконы ПНД"
     ],
-    "synonyms": [
-      "Сибполимертара",
-      "пищевая тара",
-      "пластиковая упаковка"
-    ],
+    "synonyms": ["Сибполимертара", "пищевая тара", "пластиковая упаковка"],
     "city": "Новосибирск",
     "website": "https://sp-tara.ru/",
     "contacts": [
@@ -1273,11 +1181,7 @@
       "Лотки под зелень",
       "Пленка ПЭТ"
     ],
-    "synonyms": [
-      "пластиковая упаковка",
-      "пищевая тара",
-      "коррексы"
-    ],
+    "synonyms": ["пластиковая упаковка", "пищевая тара", "коррексы"],
     "city": "Новосибирск",
     "website": "https://alliance-upak.ru/",
     "contacts": [
@@ -1424,11 +1328,7 @@
       "Голубцы",
       "Долма"
     ],
-    "synonyms": [
-      "замороженные полуфабрикаты",
-      "мясные полуфабрикаты",
-      "позы"
-    ],
+    "synonyms": ["замороженные полуфабрикаты", "мясные полуфабрикаты", "позы"],
     "city": "Новосибирск",
     "website": "https://pelmeni-eco.ru/",
     "contacts": [
@@ -1524,11 +1424,7 @@
       "Макаронные изделия",
       "Яичная продукция"
     ],
-    "synonyms": [
-      "мегаопт",
-      "продукты питания оптом",
-      "макароны"
-    ],
+    "synonyms": ["мегаопт", "продукты питания оптом", "макароны"],
     "city": "Новосибирск",
     "website": "https://megaoptnsk.ru/",
     "contacts": [
@@ -1569,12 +1465,7 @@
       "Соленые грибы",
       "Варенье"
     ],
-    "synonyms": [
-      "дикоросы",
-      "дары сибири",
-      "сибирские ягоды",
-      "грибы оптом"
-    ],
+    "synonyms": ["дикоросы", "дары сибири", "сибирские ягоды", "грибы оптом"],
     "city": "Новосибирск",
     "website": "https://www.sibdar.net/",
     "contacts": [
@@ -1981,11 +1872,7 @@
       "Молочная продукция",
       "Соусы, специи и приправы"
     ],
-    "synonyms": [
-      "агропарк",
-      "продукты для ресторанов",
-      "horeca"
-    ],
+    "synonyms": ["агропарк", "продукты для ресторанов", "horeca"],
     "city": "Санкт-Петербург",
     "website": "https://agroparkspb.ru/",
     "contacts": [
@@ -2031,11 +1918,7 @@
       "Сырники",
       "Блинчики с творожной начинкой"
     ],
-    "synonyms": [
-      "арисан",
-      "готовая продукция",
-      "продукты для ресторанов"
-    ],
+    "synonyms": ["арисан", "готовая продукция", "продукты для ресторанов"],
     "city": "Санкт-Петербург",
     "website": "https://arisanspb.ru/",
     "contacts": [
@@ -2198,11 +2081,7 @@
       "Рыбные пресервы",
       "Салат из морской капусты"
     ],
-    "synonyms": [
-      "экор-фиш",
-      "готовая рыбная продукция",
-      "копченая рыба"
-    ],
+    "synonyms": ["экор-фиш", "готовая рыбная продукция", "копченая рыба"],
     "city": "Москва",
     "website": "https://ekorfish.com/",
     "contacts": [
@@ -2262,5 +2141,1232 @@
       "sourceUrl": "https://ekorfish.com/delivery/",
       "evidence": "Минимальные суммы и отдельные условия оптовой цены опубликованы на странице доставки."
     }
+  },
+  {
+    "id": "aqvatoriy-nsk",
+    "name": "Акватория",
+    "category": "ingredients",
+    "products": [
+      "Рыба свежемороженая",
+      "Морепродукты",
+      "Креветки",
+      "Водоросли нори",
+      "Водоросли вакаме",
+      "Васаби",
+      "Рис для суши"
+    ],
+    "synonyms": ["суши", "роллы", "онигири", "японская кухня", "акватория"],
+    "city": "Новосибирск",
+    "website": "https://www.aqvatoriy.ru/",
+    "contacts": [
+      {
+        "label": "+73832557727",
+        "url": "tel:+73832557727"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.aqvatoriy.ru/",
+        "label": "Ассортимент, контакты и условия"
+      },
+      {
+        "url": "https://www.aqvatoriy.ru/catalog-novosibirsk",
+        "label": "Новосибирский каталог"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Новосибирск",
+        "sourceUrl": "https://www.aqvatoriy.ru/",
+        "evidence": "Новосибирская версия сайта предлагает поставки HoReCa и доставку на дом. Адрес, сроки и условия согласовываются."
+      }
+    ]
+  },
+  {
+    "id": "resfood",
+    "name": "Resfood",
+    "category": "ingredients",
+    "products": [
+      "Рис для суши",
+      "Водоросли нори",
+      "Маринованный имбирь",
+      "Васаби",
+      "Рисовый уксус",
+      "Соевый соус"
+    ],
+    "synonyms": ["суши", "роллы", "паназиатская кухня", "ресфуд"],
+    "city": "Москва",
+    "website": "https://www.resfood.ru/",
+    "contacts": [
+      {
+        "label": "+78006005724",
+        "url": "tel:+78006005724"
+      },
+      {
+        "label": "info@resfood.ru",
+        "url": "mailto:info@resfood.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.resfood.ru/catalog/produkty-dlya-sushi-i-rollov/",
+        "label": "Продукты для суши и роллов"
+      },
+      {
+        "url": "https://www.resfood.ru/contacts/",
+        "label": "Оптовые контакты"
+      },
+      {
+        "url": "https://www.resfood.ru/delivery/",
+        "label": "Доставка и самовывоз"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Москва",
+        "sourceUrl": "https://www.resfood.ru/delivery/",
+        "evidence": "Указана доставка до складов клиентов в Москве и до терминалов транспортных компаний. Межрегиональный маршрут нужно согласовать."
+      }
+    ]
+  },
+  {
+    "id": "oshi-cosmos",
+    "name": "OSHI (Космос)",
+    "category": "ingredients",
+    "products": [
+      "Икра масаго",
+      "Икра тобико",
+      "Васаби",
+      "Водоросли нори",
+      "Чука",
+      "Мука темпурная",
+      "Рисовый уксус",
+      "Мирин"
+    ],
+    "synonyms": ["суши", "роллы", "японская кухня", "оши"],
+    "city": "Ростов-на-Дону",
+    "website": "https://oshi.su/",
+    "contacts": [
+      {
+        "label": "+78612346675",
+        "url": "tel:+78612346675"
+      },
+      {
+        "label": "ooo.cosmos.ds@mail.ru",
+        "url": "mailto:ooo.cosmos.ds@mail.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://oshi.su/",
+        "label": "Ассортимент и география поставок"
+      },
+      {
+        "url": "https://oshi.su/kontakty/",
+        "label": "Контакты компании"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://oshi.su/",
+        "evidence": "Производитель указывает поставки ингредиентов для HoReCa и оптовых клиентов по всей России. Условия партии уточняются."
+      }
+    ]
+  },
+  {
+    "id": "virtex-food",
+    "name": "Виртекс Фуд",
+    "category": "ingredients",
+    "products": [
+      "Соусы",
+      "Маринады",
+      "Приправы",
+      "Корейские заправки",
+      "Лапша",
+      "Основы для азиатских супов",
+      "Ингредиенты для суши"
+    ],
+    "synonyms": [
+      "суши",
+      "паназиатская кухня",
+      "чим чим",
+      "гурмикс",
+      "костровок"
+    ],
+    "city": "Бердск",
+    "website": "https://virtex-food.ru/",
+    "contacts": [
+      {
+        "label": "+79139891041",
+        "url": "tel:+79139891041"
+      },
+      {
+        "label": "sales-p@virtex-food.ru",
+        "url": "mailto:sales-p@virtex-food.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://virtex-food.ru/",
+        "label": "Продукты и направления"
+      },
+      {
+        "url": "https://virtex-food.ru/sotrudnichestvo/",
+        "label": "B2B-сотрудничество и контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "global-foods",
+    "name": "Global Foods",
+    "category": "ingredients",
+    "products": [
+      "Семга",
+      "Форель",
+      "Кальмар",
+      "Креветки",
+      "Мидии",
+      "Угорь в соусе унаги",
+      "Рис для суши",
+      "Творожный сыр"
+    ],
+    "synonyms": ["суши", "роллы", "японская кухня", "глобал фудс"],
+    "city": "Москва",
+    "website": "https://www.globalfoods.ru/",
+    "contacts": [
+      {
+        "label": "+74957871144",
+        "url": "tel:+74957871144"
+      },
+      {
+        "label": "info@globalfoods.ru",
+        "url": "mailto:info@globalfoods.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.globalfoods.ru/catalog/podborki_1/produkty_dlya_yaponskoy_kukhni_1/filter/clear/apply/",
+        "label": "Продукты для японской кухни"
+      },
+      {
+        "url": "https://www.globalfoods.ru/klientam/",
+        "label": "Контакты для заказов"
+      },
+      {
+        "url": "https://www.globalfoods.ru/klientam/dostavka/",
+        "label": "Условия доставки"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://www.globalfoods.ru/klientam/dostavka/",
+        "evidence": "Указана доставка по всей России с ближайшего склада. Стоимость и минимальную сумму для конкретного города согласовывают с менеджером."
+      }
+    ]
+  },
+  {
+    "id": "anfish",
+    "name": "AnFish",
+    "category": "ingredients",
+    "products": [
+      "Лосось",
+      "Форель",
+      "Тунец",
+      "Треска",
+      "Дорадо",
+      "Сибас",
+      "Палтус",
+      "Креветки",
+      "Кальмары",
+      "Мидии",
+      "Морской гребешок"
+    ],
+    "synonyms": ["рыба", "морепродукты", "анфиш", "филе"],
+    "city": "Дзержинский",
+    "website": "https://anfish.ru/",
+    "contacts": [
+      {
+        "label": "+74991109003",
+        "url": "tel:+74991109003"
+      },
+      {
+        "label": "order@anfish.ru",
+        "url": "mailto:order@anfish.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://anfish.ru/",
+        "label": "Ассортимент, контакты и доставка"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Москва",
+        "sourceUrl": "https://anfish.ru/",
+        "evidence": "Указана доставка по Москве и области рефрижераторным транспортом. Доставку в другие регионы согласовывают отдельно."
+      },
+      {
+        "region": "Московская область",
+        "sourceUrl": "https://anfish.ru/",
+        "evidence": "Указана доставка по Москве и области рефрижераторным транспортом. Доставку в другие регионы согласовывают отдельно."
+      }
+    ]
+  },
+  {
+    "id": "fishman",
+    "name": "Фишман",
+    "category": "ingredients",
+    "products": ["Морской гребешок", "Краб", "Рыба и морепродукты"],
+    "synonyms": ["фишман", "дальневосточные морепродукты", "крабы"],
+    "city": "Одинцово",
+    "website": "https://byfishman.ru/",
+    "contacts": [
+      {
+        "label": "+79959173899",
+        "url": "tel:+79959173899"
+      },
+      {
+        "label": "byfishman@gmail.com",
+        "url": "mailto:byfishman@gmail.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://byfishman.ru/",
+        "label": "Продукция, контакты и поставки"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://byfishman.ru/",
+        "evidence": "На сайте указаны поставки рыбы и морепродуктов по России. Доставка до склада или самовывоз согласовываются при заказе."
+      }
+    ]
+  },
+  {
+    "id": "roy-import",
+    "name": "Рой Импорт",
+    "category": "ingredients",
+    "products": [
+      "Форель свежемороженая",
+      "Креветки ваннамей",
+      "Рыба и морепродукты"
+    ],
+    "synonyms": ["рой импорт", "креветка", "ваннамей", "рыба оптом"],
+    "city": "Москва",
+    "website": "https://royimport.ru/",
+    "contacts": [
+      {
+        "label": "+79773308080",
+        "url": "tel:+79773308080"
+      },
+      {
+        "label": "roi308080@gmail.com",
+        "url": "mailto:roi308080@gmail.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://royimport.ru/",
+        "label": "Ассортимент, контакты и доставка"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://royimport.ru/",
+        "evidence": "Указана отправка по России и СНГ. Наличие, объем и условия перевозки уточняются у менеджера."
+      }
+    ]
+  },
+  {
+    "id": "farwater",
+    "name": "Фарватер",
+    "category": "ingredients",
+    "products": [
+      "Морепродукты",
+      "Рыбное филе",
+      "Тунец",
+      "Красная рыба",
+      "Белая рыба",
+      "Морская капуста",
+      "Имбирь"
+    ],
+    "synonyms": ["фарватер", "рыба оптом", "морепродукты оптом"],
+    "city": "Санкт-Петербург",
+    "website": "https://swfish.ru/",
+    "contacts": [
+      {
+        "label": "+78125000565",
+        "url": "tel:+78125000565"
+      },
+      {
+        "label": "vvs@seaway.spb.ru",
+        "url": "mailto:vvs@seaway.spb.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://swfish.ru/",
+        "label": "Ассортимент, контакты и поставки"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://swfish.ru/",
+        "evidence": "Компания заявляет поставки свежемороженой рыбы и морепродуктов по всей России. Холодовую логистику и стоимость нужно согласовать."
+      }
+    ]
+  },
+  {
+    "id": "ultrafish",
+    "name": "Ультра Фиш",
+    "category": "ingredients",
+    "products": ["Рыба свежемороженая", "Морепродукты"],
+    "synonyms": ["ультра фиш", "ultrafish", "рыба оптом"],
+    "city": "Москва",
+    "website": "https://ultrafish.ru/",
+    "contacts": [
+      {
+        "label": "+78001009877",
+        "url": "tel:+78001009877"
+      },
+      {
+        "label": "info@ultrafish.ru",
+        "url": "mailto:info@ultrafish.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://ultrafish.ru/",
+        "label": "Оптовый ассортимент, контакты и доставка"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://ultrafish.ru/",
+        "evidence": "На сайте прямо указана доставка в любой регион России. Маршрут, стоимость и условия хранения согласовываются."
+      }
+    ]
+  },
+  {
+    "id": "kit-tk",
+    "name": "КИТ",
+    "category": "ingredients",
+    "products": [
+      "Рыба свежемороженая",
+      "Живые морепродукты",
+      "Устрицы",
+      "Моллюски"
+    ],
+    "synonyms": ["кит", "марикультура", "морепродукты оптом"],
+    "city": "Владивосток",
+    "website": "https://www.kit-tk.com/",
+    "contacts": [
+      {
+        "label": "+74232025520",
+        "url": "tel:+74232025520"
+      },
+      {
+        "label": "info@kit-tk.com",
+        "url": "mailto:info@kit-tk.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.kit-tk.com/",
+        "label": "Продукция, контакты и география"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://www.kit-tk.com/",
+        "evidence": "Компания указывает поставки свежемороженой рыбопродукции по всей территории России. Перевозку живой продукции согласовывают отдельно."
+      }
+    ]
+  },
+  {
+    "id": "prichal-fish",
+    "name": "Причал",
+    "category": "finished",
+    "products": [
+      "Скумбрия холодного копчения",
+      "Палтус холодного копчения",
+      "Зубатка горячего копчения",
+      "Филе сельди"
+    ],
+    "synonyms": ["рыбная гастрономия", "копченая рыба", "причал"],
+    "city": "Санкт-Петербург",
+    "website": "https://www.prichalfish.ru/",
+    "contacts": [
+      {
+        "label": "+78123332607",
+        "url": "tel:+78123332607"
+      },
+      {
+        "label": "info@prichalfish.ru",
+        "url": "mailto:info@prichalfish.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.prichalfish.ru/",
+        "label": "Оптовый ассортимент"
+      },
+      {
+        "url": "https://www.prichalfish.ru/contacts/",
+        "label": "Контакты для поставок"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "baltic-coast",
+    "name": "Балтийский берег",
+    "category": "finished",
+    "products": [
+      "Пресервы из сельди",
+      "Форель в соусе",
+      "Копченая рыба",
+      "Икра",
+      "Морепродукты",
+      "Салат из морской капусты"
+    ],
+    "synonyms": ["рыбная гастрономия", "балтийский берег", "рыбные пресервы"],
+    "city": "Санкт-Петербург",
+    "website": "https://baltbereg.com/",
+    "contacts": [
+      {
+        "label": "+78123350402",
+        "url": "tel:+78123350402"
+      },
+      {
+        "label": "info@baltbereg.com",
+        "url": "mailto:info@baltbereg.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://baltbereg.com/catalog/spredy/",
+        "label": "Категории продукции"
+      },
+      {
+        "url": "https://www.baltbereg.com/catalog/preservy-rybnye-baltiyskiy-bereg/",
+        "label": "Рыбные пресервы"
+      },
+      {
+        "url": "https://baltbereg.com/about_us/contacts/",
+        "label": "Отделы продаж"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "meridian",
+    "name": "Меридиан",
+    "category": "finished",
+    "products": [
+      "Пресервы из сельди",
+      "Кальмар в соусе карри",
+      "Рыбная продукция",
+      "Морепродукты"
+    ],
+    "synonyms": ["меридиан", "рыбные пресервы", "рыбная гастрономия"],
+    "city": "Москва",
+    "website": "https://www.meridian.ru/",
+    "contacts": [
+      {
+        "label": "+74959944949",
+        "url": "tel:+74959944949"
+      },
+      {
+        "label": "region@meridian.ru",
+        "url": "mailto:region@meridian.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.meridian.ru/",
+        "label": "Продукция компании"
+      },
+      {
+        "url": "https://www.meridian.ru/m/ru/product/3/2257.php",
+        "label": "Кальмар в соусе"
+      },
+      {
+        "url": "https://www.meridian.ru/contacts/retail_department/regional_representatives/",
+        "label": "Региональные продажи"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "vici",
+    "name": "Вичи-Русь (VICI)",
+    "category": "finished",
+    "products": [
+      "Крабовые палочки",
+      "Креветки",
+      "Сельдь",
+      "Рыбная гастрономия",
+      "Пресервы из морепродуктов"
+    ],
+    "synonyms": ["вичи", "vici", "сурими", "крабовые палочки"],
+    "city": "Советск",
+    "website": "https://vici.ru/",
+    "contacts": [
+      {
+        "label": "+74952216646",
+        "url": "tel:+74952216646"
+      },
+      {
+        "label": "info@vici.ru",
+        "url": "mailto:info@vici.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://vici.ru/",
+        "label": "Ассортимент производителя"
+      },
+      {
+        "url": "https://vici.ru/contacts",
+        "label": "Отдел продаж"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "tasty-coffee",
+    "name": "Tasty Coffee",
+    "category": "ingredients",
+    "products": [
+      "Свежеобжаренный кофе",
+      "Кофе для эспрессо",
+      "Кофе для фильтра",
+      "Кофе в дрип-пакетах",
+      "Кофе в капсулах"
+    ],
+    "synonyms": ["кофе", "кофейные зерна", "обжарщик", "тэсти кофе"],
+    "city": "Ижевск",
+    "website": "https://tastycoffee.ru/",
+    "contacts": [
+      {
+        "label": "+78005004170",
+        "url": "tel:+78005004170"
+      },
+      {
+        "label": "sales@tastycoffee.ru",
+        "url": "mailto:sales@tastycoffee.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://tastycoffee.ru/",
+        "label": "Продукция и поставки"
+      },
+      {
+        "url": "https://tastycoffee.ru/contacts",
+        "label": "Оптовый отдел"
+      },
+      {
+        "url": "https://tastycoffee.ru/about",
+        "label": "О компании"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://tastycoffee.ru/",
+        "evidence": "Указана ежедневная отправка по всей России частным и оптовым клиентам. Условия доставки партии нужно согласовать."
+      }
+    ]
+  },
+  {
+    "id": "russian-tea-company",
+    "name": "Русская чайная компания",
+    "category": "ingredients",
+    "products": [
+      "Весовой чай",
+      "Фруктовый чай",
+      "Кофе в зернах",
+      "Чайные купажи"
+    ],
+    "synonyms": ["чай", "кофе", "рчк", "улун", "травяной чай"],
+    "city": "Москва",
+    "website": "https://shop.rusteaco.ru/",
+    "contacts": [
+      {
+        "label": "+74959894703",
+        "url": "tel:+74959894703"
+      },
+      {
+        "label": "ishop@rusteaco.ru",
+        "url": "mailto:ishop@rusteaco.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://shop.rusteaco.ru/page/about-us",
+        "label": "Ассортимент и доставка"
+      },
+      {
+        "url": "https://shop.rusteaco.ru/page/chay-kofe-optom",
+        "label": "Оптовые поставки"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://shop.rusteaco.ru/page/about-us",
+        "evidence": "В официальном магазине указана доставка по всей России. Для оптовой партии на сайте выделен отдельный менеджер по поставкам."
+      }
+    ]
+  },
+  {
+    "id": "agro-alliance",
+    "name": "Агро-Альянс",
+    "category": "ingredients",
+    "products": [
+      "Крупы",
+      "Бобовые культуры",
+      "Хлопья",
+      "Мука",
+      "Макаронные изделия",
+      "Рис",
+      "Фасоль"
+    ],
+    "synonyms": ["бакалея", "крупа", "бобовые", "агроальянс"],
+    "city": "Санкт-Петербург",
+    "website": "https://agro-al.ru/",
+    "contacts": [
+      {
+        "label": "+78122404310",
+        "url": "tel:+78122404310"
+      },
+      {
+        "label": "office@agro-al.ru",
+        "url": "mailto:office@agro-al.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://agro-al.ru/",
+        "label": "Продукция холдинга"
+      },
+      {
+        "url": "https://agro-al.ru/contacts/",
+        "label": "Контакты для партнеров"
+      },
+      {
+        "url": "https://www.agro-al.ru/products/cereals-and-pulses/ris-dlinnozernyy-belyy-agro-alyans-ekstra/",
+        "label": "Рис и фасоль"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "aidigo",
+    "name": "Айдиго",
+    "category": "ingredients",
+    "products": [
+      "Специи",
+      "Приправы",
+      "Кондитерские добавки",
+      "Иван-чай",
+      "Кисели",
+      "Желе"
+    ],
+    "synonyms": ["пряности", "специи для horeca", "перчес", "чай"],
+    "city": "Березовский",
+    "website": "https://aidigo.ru/",
+    "contacts": [
+      {
+        "label": "+73432887676",
+        "url": "tel:+73432887676"
+      },
+      {
+        "label": "aidigo@aidigo.ru",
+        "url": "mailto:aidigo@aidigo.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://aidigo.ru/",
+        "label": "Ассортимент и HoReCa"
+      },
+      {
+        "url": "https://aidigo.ru/about/contacts/",
+        "label": "Контакты компании"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "semushka",
+    "name": "Семушка",
+    "category": "ingredients",
+    "products": [
+      "Орехи",
+      "Сухофрукты",
+      "Семена",
+      "Цукаты",
+      "Ореховые пасты",
+      "Миндаль",
+      "Фундук",
+      "Фисташки",
+      "Курага",
+      "Чернослив"
+    ],
+    "synonyms": ["семушка", "семечки", "орехи оптом", "сухофрукты оптом"],
+    "city": "Москва",
+    "website": "https://semushka.com/",
+    "contacts": [
+      {
+        "label": "+74991103044",
+        "url": "tel:+74991103044"
+      },
+      {
+        "label": "opt@semushka-m.ru",
+        "url": "mailto:opt@semushka-m.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://semushka.com/",
+        "label": "Ассортимент производителя"
+      },
+      {
+        "url": "https://opt.semushka.com/",
+        "label": "Оптовый каталог и контакты"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "damate",
+    "name": "Дамате",
+    "category": "ingredients",
+    "products": [
+      "Мясо индейки",
+      "Мясо утки",
+      "Баранина",
+      "Полуфабрикаты из индейки",
+      "Колбасы из индейки"
+    ],
+    "synonyms": ["индейка", "утка", "индилайт", "мясо птицы", "халяль"],
+    "city": "Пенза",
+    "website": "https://www.acdamate.com/",
+    "contacts": [
+      {
+        "label": "+78412210418",
+        "url": "tel:+78412210418"
+      },
+      {
+        "label": "info@acdamate.com",
+        "url": "mailto:info@acdamate.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.acdamate.com/",
+        "label": "Направления и продукция"
+      },
+      {
+        "url": "https://www.acdamate.com/contacts/",
+        "label": "Отделы продаж"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "garnec",
+    "name": "Гарнец",
+    "category": "ingredients",
+    "products": [
+      "Мука рисовая",
+      "Мука гречневая",
+      "Мука кукурузная",
+      "Мука нутовая",
+      "Безглютеновые смеси для выпечки",
+      "Крахмал"
+    ],
+    "synonyms": ["без глютена", "безглютеновая мука", "garnec", "мучные смеси"],
+    "city": "Владимир",
+    "website": "https://garnec.com/",
+    "contacts": [
+      {
+        "label": "+78005502051",
+        "url": "tel:+78005502051"
+      },
+      {
+        "label": "info@garnec.com",
+        "url": "mailto:info@garnec.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://garnec.com/",
+        "label": "Ассортимент"
+      },
+      {
+        "url": "https://garnec.com/about/contacts/",
+        "label": "Отдел продаж"
+      },
+      {
+        "url": "https://garnec.com/info/opt/",
+        "label": "Оптовым покупателям"
+      },
+      {
+        "url": "https://garnec.com/info/delivery/",
+        "label": "Доставка"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Россия",
+        "sourceUrl": "https://garnec.com/info/delivery/",
+        "evidence": "Для юридических лиц указана доставка по России через ПЭК и Деловые Линии до терминала в городе. Тариф зависит от веса и объема."
+      }
+    ]
+  },
+  {
+    "id": "hi-food",
+    "name": "Hi (ЭФКО)",
+    "category": "finished",
+    "products": [
+      "Растительное молоко",
+      "Овсяное молоко",
+      "Растительные котлеты",
+      "Растительный фарш",
+      "Растительные наггетсы",
+      "Растительные пельмени"
+    ],
+    "synonyms": [
+      "веганские продукты",
+      "растительное мясо",
+      "хай",
+      "альтернативное молоко"
+    ],
+    "city": "Воронеж",
+    "website": "https://hi-food.ru/",
+    "contacts": [
+      {
+        "label": "+78002007080",
+        "url": "tel:+78002007080"
+      },
+      {
+        "label": "service-hotline@efko.ru",
+        "url": "mailto:service-hotline@efko.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://hi-food.ru/",
+        "label": "Ассортимент и контакты производителя"
+      },
+      {
+        "url": "https://hi-food.ru/distributors/",
+        "label": "Дистрибьюторы по регионам"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "honey-house",
+    "name": "Медовый дом",
+    "category": "finished",
+    "products": ["Мед", "Варенье с медом", "Десерты с медом", "Травяной чай"],
+    "synonyms": ["мёд", "медовый дом", "дедушкин улей", "медовые десерты"],
+    "city": "Санкт-Петербург",
+    "website": "https://www.medovdom.ru/",
+    "contacts": [
+      {
+        "label": "+78002348687",
+        "url": "tel:+78002348687"
+      },
+      {
+        "label": "secretary@medovdom.ru",
+        "url": "mailto:secretary@medovdom.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.medovdom.ru/",
+        "label": "Производитель и контакты"
+      },
+      {
+        "url": "https://www.medovdom.ru/katalog/",
+        "label": "Каталог продукции"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "russian-cold",
+    "name": "Русский Холод",
+    "category": "finished",
+    "products": [
+      "Мороженое",
+      "Эскимо",
+      "Фруктовый лед",
+      "Весовое мороженое",
+      "Мороженое в гастроемкостях"
+    ],
+    "synonyms": ["пломбир", "мороженое horeca", "русский холод"],
+    "city": "Новосибирск",
+    "website": "https://www.rusholod.ru/",
+    "contacts": [
+      {
+        "label": "+73832179780",
+        "url": "tel:+73832179780"
+      },
+      {
+        "label": "office@nsk.rusholod.ru",
+        "url": "mailto:office@nsk.rusholod.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.rusholod.ru/",
+        "label": "Каталог производителя"
+      },
+      {
+        "url": "https://www.rusholod.ru/contacts/city/291/",
+        "label": "Новосибирский филиал"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "blago",
+    "name": "Благо",
+    "category": "ingredients",
+    "products": [
+      "Подсолнечное масло",
+      "Рапсовое масло",
+      "Фритюрное масло",
+      "Растительное масло наливом"
+    ],
+    "synonyms": ["масло для фритюра", "благо pro", "масложировая продукция"],
+    "city": "Санкт-Петербург",
+    "website": "https://gcblago.ru/",
+    "contacts": [
+      {
+        "label": "+78002228293",
+        "url": "tel:+78002228293"
+      },
+      {
+        "label": "blago@gcblago.ru",
+        "url": "mailto:blago@gcblago.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://gcblago.ru/",
+        "label": "Продукция компании"
+      },
+      {
+        "url": "https://www.gcblago.ru/contacts/",
+        "label": "Контакты головного офиса"
+      },
+      {
+        "url": "https://www.gcblago.ru/products/maslo-podsolnechnoe/",
+        "label": "Подсолнечное масло оптом"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "fruktline",
+    "name": "Фруктлайн",
+    "category": "ingredients",
+    "products": [
+      "Овощи",
+      "Фрукты",
+      "Ягоды",
+      "Зелень",
+      "Сухофрукты",
+      "Орехи",
+      "Нут",
+      "Маш"
+    ],
+    "synonyms": [
+      "фруктлайн",
+      "свежие овощи",
+      "свежие фрукты",
+      "продукты для ресторанов"
+    ],
+    "city": "Москва",
+    "website": "https://fruktlain.ru/",
+    "contacts": [
+      {
+        "label": "+79773531100",
+        "url": "tel:+79773531100"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://fruktlain.ru/",
+        "label": "Ассортимент, контакты и доставка"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": [
+      {
+        "region": "Москва",
+        "sourceUrl": "https://fruktlain.ru/",
+        "evidence": "На сайте указана доставка овощей и фруктов предприятиям и частным покупателям по Москве и Московской области. Условия партии уточняются."
+      },
+      {
+        "region": "Московская область",
+        "sourceUrl": "https://fruktlain.ru/",
+        "evidence": "На сайте указана доставка овощей и фруктов предприятиям и частным покупателям по Москве и Московской области. Условия партии уточняются."
+      }
+    ]
+  },
+  {
+    "id": "borovskaya",
+    "name": "Птицефабрика Боровская",
+    "category": "ingredients",
+    "products": [
+      "Куриные яйца",
+      "Жидкий яичный меланж",
+      "Сухой яичный меланж",
+      "Яичный белок",
+      "Яичный желток"
+    ],
+    "synonyms": ["яйцо", "яичные продукты", "альбумин", "боровская"],
+    "city": "Боровский",
+    "website": "https://www.borfab.ru/",
+    "contacts": [
+      {
+        "label": "+73452767951",
+        "url": "tel:+73452767951"
+      },
+      {
+        "label": "market2@borfab.ru",
+        "url": "mailto:market2@borfab.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.borfab.ru/products/",
+        "label": "Яйцо и продукты переработки"
+      },
+      {
+        "url": "https://www.borfab.ru/contacts/",
+        "label": "Отдел продаж"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "belaya-dacha",
+    "name": "Белая Дача",
+    "category": "ingredients",
+    "products": [
+      "Мытые салатные листья",
+      "Салатные смеси",
+      "Растительные соусы песто",
+      "Отварные овощи",
+      "Квашения и соления"
+    ],
+    "synonyms": ["зелень", "салатные листья", "салатный микс", "белая дача"],
+    "city": "Котельники",
+    "website": "https://www.bdsalads.ru/",
+    "contacts": [
+      {
+        "label": "+74959211747",
+        "url": "tel:+74959211747"
+      },
+      {
+        "label": "info@bdagro.ru",
+        "url": "mailto:info@bdagro.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.bdsalads.ru/",
+        "label": "Ассортимент и контакты"
+      },
+      {
+        "url": "https://www.bdsalads.ru/horeca/",
+        "label": "Поставки для ресторанов и кафе"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
+  },
+  {
+    "id": "td-yarmarka",
+    "name": "Торговый Дом Ярмарка",
+    "category": "ingredients",
+    "products": [
+      "Крупы",
+      "Бобовые",
+      "Смеси для супов",
+      "Смеси для вторых блюд",
+      "Овсяные хлопья",
+      "Горох",
+      "Рис",
+      "Гречка"
+    ],
+    "synonyms": ["ярмарка", "yelli", "bravolli", "смеси круп", "бакалея"],
+    "city": "Петрозаводск",
+    "website": "https://tdyarmarka.ru/",
+    "contacts": [
+      {
+        "label": "+78142592299",
+        "url": "tel:+78142592299"
+      },
+      {
+        "label": "info@tdyarmarka.ru",
+        "url": "mailto:info@tdyarmarka.ru"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://tdyarmarka.ru/",
+        "label": "Каталог, контакты и работа с бизнесом"
+      }
+    ],
+    "verifiedAt": "2026-11-02",
+    "delivery": []
   }
 ]

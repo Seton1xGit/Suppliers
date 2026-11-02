@@ -1,7 +1,11 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { searchCatalog, productMatch } from "../public/catalog-source.js";
+import {
+  searchCatalog,
+  productMatch,
+  deliveryMatch,
+} from "../public/catalog-source.js";
 const data = JSON.parse(
   await readFile(
     new URL("../public/data/catalog.json", import.meta.url),
@@ -110,12 +114,13 @@ test("прямое совпадение выше общего, фильтры с
     searchCatalog(data, { query: "треска", savedOnly: true, saved: [] }),
     [],
   );
-  assert.deepEqual(
-    searchCatalog(data, { query: "треска", region: "неизвестный город" }),
-    [],
+  assert(
+    searchCatalog(data, { query: "треска", region: "неизвестный город" }).every(
+      (s) => deliveryMatch(s, "неизвестный город").scope === "national",
+    ),
   );
 });
-test("каждая исходная товарная позиция всех 45 компаний остается доступна", () => {
+test("каждая исходная товарная позиция всех 75 компаний остается доступна", () => {
   for (const supplier of data)
     for (const query of supplier.products)
       assert(

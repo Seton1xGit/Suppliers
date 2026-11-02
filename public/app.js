@@ -212,6 +212,11 @@ function resultGroup(title, list, scope, description) {
   return group;
 }
 function render() {
+  document.querySelectorAll("[data-catalog-total]").forEach((node) => {
+    node.textContent = node.classList.contains("database-label")
+      ? `КАТАЛОГ: ${items.length} КОМПАНИЙ`
+      : items.length;
+  });
   const focused = document.activeElement;
   const focusedRow = focused?.closest(".card");
   const focusTarget =

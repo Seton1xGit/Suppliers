@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import assert from "node:assert/strict";
 export function validate(items) {
-  assert(items.length >= 45, "Нужно минимум 45 поставщиков");
+  assert(items.length >= 75, "Нужно минимум 75 поставщиков");
   const ids = new Set(),
     sites = new Set(),
     names = new Set();

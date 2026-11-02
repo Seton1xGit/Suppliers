@@ -1,15 +1,25 @@
 export const nationalIds = [
   "7-verst",
   "a-gross",
+  "garnec",
   "grandresurs",
   "dikiy-sbor",
   "ingerman",
+  "kit-tk",
   "leimu",
   "propak66",
+  "roy-import",
+  "russian-tea-company",
   "sibirskiy-produkt-nsk",
   "superlife",
   "megaopt-nsk",
+  "ultrafish",
+  "farwater",
+  "fishman",
   "flexaprint",
+  "global-foods",
+  "oshi-cosmos",
+  "tasty-coffee",
 ];
 export const regionalIds = {
   Москва: [
@@ -18,8 +28,11 @@ export const regionalIds = {
     "milktrading",
     "opticom",
     "potex",
+    "fruktline",
     "ekor",
+    "anfish",
     "geovita",
+    "resfood",
   ],
   "Санкт-Петербург": [
     "agropark-spb",
@@ -32,6 +45,7 @@ export const regionalIds = {
     "geovita",
   ],
   Новосибирск: [
+    "aqvatoriy-nsk",
     "dikiy-sbor",
     "zernov-nsk",
     "lavka-konditera-nsk",
