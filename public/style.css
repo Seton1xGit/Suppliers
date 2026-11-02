@@ -960,3 +960,196 @@ summary:focus-visible {
     overflow: auto;
   }
 }
+.v03 {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-optical-sizing: auto;
+  font-size: 14px;
+}
+.v03 .header > b {
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  font-weight: 600;
+}
+.v03 .database-label {
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+.v03 .table-heading h1 {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+}
+.v03 .table-heading [data-count] {
+  font-family: inherit;
+  font-size: 14px;
+}
+.v03 .result-summary,
+.v03 .filter-note {
+  font-size: 13px;
+  line-height: 1.65;
+}
+.v03 .search input {
+  font-size: 15px;
+}
+.v03 .search-submit,
+.v03 .open-compare {
+  font-size: 13px;
+}
+.v03 .table-controls .region-control {
+  font-size: 12px;
+}
+.v03 .table-controls .region-control select {
+  font-size: 14px;
+}
+.v03 .table-controls .category-control button {
+  font-size: 12px;
+  padding: 10px 11px;
+}
+.v03 .category-control [data-count] {
+  font-size: 11px;
+}
+.v03 .procurement-table {
+  font-family: inherit;
+  font-size: 14px;
+}
+.v03 .procurement-table th {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+.v03 .procurement-table td {
+  font-size: 14px;
+  line-height: 1.65;
+  padding: 16px 13px;
+}
+.v03 .procurement-table .company-name h2 {
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: -0.3px;
+}
+.v03 .procurement-table .category-label {
+  font-size: 12px;
+}
+.v03 .procurement-table .products,
+.v03 .procurement-table .shipping-label {
+  font-size: 14px;
+  line-height: 1.65;
+}
+.v03 .procurement-table .source,
+.v03 .procurement-table .contact,
+.v03 .verified-date,
+.v03 .note-indicator {
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.v03 .procurement-table .details-button,
+.v03 .procurement-table .save-button,
+.v03 .procurement-table .compare-button {
+  font-size: 12px;
+  line-height: 1.35;
+  min-height: 34px;
+  padding: 7px 10px;
+}
+.v03 .group-heading h2,
+.v03 .group-description {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.v03 .group-heading > span {
+  font-family: inherit;
+  font-size: 12px;
+}
+.site-toolbar,
+.site-toolbar .nav-button,
+#design-picker > summary,
+#design-current {
+  font-size: 12px;
+}
+.design-option,
+.design-panel > p,
+.design-panel > a,
+.design-panel > .text-button {
+  font-size: 12px;
+}
+#detail-dialog .detail-section p,
+#detail-dialog .fact-value,
+#detail-dialog .muted,
+.compare-cell,
+.fact-value {
+  font-size: 14px;
+  line-height: 1.65;
+}
+#detail-dialog .source-link,
+#detail-dialog .contact-links a,
+.compare-cell .source-link {
+  font-size: 13px;
+}
+textarea {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+}
+@media (max-width: 650px) {
+  .v03 .header > b {
+    font-size: 10px;
+    letter-spacing: 0.3px;
+  }
+  .v03 .table-heading {
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 5px 15px;
+    margin-bottom: 18px;
+  }
+  .v03 .table-heading h1 {
+    font-size: 25px;
+    margin-bottom: 0;
+  }
+  .v03 .table-heading [data-count] {
+    font-size: 13px;
+  }
+  .v03 .result-summary,
+  .v03 .filter-note {
+    font-size: 13px;
+  }
+  .v03 .table-controls .category-control button {
+    font-size: 11px;
+    padding: 10px 8px;
+  }
+  .v03 .category-control [data-count] {
+    font-size: 10px;
+  }
+  .v03 .procurement-table .company-name h2 {
+    font-size: 17px;
+  }
+  .v03 .procurement-table .details-button,
+  .v03 .procurement-table .save-button,
+  .v03 .procurement-table .compare-button {
+    font-size: 12px;
+    line-height: 1.4;
+    min-height: 35px;
+    padding: 7px 6px;
+  }
+  .v03 .procurement-table .contact {
+    font-size: 12px;
+  }
+  .v03 .table-scroll:before {
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .site-toolbar .nav-button,
+  #design-picker > summary,
+  #design-current {
+    font-size: 11px;
+  }
+  .design-option,
+  .design-panel > p,
+  .design-panel > a,
+  .design-panel > .text-button {
+    font-size: 12px;
+  }
+}

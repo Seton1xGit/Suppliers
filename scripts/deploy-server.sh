@@ -17,6 +17,7 @@ if 'suppliers.178-236-242-240.sslip.io' not in text:
 marker='\troot * /srv/suppliers/current\n'
 if marker in text and '\theader Cache-Control "no-cache"\n' not in text:
     text=text.replace(marker,marker+'\theader Cache-Control "no-cache"\n',1)
+text=text.replace("font-src https://fonts.gstatic.com;", "font-src 'self' https://fonts.gstatic.com;")
 pathlib.Path(sys.argv[2]).write_text(text)
 PY
 docker cp "$base/Caddyfile.next" plov-caddy:/tmp/suppliers-Caddyfile
