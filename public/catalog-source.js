@@ -76,7 +76,7 @@ export function searchCatalog(
         offer,
         score: result.score,
         rank: region && match.scope === "national" ? 1 : 0,
-        matches: result.matches,
+        matches: result.matches || !!offer,
       };
     })
     .filter((r) => r.matches && (!priceOnly || hasPublishedPrice(r.offer)))

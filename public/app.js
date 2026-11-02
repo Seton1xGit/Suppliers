@@ -1,6 +1,7 @@
 import { createOfferBlock, detailOffer } from "./offer-ui.js";
 import {
   queryProduct,
+  priceContext,
   activeGroup,
   selectedOffer,
   matchingOffers,
@@ -116,15 +117,16 @@ function readFilters() {
   const saved = params.has("q") ? {} : store.state.priceFilters || {};
   const group = params.get("product") || saved.offerGroup || "auto";
   return {
-    offerGroup: [
-      "auto",
-      "all",
-      ...Object.keys(tomatoGroups),
-      "puff-dough",
-      "wasabi",
-    ].includes(group)
-      ? group
-      : "auto",
+    offerGroup:
+      [
+        "auto",
+        "all",
+        ...Object.keys(tomatoGroups),
+        "puff-dough",
+        "wasabi",
+      ].includes(group) || /^sku-[a-f0-9]+$/.test(group)
+        ? group
+        : "auto",
     priceSort: ["asc", "desc", "priced"].includes(
       params.get("sort") || saved.priceSort,
     )
@@ -217,7 +219,7 @@ function mountPriceControls() {
   });
 }
 function updatePriceControls() {
-  const product = queryProduct(filters.query),
+  const product = priceContext(filters.query, offers),
     select = $("offer-group");
   $("tomato-example").hidden = !!filters.query;
   select.replaceChildren();
@@ -228,7 +230,23 @@ function updatePriceControls() {
           ["all", "Все виды отдельными группами"],
           ...Object.entries(tomatoGroups),
         ]
-      : [["auto", product ? "Товар из запроса" : "Укажи товар в поиске"]];
+      : product
+        ? [
+            ["auto", "Все подходящие позиции"],
+            ...[
+              ...new Map(
+                items
+                  .flatMap((s) =>
+                    matchingOffers(s.id, offers, {
+                      ...filters,
+                      offerGroup: "all",
+                    }),
+                  )
+                  .map((o) => [o.group, o.name]),
+              ).entries(),
+            ].slice(0, 100),
+          ]
+        : [["auto", "Укажи товар в поиске"]];
   for (const [value, label] of variants) {
     const option = el("option", "", label);
     option.value = value;
@@ -239,14 +257,14 @@ function updatePriceControls() {
     filters.offerGroup = "auto";
     select.value = "auto";
   }
-  select.disabled = !product || product.family !== "fresh-tomato";
+  select.disabled = !product;
   $("price-sort").value = filters.priceSort;
   $("price-only").checked = filters.priceOnly;
   $("price-help").textContent = offerLoadFailed
     ? "Не удалось загрузить предложения с ценами. Каталог компаний доступен, попробуй обновить страницу."
     : product
       ? "Сравниваются цены одного вида, типа продажи, НДС и ценовой ступени. Разные группы разделены. Цена без доставки, наличие и стоимость подтвердит поставщик."
-      : "Введи конкретный товар. Сейчас проверенные предложения есть для свежих томатов, слоеного теста и васаби; цены других товаров запрашиваются у поставщика.";
+      : "Введи конкретный товар. В выдаче появятся опубликованные цены подходящих позиций. Если цены нет, уточни у поставщика.";
 }
 function supplierWord(n) {
   const last = n % 10,
@@ -376,7 +394,7 @@ function render() {
     offers,
     saved: store.state.saved,
   });
-  if (queryProduct(filters.query) && !offerLoadFailed) {
+  if (priceContext(filters.query, offers) && !offerLoadFailed) {
     const candidates = source.search(items, {
       ...filters,
       offers,
@@ -443,7 +461,7 @@ function render() {
       button("Сбросить условия поиска", "button quiet", reset),
     );
     $("cards").append(empty);
-  } else if (queryProduct(filters.query) && offers.length) {
+  } else if (priceContext(filters.query, offers) && offers.length) {
     const groups = new Map();
     for (const supplier of found) {
       const offer = selectedOffer(supplier.id, offers, filters);
@@ -679,7 +697,7 @@ function detail(id, show = true) {
       el(
         "p",
         "",
-        `${detailPrice.name}. Цена за 1 кг, если пересчет подтвержден. ${detailPrice.pack.label}`,
+        `${detailPrice.name}. Единица: ${normalizedPrice(detailPrice)?.unit || "не подтверждена"}. ${detailPrice.pack.label}`,
       ),
       link("Источник цены", detailPrice.sourceUrl),
     );
@@ -808,7 +826,7 @@ function renderComparison() {
   $("compare-context").textContent =
     selectedKeys.size > 1
       ? "Выбраны предложения разных видов или условий. Эти цены не образуют общий рейтинг. Сопоставь единицы, тип продажи, НДС и минимальную партию."
-      : queryProduct(filters.query)
+      : priceContext(filters.query, offers)
         ? "Показана цена товара из текущего запроса. Доставка и минимальный заказ считаются отдельно; сорта и условия проверь у поставщиков."
         : "Для сравнения цен введи конкретный товар в поиске. Цены других товаров компании сюда не подставляются.";
   addRow("Город компании", (cell, s) => cell.append(el("span", "", s.city)));
@@ -866,7 +884,7 @@ function renderComparison() {
         "p",
         "",
         offer
-          ? `${offer.name}. За 1 кг, если единица подтверждена.`
+          ? `${offer.name}. Единица: ${normalizedPrice(offer)?.unit || "не подтверждена"}.`
           : "Цена по запросу",
       ),
     );
@@ -879,7 +897,7 @@ function renderComparison() {
         "p",
         "",
         offer
-          ? `${offer.name}. За 1 кг, если единица подтверждена.`
+          ? `${offer.name}. Единица: ${normalizedPrice(offer)?.unit || "не подтверждена"}.`
           : "Цена по запросу",
       ),
     );
@@ -1172,9 +1190,8 @@ document
 $("detail-dialog").addEventListener("close", () => (activeDetail = null));
 const tour = createTour({ store, persist });
 try {
-  [items, offers] = await Promise.all([
-    source.load(),
-    fetch("./data/offers.json")
+  const loadOffers = (url) =>
+    fetch(url)
       .then((r) => {
         if (!r.ok) throw new Error("offers");
         return r.json();
@@ -1182,8 +1199,14 @@ try {
       .catch(() => {
         offerLoadFailed = true;
         return [];
-      }),
+      });
+  const loaded = await Promise.all([
+    source.load(),
+    loadOffers("./data/offers.json"),
+    loadOffers("./data/imported-offers.json"),
   ]);
+  items = loaded[0];
+  offers = [...loaded[1], ...loaded[2]];
   const valid = new Set(items.map((s) => s.id));
   store.state.saved = store.state.saved.filter((id) => valid.has(id));
   store.state.compare = store.state.compare.filter((id) => valid.has(id));

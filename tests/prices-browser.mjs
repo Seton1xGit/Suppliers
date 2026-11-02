@@ -120,7 +120,7 @@ try {
         ).every((t) => t === "Цена по запросу"),
       );
       await p.locator("#compare-dialog .close-dialog").click();
-      await p.locator("#query").fill("бананы");
+      await p.locator("#query").fill("несуществующийтовар123");
       assert.equal(await p.locator(".card").count(), 0);
       await p.locator("#compare-open").click();
       assert(

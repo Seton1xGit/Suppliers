@@ -19,6 +19,69 @@ export const marketLabels = {
   retail: "Розница",
   unknown: "Тип продажи не указан",
 };
+const indexes = new WeakMap(),
+  words = new WeakMap();
+const stem = (value) =>
+  ({ огурец: "огурц", перец: "перц", яйцо: "яйц" })[value] ||
+  value.replace(
+    /(иями|ами|ями|ого|его|ому|ему|ые|ие|ая|яя|ое|ее|ый|ий|ой|ую|юю|ых|их|ов|ев|ах|ях|а|я|ы|и|у|ю|е|о)$/u,
+    "",
+  );
+const tokens = (value) =>
+  (normalize(value).match(/[\p{L}\p{N}]+/gu) || []).map(stem).filter(Boolean);
+function supplierOffers(supplierId, offers) {
+  if (!indexes.has(offers)) {
+    const index = new Map();
+    for (const offer of offers) {
+      if (!index.has(offer.supplierId)) index.set(offer.supplierId, []);
+      index.get(offer.supplierId).push(offer);
+    }
+    indexes.set(offers, index);
+  }
+  return indexes.get(offers).get(supplierId) || [];
+}
+export function offerMatchesQuery(offer, query) {
+  const product = queryProduct(query);
+  if (!normalize(query)) return false;
+  let terms = tokens(query).filter((t) => t.length > 1);
+  if (product?.family === "fresh-tomato") {
+    if (offer.family !== "fresh-tomato" || offer.form !== "fresh") return false;
+    const ignored = new Set([
+      "помидор",
+      "томат",
+      "свеж",
+      "черр",
+      "черри",
+      "на",
+      "ветк",
+      "оптом",
+      "купить",
+      "цен",
+    ]);
+    const groupWords = {
+      regular: ["красн", "обычн"],
+      pink: ["розов"],
+      plum: ["сливк", "сливовидн"],
+      yellow: ["желт"],
+    };
+    for (const word of groupWords[product.group] || []) ignored.add(word);
+    terms = terms.filter((t) => !ignored.has(t));
+  } else if (product && product.family !== offer.family) return false;
+  if (!words.has(offer))
+    words.set(
+      offer,
+      new Set(tokens([offer.name, offer.origin || ""].join(" "))),
+    );
+  return terms.every((term) => words.get(offer).has(term));
+}
+export function priceContext(query, offers) {
+  return (
+    queryProduct(query) ||
+    (offers.some((o) => offerMatchesQuery(o, query))
+      ? { family: "catalog-item", group: "all" }
+      : null)
+  );
+}
 export function queryProduct(query) {
   const q = normalize(query);
   if (!q) return null;
@@ -55,7 +118,9 @@ export function activeGroup(filters) {
     ? filters.offerGroup && filters.offerGroup !== "auto"
       ? filters.offerGroup
       : product.group
-    : null;
+    : filters.offerGroup && filters.offerGroup !== "auto"
+      ? filters.offerGroup
+      : "all";
 }
 export function hasPublishedPrice(offer) {
   return (
@@ -69,17 +134,29 @@ export function hasPublishedPrice(offer) {
 }
 export function normalizedPrice(offer) {
   if (!hasPublishedPrice(offer) || offer.price.currency !== "RUB") return null;
-  const weight = offer.price.unit === "kg" ? 1 : offer.price.weightPerUnitKg;
-  if (!Number.isFinite(weight) || weight <= 0) return null;
+  let divisor = offer.price.unit === "kg" ? 1 : offer.price.weightPerUnitKg,
+    unit = "кг";
+  if (!Number.isFinite(divisor) || divisor <= 0) {
+    if (offer.price.unit === "piece" && offer.price.unitConfirmed === true) {
+      divisor = 1;
+      unit = "шт.";
+    } else if (
+      offer.price.quantityPerUnit > 0 &&
+      offer.price.quantityEvidence
+    ) {
+      divisor = offer.price.quantityPerUnit;
+      unit = "шт.";
+    } else return null;
+  }
   return {
-    min: offer.price.min / weight,
+    min: offer.price.min / divisor,
     max:
       offer.price.type === "exact"
-        ? offer.price.min / weight
+        ? offer.price.min / divisor
         : Number.isFinite(offer.price.max)
-          ? offer.price.max / weight
+          ? offer.price.max / divisor
           : null,
-    unit: "кг",
+    unit,
     type: offer.price.type,
   };
 }
@@ -99,12 +176,10 @@ export function offerEligible(offer, region = "") {
 export function matchingOffers(supplierId, offers, filters = {}) {
   const product = queryProduct(filters.query),
     group = activeGroup(filters);
-  if (!product) return [];
-  return offers.filter(
+  return supplierOffers(supplierId, offers).filter(
     (o) =>
       o.supplierId === supplierId &&
-      o.family === product.family &&
-      (product.family !== "fresh-tomato" || o.form === "fresh") &&
+      offerMatchesQuery(o, filters.query) &&
       (group === "all" || o.group === group) &&
       offerEligible(o, filters.region),
   );
@@ -118,6 +193,7 @@ export function comparisonKey(offer) {
     offer.market,
     offer.vat.status,
     offer.price.type,
+    normalizedPrice(offer).unit,
     offer.volumeTier || "base",
   ].join(":");
 }
@@ -137,7 +213,8 @@ export function compareOffers(a, b, sort = "asc") {
   if (grouped) return grouped;
   const keyA = comparisonKey(a),
     keyB = comparisonKey(b);
-  if (keyA !== keyB) return keyA.localeCompare(keyB, "ru");
+  if (keyA !== keyB)
+    return a.name.localeCompare(b.name, "ru") || keyA.localeCompare(keyB, "ru");
   const left = normalizedPrice(a),
     right = normalizedPrice(b);
   if (left && right && sort !== "priced")
@@ -156,14 +233,14 @@ export function selectedOffer(supplierId, offers, filters = {}) {
   );
 }
 const number = (value) =>
-  new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 2 }).format(value);
+  new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 4 }).format(value);
 export function priceText(offer, normalized = true) {
   if (!hasPublishedPrice(offer)) return "Цена по запросу";
   const price = normalized ? normalizedPrice(offer) : null;
   const min = price?.min ?? offer.price.min,
     max = price?.max ?? offer.price.max;
   const unit = price
-    ? "кг"
+    ? price.unit
     : {
         kg: "кг",
         pack: "упаковку",
@@ -180,5 +257,5 @@ export function offerGroupLabel(offer) {
       : offer.price.type === "range"
         ? "Диапазон"
         : "Опубликованная цена";
-  return `${tomatoGroups[offer.group] || offer.group} / ${marketLabels[offer.market]} / ${normalizedPrice(offer) ? type : "Единица цены требует уточнения"}${offer.vat.status === "excluded" ? " / Без НДС" : offer.vat.status === "included" ? " / С НДС" : " / НДС не указан"}`;
+  return `${tomatoGroups[offer.group] || offer.name} / ${marketLabels[offer.market]} / ${normalizedPrice(offer) ? `${type}, за ${normalizedPrice(offer).unit}` : "Единица цены требует уточнения"}${offer.vat.status === "excluded" ? " / Без НДС" : offer.vat.status === "included" ? " / С НДС" : " / НДС не указан"}`;
 }

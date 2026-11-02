@@ -5100,6 +5100,10 @@
       {
         "url": "https://www.food-star.ru/tovar/pomidory-cherri-na-vetke/",
         "label": "Товар и опубликованная цена"
+      },
+      {
+        "url": "https://www.food-star.ru/price/",
+        "label": "Открытый прайс"
       }
     ],
     "verifiedAt": "2026-11-02",

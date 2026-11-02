@@ -169,11 +169,19 @@ if (process.argv[1]?.endsWith("validate.mjs"))
           "utf8",
         ),
       ),
-      JSON.parse(
-        await readFile(
-          new URL("../public/data/offers.json", import.meta.url),
-          "utf8",
+      [
+        ...JSON.parse(
+          await readFile(
+            new URL("../public/data/offers.json", import.meta.url),
+            "utf8",
+          ),
         ),
-      ),
+        ...JSON.parse(
+          await readFile(
+            new URL("../public/data/imported-offers.json", import.meta.url),
+            "utf8",
+          ),
+        ),
+      ],
     ),
   );

@@ -41,7 +41,11 @@ export function createOfferBlock(
     );
     if (filters.query)
       block.append(
-        el("p", "price-status", "Цена не найдена в каталоге. Уточни у поставщика"),
+        el(
+          "p",
+          "price-status",
+          "Цена не найдена в каталоге. Уточни у поставщика",
+        ),
       );
     return block;
   }
@@ -69,7 +73,7 @@ export function createOfferBlock(
       el(
         "p",
         "price-caution",
-        "Цена за 1 кг не рассчитана: единицу цены нужно подтвердить.",
+        "Сопоставимая единица цены не подтверждена. Проверь исходную упаковку.",
       ),
     );
   const receiving = offer.fulfillment.deliveryRegions.length
